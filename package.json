@@ -11,6 +11,8 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.1",
     "core-js": "^2.4.1",
+    "electron-json-storage": "^4.0.2",
+    "ngx-electron": "^1.0.4",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -36,7 +38,7 @@
     "typescript": "~2.5.3"
   },
   "license": "MIT",
-  "main": "main.js",
+  "main": "electron/main.js",
   "name": "junbi",
   "private": true,
   "scripts": {

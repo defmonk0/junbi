@@ -1,28 +1,9 @@
-const { app, BrowserWindow, Menu, shell } = require("electron");
+const { app, Menu, shell } = require("electron");
+const AuthWindow = require("./AuthWindow");
 
-let mainWindow;
-
-let createWindow = () => {
-	// Set up primary window.
-	mainWindow = new BrowserWindow({
-		backgroundColor: "#ffffff",
-		height: 600,
-		icon: "file://" + __dirname + "/dist/assets/logo.png",
-		width: 600,
-		title: "Junbi",
-	});
-
-	// Load our angular app into it.
-	mainWindow.loadURL("file://" + __dirname + "/dist/index.html");
-
-	// Catch main window events.
-	mainWindow.on("closed", () => {
-		mainWindow = null;
-	});
-
-	// Prep menu.
-	Menu.setApplicationMenu(
-		Menu.buildFromTemplate([
+class AppMenu {
+	constructor() {
+		this.template = [
 			{
 				label: "File",
 				submenu: [
@@ -31,7 +12,7 @@ let createWindow = () => {
 					{
 						label: "Exit",
 						accelerator: "CmdOrCtrl+W",
-						click() {
+						click(item, win, event) {
 							app.quit();
 						},
 					},
@@ -42,20 +23,20 @@ let createWindow = () => {
 				submenu: [
 					{
 						label: "Add Character",
-						click() {
-							console.log("ipcMain send login");
+						click(item, win, event) {
+							let auth = new AuthWindow(win);
 						},
 					},
 					{
 						label: "Manage Characters",
-						click() {
-							console.log("redirect to manage chars page");
+						click(item, win, event) {
+							win.webContents.send("menu:route", "/manage");
 						},
 					},
 					{ type: "separator" },
 					{
 						label: "Create Eve Application",
-						click() {
+						click(item, win, event) {
 							shell.openExternal(
 								"https://developers.eveonline.com/applications/create"
 							);
@@ -69,13 +50,13 @@ let createWindow = () => {
 				submenu: [
 					{
 						label: "Information",
-						click() {
+						click(item, win, event) {
 							shell.openExternal("https://github.com");
 						},
 					},
 					{
 						label: "Report An Issue",
-						click() {
+						click(item, win, event) {
 							shell.openExternal("https://github.com");
 						},
 					},
@@ -89,27 +70,19 @@ let createWindow = () => {
 					{
 						label: "Toggle Tools",
 						accelerator: "CmdOrCtrl+I",
-						click(item, window) {
-							window.toggleDevTools();
+						click(item, win, event) {
+							win.toggleDevTools();
 						},
 					},
 					{ role: "reload" },
 				],
 			},
-		])
-	);
-};
-
-app.on("ready", createWindow);
-
-app.on("activate", () => {
-	if (win === null) {
-		createWindow();
+		];
 	}
-});
 
-app.on("window-all-closed", () => {
-	if (process.platform !== "darwin") {
-		app.quit();
+	enable() {
+		Menu.setApplicationMenu(Menu.buildFromTemplate(this.template));
 	}
-});
+}
+
+module.exports = AppMenu;
