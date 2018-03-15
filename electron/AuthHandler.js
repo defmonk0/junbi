@@ -132,7 +132,7 @@ class AuthHandler {
 		var options = {
 			headers: headers,
 			method: "GET",
-			url: "https://esi.tech.ccp.is/verify/?" + query,
+			url: "https://esi.evetech.net/verify/?" + query,
 		};
 
 		// Actually try and get the token.
