@@ -1,7 +1,6 @@
 const { app } = require("electron");
 const AppMenu = require("./AppMenu");
 const MainWindow = require("./MainWindow");
-const storageHelper = require("./storageHelper");
 
 let win = null;
 let menu = null;
@@ -12,8 +11,6 @@ app.on("ready", () => {
 
 	menu = new AppMenu();
 	menu.enable();
-
-	storageHelper.bindEvents();
 });
 
 // Catch to recreate window if it was closed without exiting the app.

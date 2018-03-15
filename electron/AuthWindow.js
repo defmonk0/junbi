@@ -1,4 +1,5 @@
 const { BrowserWindow } = require("electron");
+const AuthHandler = require("./AuthHandler");
 
 class AuthWindow {
 	constructor(parent) {
@@ -37,7 +38,7 @@ class AuthWindow {
 		let data = {
 			client_id: "87f5e6722d904820acb88ee3970c4149",
 			redirect_uri: "https://localhost/manage/",
-			response_type: "code",
+			response_type: "token",
 			scope: scopes,
 			state: state,
 		};
@@ -52,29 +53,39 @@ class AuthWindow {
 
 		// Catch redirection for authorization code.
 		this.win.webContents.on("will-navigate", (event, url) => {
-			// Extract our query.
-			let query = url.substring(url.indexOf("?") + 1);
-
-			// Generate our params object.
-			let params = query.split("&").reduce((ret, x) => {
-				let i = x.indexOf("=");
-
-				let a = decodeURIComponent(x.substring(0, i));
-				let b = decodeURIComponent(x.substring(i + 1));
-
-				ret[a] = b;
-				return ret;
-			}, {});
+			let handler = new AuthHandler(url);
 
 			// If our states are the same, we can use the data.
-			if (params.state == state) {
-				// Use code to get tokens.
-				console.log(params);
+			if (handler.getParam("access_token") != undefined) {
+				if (handler.getParam("state") == state) {
+					// Get basic verification data with token.
+					handler.verifyToken(
+						handler.getParam("access_token"),
+						data => {
+							handler.saveToken(
+								{
+									access_token: handler.getParam(
+										"access_token"
+									),
+								},
+								data,
+								tokens => {
+									this.win
+										.getParentWindow()
+										.webContents.send(
+											"character:added",
+											tokens
+										);
 
-				// Close this window. We're done!
-				this.win.close();
-			} else {
-				throw "State changed while accessing SSO.";
+									// Close this window. We're done!
+									this.win.close();
+								}
+							);
+						}
+					);
+				} else {
+					throw "State changed while accessing SSO.";
+				}
 			}
 		});
 

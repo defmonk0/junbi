@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, NgZone } from "@angular/core";
 import { ElectronService } from "ngx-electron";
 import { EveSsoService } from "./eve-sso/eve-sso.service";
 import { Router } from "@angular/router";
@@ -9,18 +9,24 @@ import { Router } from "@angular/router";
 	templateUrl: "./app.component.html",
 })
 export class AppComponent {
-	title = "app";
-
 	constructor(
-		private electron: ElectronService,
-		private router: Router,
-		private sso: EveSsoService
+		private electronService: ElectronService,
+		private eveSsoService: EveSsoService,
+		private ngZone: NgZone,
+		private router: Router
 	) {
-		electron.ipcRenderer.on("menu:route", (event, route) => {
+		electronService.ipcRenderer.on("menu:route", (event, route) => {
 			// Go to route requested.
-			router.navigate([route]);
+			ngZone.run(() => {
+				router.navigate([route]);
+			});
 		});
 
-		sso.checkForTokens();
+		electronService.ipcRenderer.on("character:added", (event, tokens) => {
+			// Go to route requested.
+			ngZone.run(() => {
+				this.eveSsoService.updateTokens(tokens);
+			});
+		});
 	}
 }

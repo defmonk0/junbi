@@ -74,7 +74,6 @@ class AppMenu {
 							win.toggleDevTools();
 						},
 					},
-					{ role: "reload" },
 				],
 			},
 		];

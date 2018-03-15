@@ -17,9 +17,6 @@ class MainWindow {
 		this.win.on("closed", () => {
 			this.win = null;
 		});
-
-		// Open dev tools by default.
-		this.win.toggleDevTools();
 	}
 
 	getBrowserWindow() {

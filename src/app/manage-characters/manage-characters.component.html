@@ -1,3 +1,102 @@
-<p>
-	manage-characters works!
-</p>
+<div class="container-fluid">
+
+	<!-- Page title and return link. -->
+	<h1 class="display-4 clearfix">
+		Manage Characters
+		<a routerLink="/overview"
+			class="btn btn-light float-right"
+			role="button">
+			Return To Overview
+		</a>
+	</h1>
+
+	<!-- Page description. -->
+	<p class="lead">
+		View your characters, their tokens, and when the expire; remove them, or force a refresh.
+	</p>
+
+	<!-- List of character tokens. -->
+	<div class="media"
+		*ngFor="let i of tokens">
+
+		<!-- Character image. -->
+		<img [src]="eveImage(
+				'Character',
+				i.verification.CharacterID,
+				128
+			)"
+			alt="Character Image"
+			class="mr-3">
+
+		<!-- Main content. -->
+		<div class="media-body">
+
+			<!-- Character name. -->
+			<h5 class="mt-0">{{i.verification.CharacterName}}</h5>
+
+			<!-- Current access token. -->
+			<div class="row">
+				<div class="col-md-3">
+					<strong>Access Token</strong>
+				</div>
+				<div class="col-md-9">
+					<div class="input-group">
+						<input type="text"
+							class="form-control"
+							disabled="true"
+							[(ngModel)]="i.token.access_token">
+						<div class="input-group-append">
+							<button class="btn btn-outline-success"
+								type="button"
+								(click)="toClipboard(i.token.access_token);"
+								ngbTooltip="Copied!"
+								triggers="click:mouseleave"
+								container="body">
+								Copy
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Expiration date/time. -->
+			<div class="row">
+				<div class="col-md-3">
+					<strong>Expiration</strong>
+				</div>
+				<div class="col-md-9"
+					[ngClass]="{ 'text-danger': isExpired(i.expiration) }">
+					{{i.expiration | date:'medium'}}
+				</div>
+			</div>
+
+			<!-- Actions for this character. -->
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<!-- Force attempted character update. -->
+					<button type="button"
+						class="btn btn-primary"
+						*ngIf="!isExpired(i.expiration)">
+						Force Data Update
+					</button>
+
+					<!-- Remove this character/token from list. -->
+					<button type="button"
+						class="btn btn-danger"
+						(click)="removeToken(i);">
+						Remove
+					</button>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Message to use if there are no characters yet. -->
+	<p *ngIf="!tokens || tokens.length == 0"
+		class="text-center mt-5">
+		No characters available. Use 'Edit' -> 'Add Character' to log in via SSO.
+	</p>
+
+</div>
