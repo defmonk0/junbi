@@ -16,7 +16,7 @@
 	</p>
 
 	<!-- List of character tokens. -->
-	<div class="media"
+	<figure class="media"
 		*ngFor="let i of tokens">
 
 		<!-- Character image. -->
@@ -29,26 +29,27 @@
 			alt="Character Image">
 
 		<!-- Main content. -->
-		<div class="media-body">
+		<figcaption class="media-body">
 
 			<!-- Character name. -->
 			<h5 class="mt-0">{{i.verification.CharacterName}}</h5>
 
-			<!-- Current access token. -->
-			<div class="row">
-				<div class="col-md-3">
-					<strong>Access Token</strong>
-				</div>
-				<div class="col-md-9">
+			<!-- Character details. -->
+			<dl class="row">
+
+				<dt class="col-sm-12">
+					Access Token
+				</dt>
+				<dd class="col-sm-12">
 					<div class="input-group">
 						<input type="text"
 							class="form-control"
 							disabled="true"
-							[(ngModel)]="i.token.access_token">
+							[value]="i.token">
 						<div class="input-group-append">
 							<button class="btn btn-outline-success"
 								type="button"
-								(click)="toClipboard(i.token.access_token);"
+								(click)="toClipboard(i.token);"
 								ngbTooltip="Copied!"
 								triggers="click:mouseleave"
 								container="body">
@@ -56,19 +57,39 @@
 							</button>
 						</div>
 					</div>
-				</div>
-			</div>
+				</dd>
 
-			<!-- Expiration date/time. -->
-			<div class="row">
-				<div class="col-md-3">
-					<strong>Expiration</strong>
-				</div>
-				<div class="col-md-9"
+				<dt class="col-sm-12" *ngIf="i.refresh != null">
+					Refresh Token
+				</dt>
+				<dd class="col-sm-12" *ngIf="i.refresh != null">
+					<div class="input-group">
+						<input type="text"
+							class="form-control"
+							disabled="true"
+							[value]="i.refresh">
+						<div class="input-group-append">
+							<button class="btn btn-outline-success"
+								type="button"
+								(click)="toClipboard(i.refresh);"
+								ngbTooltip="Copied!"
+								triggers="click:mouseleave"
+								container="body">
+								Copy
+							</button>
+						</div>
+					</div>
+				</dd>
+
+				<dt class="col-sm-12">
+					Access Token Expiration
+				</dt>
+				<dd class="col-sm-12"
 					[ngClass]="{ 'text-danger': isExpired(i.expiration) }">
 					{{i.expiration | date:'medium'}}
-				</div>
-			</div>
+				</dd>
+
+			</dl>
 
 			<!-- Actions for this character. -->
 			<div class="row">
@@ -89,9 +110,9 @@
 				</div>
 			</div>
 
-		</div>
+		</figcaption>
 
-	</div>
+	</figure>
 
 	<!-- Message to use if there are no characters yet. -->
 	<p *ngIf="!tokens || tokens.length == 0"
