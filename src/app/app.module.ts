@@ -17,10 +17,11 @@ import { OverviewComponent } from "./overview/overview.component";
 
 // Routing
 import { AppRoutingModule } from "./app-routing.module";
+import { ApplicationDetailsComponent } from './application-details/application-details.component';
 
 @NgModule({
 	bootstrap: [AppComponent],
-	declarations: [AppComponent, ManageCharactersComponent, OverviewComponent],
+	declarations: [AppComponent, ManageCharactersComponent, OverviewComponent, ApplicationDetailsComponent],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,

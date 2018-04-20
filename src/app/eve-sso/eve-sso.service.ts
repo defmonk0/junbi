@@ -14,7 +14,7 @@ export class EveSsoService {
 		this.updateTokens();
 	}
 
-	deleteToken(token: any): void {
+	public deleteToken(token: any): void {
 		// Grab the existing tokens file.
 		this.storage.get("tokens", (error, data) => {
 			if (error) {
@@ -45,7 +45,7 @@ export class EveSsoService {
 		});
 	}
 
-	updateTokens(tokens: any = null): void {
+	public updateTokens(tokens: any = null): void {
 		// Check if we passed the tokens ahead of time.
 		if (tokens != null) {
 			// We have the tokens. Overwrite them.

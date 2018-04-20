@@ -5,9 +5,9 @@ class MainWindow {
 		// Set up window.
 		this.win = new BrowserWindow({
 			backgroundColor: "#ffffff",
-			height: 800,
-			width: 1000,
+			height: 750 + 59,
 			title: "Junbi",
+			width: 875 + 16,
 		});
 
 		// Load app in window.

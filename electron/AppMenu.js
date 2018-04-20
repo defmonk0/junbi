@@ -1,4 +1,5 @@
 const { app, Menu, shell } = require("electron");
+const AppDetailsWindow = require("./AppDetailsWindow");
 const AuthWindow = require("./AuthWindow");
 
 class AppMenu {
@@ -42,7 +43,12 @@ class AppMenu {
 							);
 						},
 					},
-					{ label: "Enter Application Details" },
+					{
+						label: "Enter Application Details",
+						click(item, win, event) {
+							let app = new AppDetailsWindow(win);
+						},
+					},
 				],
 			},
 			{

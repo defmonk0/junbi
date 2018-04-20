@@ -1,0 +1,18 @@
+figure.card {
+	display: inline-block;
+	width: 16rem;
+	margin: 0.5rem;
+}
+
+figure.card figcaption.card-body .card-text span {
+	display: block;
+	margin-bottom: 0.25rem;
+
+	font-weight: 500;
+}
+
+figure.card figcaption.card-body .card-text span small {
+	display: block;
+
+	font-weight: normal;
+}

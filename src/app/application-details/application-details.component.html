@@ -1,0 +1,67 @@
+<div class="container-fluid">
+
+	<!-- Page title. -->
+	<h1 class="display-4 clearfix">Eve Application Details</h1>
+
+	<!-- Page description. -->
+	<p class="lead">
+		Supply application details so you can auto-refresh characters.
+	</p>
+
+	<!-- Explanation for refresh tokens. -->
+	<p>It does not matter what character the application was made with. If you add a character after supplying your application details, we will try to get a refresh token. Characters added previously will not automatically get them.</p>
+
+	<!-- Input boxes. -->
+	<form>
+
+		<fieldset class="form-group">
+			<label for="clientId">Client ID</label>
+			<input type="text"
+				id="clientId"
+				name="clientId"
+				class="form-control"
+				aria-describedby="clientIdHelp"
+				placeholder="Client ID"
+				[(ngModel)]="clientId">
+				<small id="clientIdHelp"
+					name="clientIdHelp"
+					class="form-text text-muted">
+					Client ID generated when you create your EVE developer application.
+				</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="secretKey">Secret Key</label>
+			<input type="text"
+				id="secretKey"
+				name="secretKey"
+				class="form-control"
+				aria-describedby="secretKeyHelp"
+				placeholder="Secret Key"
+				[(ngModel)]="secretKey">
+				<small id="secretKeyHelp"
+					name="secretKeyHelp"
+					class="form-text text-muted">
+					Secret Key generated when you create your EVE developer application.
+				</small>
+		</fieldset>
+
+	</form>
+
+	<div class="text-right">
+
+		<button type="button"
+			class="btn btn-secondary"
+			(click)="cancel();">
+			Cancel
+		</button>
+
+		<button type="button"
+			class="btn btn-primary"
+			(click)="save();">
+			Save
+		</button>
+
+	</div>
+
+</div>

@@ -9,11 +9,11 @@ class AuthWindow {
 			"web-security": false,
 			autoHideMenuBar: true,
 			backgroundColor: "#000000",
-			height: 850,
+			height: 850 + 59,
 			modal: true,
 			parent: parent,
-			title: "Junbi",
-			width: 850,
+			title: "Authentication",
+			width: 850 + 16,
 		});
 
 		// Base SSO url.

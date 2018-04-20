@@ -1,13 +1,71 @@
 <div class="container-fluid">
 
+	<!-- Page title. -->
 	<h1 class="display-4">Overview</h1>
-	<p class="lead">Basic information about your characters, their queues, etc; click them to view more details.</p>
 
+	<!-- Page description. -->
+	<p class="lead">
+		Basic information about your characters, their queues, etc; click them to view more details.
+	</p>
+
+	<!-- List of character tokens. -->
+	<figure class="card"
+		*ngFor="let i of tokens">
+
+		<img [src]="eveImage(
+				'Character',
+				i.verification.CharacterID,
+				256
+			)"
+			class="card-img-top"
+			alt="Character Image">
+
+		<figcaption class="card-body">
+
+			<h5 class="card-title text-truncate">
+				{{i.verification.CharacterName}}
+			</h5>
+
+			<div class="card-text">
+
+				<span>
+					Wallet:
+					<small class="text-muted">
+						{{1234567.89 | number: "1.2-2"}} ISK
+					</small>
+				</span>
+
+				<span>
+					Skill Points:
+					<small class="text-muted">
+						{{1234567.89 | number: "1.2-2"}} SP
+					</small>
+				</span>
+
+				<span>
+					Torpedo Specialization V:
+					<small class="text-muted">
+						18d, 23h, 21m, 5s
+					</small>
+				</span>
+
+				<span>
+					Queue Ends:
+					<small class="text-muted">
+						186d, 5h, 32m, 10s
+					</small>
+				</span>
+
+			</div>
+
+		</figcaption>
+
+	</figure>
+
+	<!-- Message to use if there are no characters yet. -->
 	<p *ngIf="!tokens || tokens.length == 0"
 		class="text-center mt-5">
 		No characters available. Use 'Edit' -> 'Add Character' to log in via SSO.
 	</p>
-
-	<p>{{tokens | json}}</p>
 
 </div>
