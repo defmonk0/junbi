@@ -1,5 +1,6 @@
 const { BrowserWindow } = require("electron");
 const AuthHandler = require("./AuthHandler");
+const CONSTANTS = require("./Constants");
 
 class AuthWindow {
 	constructor(parent) {
@@ -17,7 +18,7 @@ class AuthWindow {
 		});
 
 		// Base SSO url.
-		let url = "https://login.eveonline.com/oauth/authorize/";
+		let url = CONSTANTS.SSO_AUTH_URL;
 
 		// Set up our scopes.
 		let scopes = [
@@ -36,8 +37,8 @@ class AuthWindow {
 
 		// Set up query data.
 		let data = {
-			client_id: "87f5e6722d904820acb88ee3970c4149",
-			redirect_uri: "https://localhost/manage/",
+			client_id: CONSTANTS.SSO_DEFAULT_CLIENT_ID,
+			redirect_uri: CONSTANTS.SSO_REDIRECT_URL,
 			response_type: "token",
 			scope: scopes,
 			state: state,

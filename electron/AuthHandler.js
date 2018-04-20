@@ -1,5 +1,6 @@
 const request = require("request");
 const storage = require("electron-json-storage");
+const CONSTANTS = require("./Constants");
 
 class AuthHandler {
 	constructor(url) {
@@ -35,7 +36,7 @@ class AuthHandler {
 		// Headers needed for token retrieval.
 		var headers = {
 			"Content-Type": "application/x-www-form-urlencoded",
-			"User-Agent": "Junbi/1.0.0 <https://github.com/defmonk0/junbi>",
+			"User-Agent": CONSTANTS.USER_AGENT,
 			Accept: "application/json",
 			Authorization: "Basic ",
 		};
@@ -56,7 +57,7 @@ class AuthHandler {
 			body: query,
 			headers: headers,
 			method: "POST",
-			url: "https://login.eveonline.com/oauth/token",
+			url: CONSTANTS.SSO_TOKEN_URL,
 		};
 
 		// Actually try and get the token.
@@ -113,13 +114,13 @@ class AuthHandler {
 	verifyToken(token, callback, retries = 0) {
 		// Headers needed for token retrieval.
 		var headers = {
-			"User-Agent": "Junbi/1.0.0 <https://github.com/defmonk0/junbi>",
+			"User-Agent": CONSTANTS.USER_AGENT,
 			Accept: "application/json",
 		};
 
 		// Body content to send with request.
 		let data = {
-			datasource: "tranquility",
+			datasource: CONSTANTS.ESI_DATASOURCE,
 			token: token,
 		};
 
@@ -132,7 +133,7 @@ class AuthHandler {
 		var options = {
 			headers: headers,
 			method: "GET",
-			url: "https://esi.tech.ccp.is/verify/?" + query,
+			url: CONSTANTS.ESI_DATASOURCE + "?" + query,
 		};
 
 		// Actually try and get the token.

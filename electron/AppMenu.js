@@ -1,6 +1,7 @@
 const { app, Menu, shell } = require("electron");
 const AppDetailsWindow = require("./AppDetailsWindow");
 const AuthWindow = require("./AuthWindow");
+const CONSTANTS = require("./Constants");
 
 class AppMenu {
 	constructor() {
@@ -38,9 +39,7 @@ class AppMenu {
 					{
 						label: "Create Eve Application",
 						click(item, win, event) {
-							shell.openExternal(
-								"https://developers.eveonline.com/applications/create"
-							);
+							shell.openExternal(CONSTANTS.SSO_CREATE_URL);
 						},
 					},
 					{
@@ -57,13 +56,13 @@ class AppMenu {
 					{
 						label: "Information",
 						click(item, win, event) {
-							shell.openExternal("https://github.com");
+							shell.openExternal(CONSTANTS.GITHUB_HOME_URL);
 						},
 					},
 					{
 						label: "Report An Issue",
 						click(item, win, event) {
-							shell.openExternal("https://github.com");
+							shell.openExternal(CONSTANTS.GITHUB_ISSUE_URL);
 						},
 					},
 					{ type: "separator" },
