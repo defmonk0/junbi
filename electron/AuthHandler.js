@@ -3,7 +3,161 @@ const storage = require("electron-json-storage");
 const CONSTANTS = require("./Constants");
 
 class AuthHandler {
-	constructor(url) {
+	constructor(callback) {
+		storage.get("application-details", (error, details) => {
+			if (error) {
+				throw error;
+			}
+
+			if (details.clientId != undefined) {
+				this.clientId = details.clientId;
+			}
+
+			if (details.secretKey != undefined) {
+				this.secretKey = details.secretKey;
+			}
+
+			callback();
+		});
+	}
+
+	getAuthorizationUrl() {
+		// Set up our state.
+		let a = Date.now();
+		let b = Math.random();
+		this.state = Buffer.from(a + ":" + b).toString("base64");
+
+		// Set up query data.
+		let data = {
+			client_id: CONSTANTS.SSO_DEFAULT_CLIENT_ID,
+			redirect_uri: CONSTANTS.SSO_REDIRECT_URL,
+			response_type: "token",
+			scope: CONSTANTS.SCOPES,
+			state: this.state,
+		};
+
+		// Set up for secret authorization if available.
+		if (
+			this.clientId != undefined &&
+			this.clientId != null &&
+			this.clientId != "" &&
+			this.secretKey != undefined &&
+			this.secretKey != null &&
+			this.secretKey != ""
+		) {
+			data.client_id = this.clientId;
+			data.response_type = "code";
+		}
+
+		// Generate our query parameters from the data.
+		let query = Object.keys(data)
+			.map(k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
+			.join("&");
+
+		// Return our completed URL.
+		return CONSTANTS.SSO_AUTH_URL + "?" + query;
+	}
+
+	getParam(key) {
+		if (
+			this.params[key] == undefined ||
+			this.params[key] == null ||
+			this.params[key] == ""
+		) {
+			return null;
+		}
+
+		return this.params[key];
+	}
+
+	getTokens(callback, retries = 0) {
+		if (this.getParam("access_token")) {
+			this.verifyToken(this.getParam("access_token"), verification => {
+				this.saveToken(
+					this.getParam("access_token"),
+					null,
+					verification,
+					callback
+				);
+			});
+		} else if (this.getParam("code")) {
+			// Headers needed for token retrieval.
+			var headers = {
+				"Content-Type": "application/x-www-form-urlencoded",
+				"User-Agent": CONSTANTS.USER_AGENT,
+				Accept: "application/json",
+				Authorization:
+					"Basic " +
+					Buffer.from(this.clientId + ":" + this.secretKey).toString(
+						"base64"
+					),
+			};
+
+			// Body content to send with request.
+			let data = {
+				code: this.getParam("code"),
+				grant_type: "authorization_code",
+			};
+
+			// Change the body content into a url-encoded list.
+			let query = Object.keys(data)
+				.map(
+					k =>
+						encodeURIComponent(k) +
+						"=" +
+						encodeURIComponent(data[k])
+				)
+				.join("&");
+
+			// Set up options for the request.
+			var options = {
+				body: query,
+				headers: headers,
+				method: "POST",
+				url: CONSTANTS.SSO_TOKEN_URL,
+			};
+
+			// Actually try and get the token.
+			request(options, (error, response, body) => {
+				if (!error && response.statusCode === 200 && body) {
+					let value = JSON.parse(body);
+					this.verifyToken(value.access_token, verification => {
+						this.saveToken(
+							value.access_token,
+							value.refresh_token,
+							verification,
+							callback
+						);
+					});
+				} else if (retries < 5) {
+					console.log("Failed to get token: trying again.");
+					this.getTokens(callback, ++retries);
+				} else {
+					console.log("Failed to get token: giving up.");
+					callback(null);
+				}
+			});
+		}
+	}
+
+	hasValidAuthorization() {
+		if (this.getParam("code") || this.getParam("access_token")) {
+			if (
+				this.getParam("state") &&
+				this.getParam("state") == this.state
+			) {
+				return true;
+			} else {
+				console.log("Invalid state.");
+			}
+		} else {
+			console.log("No code or token found.");
+		}
+
+		return false;
+	}
+
+	processURL(url) {
 		// Get our query or hash.
 		let a = url.indexOf("?");
 		let b = url.indexOf("#");
@@ -28,56 +182,7 @@ class AuthHandler {
 		this.params = params;
 	}
 
-	getParam(key) {
-		return this.params[key];
-	}
-
-	getTokenFromAuthCode(code, callback, retries = 0) {
-		// Headers needed for token retrieval.
-		var headers = {
-			"Content-Type": "application/x-www-form-urlencoded",
-			"User-Agent": CONSTANTS.USER_AGENT,
-			Accept: "application/json",
-			Authorization: "Basic ",
-		};
-
-		// Body content to send with request.
-		let data = {
-			grant_type: "authorization_code",
-			code: code,
-		};
-
-		// Change the body content into a url-encoded list.
-		let query = Object.keys(data)
-			.map(k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
-			.join("&");
-
-		// Set up options for the request.
-		var options = {
-			body: query,
-			headers: headers,
-			method: "POST",
-			url: CONSTANTS.SSO_TOKEN_URL,
-		};
-
-		// Actually try and get the token.
-		request(options, function(error, response, body) {
-			if (!error && response.statusCode === 200 && body) {
-				callback(JSON.parse(body));
-			} else if (retries < 5) {
-				console.log("Failed to get token: trying again.");
-				console.log(error, response.statusCode, body);
-
-				this.getTokenFromAuthCode(code, callback, ++retries);
-			} else {
-				console.log("Failed to get token: giving up.");
-				console.log(error, response.statusCode, body);
-				callback(null);
-			}
-		});
-	}
-
-	saveToken(token, verification, callback) {
+	saveToken(token, refresh, verification, callback) {
 		// Need to get existing data.
 		storage.get("tokens", (error, tokens) => {
 			if (error) {
@@ -96,6 +201,7 @@ class AuthHandler {
 			// Put our new token into the object.
 			tokens[verification.CharacterOwnerHash] = {
 				expiration: expiration.getTime(),
+				refresh: refresh,
 				token: token,
 				verification: verification,
 			};
@@ -133,21 +239,18 @@ class AuthHandler {
 		var options = {
 			headers: headers,
 			method: "GET",
-			url: CONSTANTS.ESI_DATASOURCE + "?" + query,
+			url: CONSTANTS.ESI_VERIFY_TOKEN_URL + "?" + query,
 		};
 
 		// Actually try and get the token.
-		request(options, function(error, response, body) {
+		request(options, (error, response, body) => {
 			if (!error && response.statusCode === 200 && body) {
 				callback(JSON.parse(body));
 			} else if (retries < 5) {
 				console.log("Failed to get verification: trying again.");
-				console.log(error, response.statusCode, body);
-
-				this.getTokenFromAuthCode(token, callback, ++retries);
+				this.verifyToken(token, callback, ++retries);
 			} else {
 				console.log("Failed to get verification: giving up.");
-				console.log(error, response.statusCode, body);
 				callback(null);
 			}
 		});

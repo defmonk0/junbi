@@ -5,8 +5,7 @@ class AppDetailsWindow {
 		// Set up window.
 		this.win = new BrowserWindow({
 			autoHideMenuBar: true,
-			backgroundColor: "#ffffff",
-			height: 550 + 59,
+			height: 550 + 39,
 			modal: true,
 			parent: parent,
 			show: false,

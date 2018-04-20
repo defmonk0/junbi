@@ -9,84 +9,37 @@ class AuthWindow {
 			"node-integration": false,
 			"web-security": false,
 			autoHideMenuBar: true,
-			backgroundColor: "#000000",
-			height: 850 + 59,
+			height: 850 + 39,
 			modal: true,
 			parent: parent,
 			title: "Authentication",
 			width: 850 + 16,
 		});
 
-		// Base SSO url.
-		let url = CONSTANTS.SSO_AUTH_URL;
-
-		// Set up our scopes.
-		let scopes = [
-			"esi-location.read_location.v1",
-			"esi-location.read_ship_type.v1",
-			"esi-skills.read_skills.v1",
-			"esi-skills.read_skillqueue.v1",
-			"esi-wallet.read_character_wallet.v1",
-			"esi-location.read_online.v1",
-		].join(" ");
-
-		// Set up our state.
-		let a = Date.now();
-		let b = Math.random();
-		let state = Buffer.from(a + ":" + b).toString("base64");
-
-		// Set up query data.
-		let data = {
-			client_id: CONSTANTS.SSO_DEFAULT_CLIENT_ID,
-			redirect_uri: CONSTANTS.SSO_REDIRECT_URL,
-			response_type: "token",
-			scope: scopes,
-			state: state,
-		};
-
-		// Generate our query parameters from the data.
-		let query = Object.keys(data)
-			.map(k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
-			.join("&");
-
-		// Load url in window.
-		this.win.loadURL(url + "?" + query);
+		// Set up our AuthHandler.
+		this.handler = new AuthHandler(() => {
+			// Navigate to our proper location.
+			this.win.loadURL(this.handler.getAuthorizationUrl());
+		});
 
 		// Catch redirection for authorization code.
 		this.win.webContents.on("will-navigate", (event, url) => {
-			let handler = new AuthHandler(url);
+			// Process the URL to extract our parameters.
+			this.handler.processURL(url);
 
-			// If our states are the same, we can use the data.
-			if (handler.getParam("access_token") != undefined) {
-				if (handler.getParam("state") == state) {
-					// Get basic verification data with token.
-					handler.verifyToken(
-						handler.getParam("access_token"),
-						data => {
-							handler.saveToken(
-								{
-									access_token: handler.getParam(
-										"access_token"
-									),
-								},
-								data,
-								tokens => {
-									this.win
-										.getParentWindow()
-										.webContents.send(
-											"character:added",
-											tokens
-										);
+			// Check if we have a valid authorization setup.
+			if (this.handler.hasValidAuthorization()) {
+				this.handler.getTokens(tokens => {
+					// Let our main window know to load new characters.
+					if (tokens != null) {
+						this.win
+							.getParentWindow()
+							.webContents.send("character:added", tokens);
+					}
 
-									// Close this window. We're done!
-									this.win.close();
-								}
-							);
-						}
-					);
-				} else {
-					throw "State changed while accessing SSO.";
-				}
+					// Close this window. We're done!
+					this.win.close();
+				});
 			}
 		});
 

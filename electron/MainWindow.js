@@ -4,7 +4,6 @@ class MainWindow {
 	constructor() {
 		// Set up window.
 		this.win = new BrowserWindow({
-			backgroundColor: "#ffffff",
 			height: 750 + 59,
 			title: "Junbi",
 			width: 875 + 16,
