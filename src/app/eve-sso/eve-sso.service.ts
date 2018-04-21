@@ -38,7 +38,6 @@ export class EveSsoService {
 		private locationService: LocationService,
 		private ngZone: NgZone,
 		private skillsService: SkillsService,
-		private universeService: UniverseService,
 		private walletService: WalletService
 	) {
 		// Set up our defaults.
@@ -323,13 +322,13 @@ export class EveSsoService {
 
 		// Save the data locally.
 		this.characters[hash][type] = {
-			expiration: Math.min(date.getTime(), min),
+			expiration: Math.max(date.getTime(), min),
 			data: result.body,
 		};
 
 		// Write the data to storage.
 		this.storage.set(
-			hash + "." + type,
+			hash + "-" + type,
 			this.characters[hash][type],
 			error => {
 				if (error) {
@@ -428,7 +427,7 @@ export class EveSsoService {
 		// Variables for easy use.
 		let hash = token.verification.CharacterOwnerHash;
 		let ts = Date.now();
-		let type = "skills";
+		let type = "skillQueue";
 
 		// Make sure this data is set up and available.
 		this.forceCharacterDataExistance(hash, type);
@@ -552,7 +551,7 @@ export class EveSsoService {
 				.getCharactersCharacterIdWalletTransactions(
 					token.verification.CharacterID,
 					this.constants.ESI_DATASOURCE,
-					null,
+					undefined,
 					token.token,
 					this.constants.USER_AGENT,
 					this.constants.USER_AGENT,
@@ -613,7 +612,7 @@ export class EveSsoService {
 
 				for (let type in SCOPES) {
 					// Try to get the data.
-					this.storage.get(hash + "." + type, (error, data) => {
+					this.storage.get(hash + "-" + type, (error, data) => {
 						if (error) {
 							throw error;
 						}
