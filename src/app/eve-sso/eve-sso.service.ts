@@ -8,8 +8,8 @@ import { Observable } from "rxjs/Observable";
 
 import { LocationService, SkillsService, WalletService } from "../esi/api/api";
 
-const MINIMUM_CACHE_OFFSET = 5 * 60 * 1000;
-const REFRESH_TIMER_INTERVAL = 5 * 1000;
+const MINIMUM_CACHE_OFFSET = 3 * 60 * 1000;
+const REFRESH_TIMER_INTERVAL = 10 * 1000;
 const TOKEN_FILTER_OFFSET = 30 * 1000;
 
 const SCOPES = {
@@ -318,7 +318,8 @@ export class EveSsoService {
 		let date = new Date(result.headers.get("Expires"));
 
 		// A minimum cache, we don't need data more often.
-		let min = Date.now() + MINIMUM_CACHE_OFFSET;
+		let rand = Math.random() * MINIMUM_CACHE_OFFSET;
+		let min = Date.now() + MINIMUM_CACHE_OFFSET + rand;
 
 		// Save the data locally.
 		this.characters[hash][type] = {
