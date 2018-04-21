@@ -14,7 +14,7 @@
 /**
  * 520 response
  */
-export interface PostCharactersCharacterIdMail520Response { 
+export interface PostCharactersCharacterIdMail520Response {
     /**
      * 520 response message
      */

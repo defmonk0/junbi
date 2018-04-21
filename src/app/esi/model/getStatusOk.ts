@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetStatusOk { 
+export interface GetStatusOk {
     /**
      * Server start timestamp
      */

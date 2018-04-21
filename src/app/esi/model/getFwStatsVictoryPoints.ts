@@ -14,7 +14,7 @@
 /**
  * Summary of victory points gained for the given faction
  */
-export interface GetFwStatsVictoryPoints { 
+export interface GetFwStatsVictoryPoints {
     /**
      * Yesterday's victory points gained
      */

@@ -63,7 +63,7 @@ export class ContractsService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -84,10 +84,10 @@ export class ContractsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdContracts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContracts200Ok>>;
-    public getCharactersCharacterIdContracts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContracts200Ok>>>;
-    public getCharactersCharacterIdContracts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContracts200Ok>>>;
-    public getCharactersCharacterIdContracts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdContracts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContracts200Ok>>;
+    public getCharactersCharacterIdContracts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContracts200Ok>>>;
+    public getCharactersCharacterIdContracts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContracts200Ok>>>;
+    public getCharactersCharacterIdContracts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdContracts.');
         }
@@ -113,7 +113,7 @@ export class ContractsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -123,13 +123,13 @@ export class ContractsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdContracts200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contracts/`,
@@ -155,10 +155,10 @@ export class ContractsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>;
-    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>>;
-    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>>;
-    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>;
+    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>>;
+    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>>;
+    public getCharactersCharacterIdContractsContractIdBids(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdContractsContractIdBids.');
         }
@@ -184,7 +184,7 @@ export class ContractsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -194,13 +194,13 @@ export class ContractsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdContractsContractIdBids200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contracts/${encodeURIComponent(String(contractId))}/bids/`,
@@ -226,10 +226,10 @@ export class ContractsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>;
-    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>>;
-    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>>;
-    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>;
+    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>>;
+    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>>;
+    public getCharactersCharacterIdContractsContractIdItems(characterId: number, contractId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdContractsContractIdItems.');
         }
@@ -255,7 +255,7 @@ export class ContractsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -265,13 +265,13 @@ export class ContractsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdContractsContractIdItems200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contracts/${encodeURIComponent(String(contractId))}/items/`,
@@ -297,10 +297,10 @@ export class ContractsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContracts200Ok>>;
-    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContracts200Ok>>>;
-    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContracts200Ok>>>;
-    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContracts200Ok>>;
+    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContracts200Ok>>>;
+    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContracts200Ok>>>;
+    public getCorporationsCorporationIdContracts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (corporationId === null || corporationId === undefined) {
             throw new Error('Required parameter corporationId was null or undefined when calling getCorporationsCorporationIdContracts.');
         }
@@ -326,7 +326,7 @@ export class ContractsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -336,13 +336,13 @@ export class ContractsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdContracts200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/contracts/`,
@@ -369,10 +369,10 @@ export class ContractsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>;
-    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>>;
-    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>>;
-    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>;
+    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>>;
+    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>>;
+    public getCorporationsCorporationIdContractsContractIdBids(contractId: number, corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (contractId === null || contractId === undefined) {
             throw new Error('Required parameter contractId was null or undefined when calling getCorporationsCorporationIdContractsContractIdBids.');
         }
@@ -401,7 +401,7 @@ export class ContractsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -411,13 +411,13 @@ export class ContractsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdContractsContractIdBids200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/contracts/${encodeURIComponent(String(contractId))}/bids/`,
@@ -443,10 +443,10 @@ export class ContractsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>;
-    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>>;
-    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>>;
-    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>;
+    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>>;
+    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>>;
+    public getCorporationsCorporationIdContractsContractIdItems(contractId: number, corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (contractId === null || contractId === undefined) {
             throw new Error('Required parameter contractId was null or undefined when calling getCorporationsCorporationIdContractsContractIdItems.');
         }
@@ -472,7 +472,7 @@ export class ContractsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -482,13 +482,13 @@ export class ContractsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdContractsContractIdItems200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/contracts/${encodeURIComponent(String(contractId))}/items/`,

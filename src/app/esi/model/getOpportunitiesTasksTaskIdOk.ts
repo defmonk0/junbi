@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetOpportunitiesTasksTaskIdOk { 
+export interface GetOpportunitiesTasksTaskIdOk {
     /**
      * task_id integer
      */

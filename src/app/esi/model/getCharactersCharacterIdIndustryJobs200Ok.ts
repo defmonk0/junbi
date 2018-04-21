@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdIndustryJobs200Ok { 
+export interface GetCharactersCharacterIdIndustryJobs200Ok {
     /**
      * Unique job ID
      */
@@ -113,5 +113,5 @@ export namespace GetCharactersCharacterIdIndustryJobs200Ok {
         Paused: 'paused' as StatusEnum,
         Ready: 'ready' as StatusEnum,
         Reverted: 'reverted' as StatusEnum
-    };
+    }
 }

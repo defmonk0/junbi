@@ -55,7 +55,7 @@ export class AllianceService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -73,10 +73,10 @@ export class AllianceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAlliances(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getAlliances(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getAlliances(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getAlliances(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAlliances(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getAlliances(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getAlliances(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getAlliances(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -95,13 +95,13 @@ export class AllianceService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/alliances/`,
@@ -125,10 +125,10 @@ export class AllianceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAlliancesAllianceId(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetAlliancesAllianceIdOk>;
-    public getAlliancesAllianceId(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAlliancesAllianceIdOk>>;
-    public getAlliancesAllianceId(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAlliancesAllianceIdOk>>;
-    public getAlliancesAllianceId(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAlliancesAllianceId(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetAlliancesAllianceIdOk>;
+    public getAlliancesAllianceId(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAlliancesAllianceIdOk>>;
+    public getAlliancesAllianceId(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAlliancesAllianceIdOk>>;
+    public getAlliancesAllianceId(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (allianceId === null || allianceId === undefined) {
             throw new Error('Required parameter allianceId was null or undefined when calling getAlliancesAllianceId.');
         }
@@ -150,13 +150,13 @@ export class AllianceService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetAlliancesAllianceIdOk>(`${this.basePath}/alliances/${encodeURIComponent(String(allianceId))}/`,
@@ -180,10 +180,10 @@ export class AllianceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getAlliancesAllianceIdCorporations(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (allianceId === null || allianceId === undefined) {
             throw new Error('Required parameter allianceId was null or undefined when calling getAlliancesAllianceIdCorporations.');
         }
@@ -205,13 +205,13 @@ export class AllianceService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/alliances/${encodeURIComponent(String(allianceId))}/corporations/`,
@@ -235,10 +235,10 @@ export class AllianceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetAlliancesAllianceIdIconsOk>;
-    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAlliancesAllianceIdIconsOk>>;
-    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAlliancesAllianceIdIconsOk>>;
-    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetAlliancesAllianceIdIconsOk>;
+    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAlliancesAllianceIdIconsOk>>;
+    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAlliancesAllianceIdIconsOk>>;
+    public getAlliancesAllianceIdIcons(allianceId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (allianceId === null || allianceId === undefined) {
             throw new Error('Required parameter allianceId was null or undefined when calling getAlliancesAllianceIdIcons.');
         }
@@ -260,13 +260,13 @@ export class AllianceService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetAlliancesAllianceIdIconsOk>(`${this.basePath}/alliances/${encodeURIComponent(String(allianceId))}/icons/`,
@@ -290,10 +290,10 @@ export class AllianceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAlliancesNames(allianceIds: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetAlliancesNames200Ok>>;
-    public getAlliancesNames(allianceIds: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetAlliancesNames200Ok>>>;
-    public getAlliancesNames(allianceIds: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetAlliancesNames200Ok>>>;
-    public getAlliancesNames(allianceIds: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAlliancesNames(allianceIds: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetAlliancesNames200Ok>>;
+    public getAlliancesNames(allianceIds: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetAlliancesNames200Ok>>>;
+    public getAlliancesNames(allianceIds: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetAlliancesNames200Ok>>>;
+    public getAlliancesNames(allianceIds: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (allianceIds === null || allianceIds === undefined) {
             throw new Error('Required parameter allianceIds was null or undefined when calling getAlliancesNames.');
         }
@@ -318,13 +318,13 @@ export class AllianceService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetAlliancesNames200Ok>>(`${this.basePath}/alliances/names/`,

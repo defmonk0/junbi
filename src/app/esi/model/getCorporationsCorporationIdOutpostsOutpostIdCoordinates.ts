@@ -14,7 +14,7 @@
 /**
  * coordinates object
  */
-export interface GetCorporationsCorporationIdOutpostsOutpostIdCoordinates { 
+export interface GetCorporationsCorporationIdOutpostsOutpostIdCoordinates {
     /**
      * x number
      */

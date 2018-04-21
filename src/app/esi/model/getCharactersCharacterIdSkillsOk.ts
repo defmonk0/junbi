@@ -15,7 +15,7 @@ import { GetCharactersCharacterIdSkillsSkill } from './getCharactersCharacterIdS
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdSkillsOk { 
+export interface GetCharactersCharacterIdSkillsOk {
     /**
      * skills array
      */

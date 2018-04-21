@@ -14,7 +14,7 @@
 /**
  * route object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdRoute { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdRoute {
     /**
      * route_id integer
      */

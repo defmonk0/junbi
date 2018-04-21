@@ -14,7 +14,7 @@
 /**
  * fuel object
  */
-export interface GetCorporationsCorporationIdStarbasesStarbaseIdFuel { 
+export interface GetCorporationsCorporationIdStarbasesStarbaseIdFuel {
     /**
      * type_id integer
      */

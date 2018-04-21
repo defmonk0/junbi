@@ -17,7 +17,7 @@ import { GetFwLeaderboardsCorporationsYesterday1 } from './getFwLeaderboardsCorp
 /**
  * Top 10 rankings of corporations by victory points from yesterday, last week and in total
  */
-export interface GetFwLeaderboardsCorporationsVictoryPoints { 
+export interface GetFwLeaderboardsCorporationsVictoryPoints {
     /**
      * Top 10 ranking of corporations by victory points in the past day
      */

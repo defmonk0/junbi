@@ -14,7 +14,7 @@
 /**
  * orbital object
  */
-export interface GetCharactersCharacterIdStatsOrbital { 
+export interface GetCharactersCharacterIdStatsOrbital {
     /**
      * strike_characters_killed integer
      */

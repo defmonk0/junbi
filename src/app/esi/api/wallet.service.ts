@@ -57,7 +57,7 @@ export class WalletService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -77,10 +77,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdWallet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<number>;
-    public getCharactersCharacterIdWallet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
-    public getCharactersCharacterIdWallet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
-    public getCharactersCharacterIdWallet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdWallet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<number>;
+    public getCharactersCharacterIdWallet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
+    public getCharactersCharacterIdWallet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
+    public getCharactersCharacterIdWallet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdWallet.');
         }
@@ -103,7 +103,7 @@ export class WalletService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -113,13 +113,13 @@ export class WalletService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<number>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/wallet/`,
@@ -145,10 +145,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdWalletJournal200Ok>>;
-    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdWalletJournal200Ok>>>;
-    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdWalletJournal200Ok>>>;
-    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdWalletJournal200Ok>>;
+    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdWalletJournal200Ok>>>;
+    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdWalletJournal200Ok>>>;
+    public getCharactersCharacterIdWalletJournal(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdWalletJournal.');
         }
@@ -174,7 +174,7 @@ export class WalletService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -184,13 +184,13 @@ export class WalletService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdWalletJournal200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/wallet/journal/`,
@@ -216,10 +216,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdWalletTransactions200Ok>>;
-    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdWalletTransactions200Ok>>>;
-    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdWalletTransactions200Ok>>>;
-    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdWalletTransactions200Ok>>;
+    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdWalletTransactions200Ok>>>;
+    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdWalletTransactions200Ok>>>;
+    public getCharactersCharacterIdWalletTransactions(characterId: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdWalletTransactions.');
         }
@@ -245,7 +245,7 @@ export class WalletService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -255,13 +255,13 @@ export class WalletService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdWalletTransactions200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/wallet/transactions/`,
@@ -286,10 +286,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdWallets200Ok>>;
-    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdWallets200Ok>>>;
-    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdWallets200Ok>>>;
-    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdWallets200Ok>>;
+    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdWallets200Ok>>>;
+    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdWallets200Ok>>>;
+    public getCorporationsCorporationIdWallets(corporationId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (corporationId === null || corporationId === undefined) {
             throw new Error('Required parameter corporationId was null or undefined when calling getCorporationsCorporationIdWallets.');
         }
@@ -312,7 +312,7 @@ export class WalletService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -322,13 +322,13 @@ export class WalletService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdWallets200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/wallets/`,
@@ -355,10 +355,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>;
-    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>>;
-    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>>;
-    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>;
+    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>>;
+    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>>;
+    public getCorporationsCorporationIdWalletsDivisionJournal(corporationId: number, division: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (corporationId === null || corporationId === undefined) {
             throw new Error('Required parameter corporationId was null or undefined when calling getCorporationsCorporationIdWalletsDivisionJournal.');
         }
@@ -387,7 +387,7 @@ export class WalletService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -397,13 +397,13 @@ export class WalletService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdWalletsDivisionJournal200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/wallets/${encodeURIComponent(String(division))}/journal/`,
@@ -430,10 +430,10 @@ export class WalletService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>;
-    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>>;
-    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>>;
-    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: 'tranquility' | 'singularity', fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>;
+    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>>;
+    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>>;
+    public getCorporationsCorporationIdWalletsDivisionTransactions(corporationId: number, division: number, datasource?: string, fromId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (corporationId === null || corporationId === undefined) {
             throw new Error('Required parameter corporationId was null or undefined when calling getCorporationsCorporationIdWalletsDivisionTransactions.');
         }
@@ -462,7 +462,7 @@ export class WalletService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -472,13 +472,13 @@ export class WalletService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdWalletsDivisionTransactions200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/wallets/${encodeURIComponent(String(division))}/transactions/`,

@@ -14,7 +14,7 @@
 /**
  * yesterday object
  */
-export interface GetFwLeaderboardsCorporationsYesterday { 
+export interface GetFwLeaderboardsCorporationsYesterday {
     /**
      * corporation_id integer
      */

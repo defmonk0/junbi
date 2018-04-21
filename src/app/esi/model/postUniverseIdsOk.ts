@@ -24,7 +24,7 @@ import { PostUniverseIdsSystem } from './postUniverseIdsSystem';
 /**
  * 200 ok object
  */
-export interface PostUniverseIdsOk { 
+export interface PostUniverseIdsOk {
     /**
      * agents array
      */

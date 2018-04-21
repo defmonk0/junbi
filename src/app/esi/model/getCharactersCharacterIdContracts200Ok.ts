@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdContracts200Ok { 
+export interface GetCharactersCharacterIdContracts200Ok {
     /**
      * contract_id integer
      */
@@ -112,7 +112,7 @@ export namespace GetCharactersCharacterIdContracts200Ok {
         Auction: 'auction' as TypeEnum,
         Courier: 'courier' as TypeEnum,
         Loan: 'loan' as TypeEnum
-    };
+    }
     export type StatusEnum = 'outstanding' | 'in_progress' | 'finished_issuer' | 'finished_contractor' | 'finished' | 'cancelled' | 'rejected' | 'failed' | 'deleted' | 'reversed';
     export const StatusEnum = {
         Outstanding: 'outstanding' as StatusEnum,
@@ -125,12 +125,12 @@ export namespace GetCharactersCharacterIdContracts200Ok {
         Failed: 'failed' as StatusEnum,
         Deleted: 'deleted' as StatusEnum,
         Reversed: 'reversed' as StatusEnum
-    };
+    }
     export type AvailabilityEnum = 'public' | 'personal' | 'corporation' | 'alliance';
     export const AvailabilityEnum = {
         Public: 'public' as AvailabilityEnum,
         Personal: 'personal' as AvailabilityEnum,
         Corporation: 'corporation' as AvailabilityEnum,
         Alliance: 'alliance' as AvailabilityEnum
-    };
+    }
 }

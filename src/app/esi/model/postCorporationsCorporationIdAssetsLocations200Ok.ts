@@ -15,7 +15,7 @@ import { PostCorporationsCorporationIdAssetsLocationsPosition } from './postCorp
 /**
  * 200 ok object
  */
-export interface PostCorporationsCorporationIdAssetsLocations200Ok { 
+export interface PostCorporationsCorporationIdAssetsLocations200Ok {
     /**
      * item_id integer
      */

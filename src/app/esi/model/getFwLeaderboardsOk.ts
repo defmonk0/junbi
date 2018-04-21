@@ -16,7 +16,7 @@ import { GetFwLeaderboardsVictoryPoints } from './getFwLeaderboardsVictoryPoints
 /**
  * 200 ok object
  */
-export interface GetFwLeaderboardsOk { 
+export interface GetFwLeaderboardsOk {
     kills: GetFwLeaderboardsKills;
     victoryPoints: GetFwLeaderboardsVictoryPoints;
 }

@@ -17,7 +17,7 @@ import { GetFwLeaderboardsCharactersYesterday } from './getFwLeaderboardsCharact
 /**
  * Top 100 rankings of pilots by number of kills from yesterday, last week and in total.
  */
-export interface GetFwLeaderboardsCharactersKills { 
+export interface GetFwLeaderboardsCharactersKills {
     /**
      * Top 100 ranking of pilots by kills in the past day
      */

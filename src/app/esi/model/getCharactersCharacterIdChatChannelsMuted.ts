@@ -14,7 +14,7 @@
 /**
  * muted object
  */
-export interface GetCharactersCharacterIdChatChannelsMuted { 
+export interface GetCharactersCharacterIdChatChannelsMuted {
     /**
      * ID of a muted channel member
      */
@@ -38,5 +38,5 @@ export namespace GetCharactersCharacterIdChatChannelsMuted {
         Character: 'character' as AccessorTypeEnum,
         Corporation: 'corporation' as AccessorTypeEnum,
         Alliance: 'alliance' as AccessorTypeEnum
-    };
+    }
 }

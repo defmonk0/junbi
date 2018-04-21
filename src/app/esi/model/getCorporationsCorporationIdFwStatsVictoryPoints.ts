@@ -14,7 +14,7 @@
 /**
  * Summary of victory points gained by the given corporation for the enlisted faction
  */
-export interface GetCorporationsCorporationIdFwStatsVictoryPoints { 
+export interface GetCorporationsCorporationIdFwStatsVictoryPoints {
     /**
      * Yesterday's victory points gained by members of the given corporation
      */

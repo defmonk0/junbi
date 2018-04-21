@@ -14,7 +14,7 @@
 /**
  * inventory_type object
  */
-export interface PostUniverseIdsInventoryType { 
+export interface PostUniverseIdsInventoryType {
     /**
      * id integer
      */

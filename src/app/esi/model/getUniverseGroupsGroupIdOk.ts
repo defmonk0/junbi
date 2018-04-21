@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseGroupsGroupIdOk { 
+export interface GetUniverseGroupsGroupIdOk {
     /**
      * group_id integer
      */

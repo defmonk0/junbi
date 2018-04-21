@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseStarsStarIdOk { 
+export interface GetUniverseStarsStarIdOk {
     /**
      * name string
      */
@@ -140,5 +140,5 @@ export namespace GetUniverseStarsStarIdOk {
         A0: 'A0' as SpectralClassEnum,
         A0IV: 'A0IV' as SpectralClassEnum,
         A0IV2: 'A0IV2' as SpectralClassEnum
-    };
+    }
 }

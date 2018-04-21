@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseSystemsSystemIdNotFound { 
+export interface GetUniverseSystemsSystemIdNotFound {
     /**
      * Not found message
      */

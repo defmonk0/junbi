@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdBookmarksFolders200Ok { 
+export interface GetCharactersCharacterIdBookmarksFolders200Ok {
     /**
      * folder_id integer
      */

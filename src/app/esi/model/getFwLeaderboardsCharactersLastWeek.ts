@@ -14,7 +14,7 @@
 /**
  * last_week object
  */
-export interface GetFwLeaderboardsCharactersLastWeek { 
+export interface GetFwLeaderboardsCharactersLastWeek {
     /**
      * character_id integer
      */

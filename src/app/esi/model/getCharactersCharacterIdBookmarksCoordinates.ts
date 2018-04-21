@@ -14,7 +14,7 @@
 /**
  * Optional object that is returned if a bookmark was made on a planet or a random location in space.
  */
-export interface GetCharactersCharacterIdBookmarksCoordinates { 
+export interface GetCharactersCharacterIdBookmarksCoordinates {
     /**
      * x number
      */

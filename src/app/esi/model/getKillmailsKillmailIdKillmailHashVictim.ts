@@ -16,7 +16,7 @@ import { GetKillmailsKillmailIdKillmailHashPosition } from './getKillmailsKillma
 /**
  * victim object
  */
-export interface GetKillmailsKillmailIdKillmailHashVictim { 
+export interface GetKillmailsKillmailIdKillmailHashVictim {
     /**
      * character_id integer
      */

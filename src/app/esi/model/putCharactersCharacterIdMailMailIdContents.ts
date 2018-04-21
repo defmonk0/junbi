@@ -14,7 +14,7 @@
 /**
  * contents object
  */
-export interface PutCharactersCharacterIdMailMailIdContents { 
+export interface PutCharactersCharacterIdMailMailIdContents {
     /**
      * Whether the mail is flagged as read
      */

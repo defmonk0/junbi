@@ -14,7 +14,7 @@
 /**
  * region object
  */
-export interface PostUniverseIdsRegion { 
+export interface PostUniverseIdsRegion {
     /**
      * id integer
      */

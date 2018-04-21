@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetAlliancesAllianceIdNotFound { 
+export interface GetAlliancesAllianceIdNotFound {
     /**
      * Not found message
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdMedalsIssued200Ok { 
+export interface GetCorporationsCorporationIdMedalsIssued200Ok {
     /**
      * medal_id integer
      */
@@ -45,5 +45,5 @@ export namespace GetCorporationsCorporationIdMedalsIssued200Ok {
     export const StatusEnum = {
         Private: 'private' as StatusEnum,
         Public: 'public' as StatusEnum
-    };
+    }
 }

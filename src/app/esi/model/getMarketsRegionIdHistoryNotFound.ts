@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetMarketsRegionIdHistoryNotFound { 
+export interface GetMarketsRegionIdHistoryNotFound {
     /**
      * Not found message
      */

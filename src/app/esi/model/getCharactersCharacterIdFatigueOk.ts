@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdFatigueOk { 
+export interface GetCharactersCharacterIdFatigueOk {
     /**
      * Character's last jump activation
      */

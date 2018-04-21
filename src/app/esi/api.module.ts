@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Configuration } from './configuration';
-import { HttpClient } from '@angular/common/http';
-
 
 import { AllianceService } from './api/alliance.service';
 import { AssetsService } from './api/assets.service';
@@ -37,7 +37,7 @@ import { WalletService } from './api/wallet.service';
 import { WarsService } from './api/wars.service';
 
 @NgModule({
-  imports:      [],
+  imports:      [ CommonModule, HttpClientModule ],
   declarations: [],
   exports:      [],
   providers: [
@@ -79,17 +79,12 @@ export class ApiModule {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]
-        };
+        }
     }
 
-    constructor( @Optional() @SkipSelf() parentModule: ApiModule,
-                 @Optional() http: HttpClient) {
+    constructor( @Optional() @SkipSelf() parentModule: ApiModule) {
         if (parentModule) {
-            throw new Error('ApiModule is already loaded. Import in your base AppModule only.');
-        }
-        if (!http) {
-            throw new Error('You need to import the HttpClientModule in your AppModule! \n' +
-            'See also https://github.com/angular/angular/issues/20575');
+            throw new Error('ApiModule is already loaded. Import your base AppModule only.');
         }
     }
 }

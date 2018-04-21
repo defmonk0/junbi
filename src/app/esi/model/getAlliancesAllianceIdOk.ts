@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetAlliancesAllianceIdOk { 
+export interface GetAlliancesAllianceIdOk {
     /**
      * the full name of the alliance
      */

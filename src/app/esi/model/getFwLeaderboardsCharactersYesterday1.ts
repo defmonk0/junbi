@@ -14,7 +14,7 @@
 /**
  * yesterday object
  */
-export interface GetFwLeaderboardsCharactersYesterday1 { 
+export interface GetFwLeaderboardsCharactersYesterday1 {
     /**
      * character_id integer
      */

@@ -14,7 +14,7 @@
 /**
  * faction object
  */
-export interface PostUniverseIdsFaction { 
+export interface PostUniverseIdsFaction {
     /**
      * id integer
      */

@@ -58,7 +58,7 @@ export class CalendarService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -79,10 +79,10 @@ export class CalendarService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdCalendar(characterId: number, datasource?: 'tranquility' | 'singularity', fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdCalendar200Ok>>;
-    public getCharactersCharacterIdCalendar(characterId: number, datasource?: 'tranquility' | 'singularity', fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdCalendar200Ok>>>;
-    public getCharactersCharacterIdCalendar(characterId: number, datasource?: 'tranquility' | 'singularity', fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdCalendar200Ok>>>;
-    public getCharactersCharacterIdCalendar(characterId: number, datasource?: 'tranquility' | 'singularity', fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdCalendar(characterId: number, datasource?: string, fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdCalendar200Ok>>;
+    public getCharactersCharacterIdCalendar(characterId: number, datasource?: string, fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdCalendar200Ok>>>;
+    public getCharactersCharacterIdCalendar(characterId: number, datasource?: string, fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdCalendar200Ok>>>;
+    public getCharactersCharacterIdCalendar(characterId: number, datasource?: string, fromEvent?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdCalendar.');
         }
@@ -108,7 +108,7 @@ export class CalendarService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -118,13 +118,13 @@ export class CalendarService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdCalendar200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/calendar/`,
@@ -150,10 +150,10 @@ export class CalendarService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdCalendarEventIdOk>;
-    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdCalendarEventIdOk>>;
-    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdCalendarEventIdOk>>;
-    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdCalendarEventIdOk>;
+    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdCalendarEventIdOk>>;
+    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdCalendarEventIdOk>>;
+    public getCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdCalendarEventId.');
         }
@@ -179,7 +179,7 @@ export class CalendarService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -189,13 +189,13 @@ export class CalendarService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetCharactersCharacterIdCalendarEventIdOk>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/calendar/${encodeURIComponent(String(eventId))}/`,
@@ -221,10 +221,10 @@ export class CalendarService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>;
-    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>>;
-    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>>;
-    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>;
+    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>>;
+    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>>;
+    public getCharactersCharacterIdCalendarEventIdAttendees(characterId: number, eventId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdCalendarEventIdAttendees.');
         }
@@ -250,7 +250,7 @@ export class CalendarService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -260,13 +260,13 @@ export class CalendarService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdCalendarEventIdAttendees200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/calendar/${encodeURIComponent(String(eventId))}/attendees/`,
@@ -293,10 +293,10 @@ export class CalendarService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putCharactersCharacterIdCalendarEventId(characterId: number, eventId: number, response: PutCharactersCharacterIdCalendarEventIdResponse, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling putCharactersCharacterIdCalendarEventId.');
         }
@@ -325,7 +325,7 @@ export class CalendarService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -335,17 +335,17 @@ export class CalendarService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/calendar/${encodeURIComponent(String(eventId))}/`,

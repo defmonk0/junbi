@@ -16,7 +16,7 @@ import { GetCharactersCharacterIdBookmarksItem } from './getCharactersCharacterI
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdBookmarks200Ok { 
+export interface GetCharactersCharacterIdBookmarks200Ok {
     /**
      * bookmark_id integer
      */

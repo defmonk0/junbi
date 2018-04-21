@@ -14,7 +14,7 @@
 /**
  * position object
  */
-export interface GetUniverseConstellationsConstellationIdPosition { 
+export interface GetUniverseConstellationsConstellationIdPosition {
     /**
      * x number
      */

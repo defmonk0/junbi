@@ -14,7 +14,7 @@
 /**
  * hangar object
  */
-export interface GetCorporationsCorporationIdDivisionsHangar { 
+export interface GetCorporationsCorporationIdDivisionsHangar {
     /**
      * division integer
      */

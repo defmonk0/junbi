@@ -14,7 +14,7 @@
 /**
  * new_settings object
  */
-export interface PutFleetsFleetIdNewSettings { 
+export interface PutFleetsFleetIdNewSettings {
     /**
      * New fleet MOTD in CCP flavoured HTML
      */

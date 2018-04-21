@@ -15,7 +15,7 @@ import { GetCharactersCharacterIdFittingsItem } from './getCharactersCharacterId
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdFittings200Ok { 
+export interface GetCharactersCharacterIdFittings200Ok {
     /**
      * fitting_id integer
      */

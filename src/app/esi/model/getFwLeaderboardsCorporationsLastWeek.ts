@@ -14,7 +14,7 @@
 /**
  * last_week object
  */
-export interface GetFwLeaderboardsCorporationsLastWeek { 
+export interface GetFwLeaderboardsCorporationsLastWeek {
     /**
      * corporation_id integer
      */

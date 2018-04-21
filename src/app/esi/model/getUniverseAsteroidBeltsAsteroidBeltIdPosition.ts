@@ -14,7 +14,7 @@
 /**
  * position object
  */
-export interface GetUniverseAsteroidBeltsAsteroidBeltIdPosition { 
+export interface GetUniverseAsteroidBeltsAsteroidBeltIdPosition {
     /**
      * x number
      */

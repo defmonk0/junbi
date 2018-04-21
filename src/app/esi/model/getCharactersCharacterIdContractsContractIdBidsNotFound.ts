@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetCharactersCharacterIdContractsContractIdBidsNotFound { 
+export interface GetCharactersCharacterIdContractsContractIdBidsNotFound {
     /**
      * Not found message
      */

@@ -14,7 +14,7 @@
 /**
  * required_item object
  */
-export interface GetLoyaltyStoresCorporationIdOffersRequiredItem { 
+export interface GetLoyaltyStoresCorporationIdOffersRequiredItem {
     /**
      * type_id integer
      */

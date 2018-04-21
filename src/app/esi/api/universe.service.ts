@@ -88,7 +88,7 @@ export class UniverseService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -107,10 +107,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseAncestries(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseAncestries200Ok>>;
-    public getUniverseAncestries(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseAncestries200Ok>>>;
-    public getUniverseAncestries(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseAncestries200Ok>>>;
-    public getUniverseAncestries(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseAncestries(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseAncestries200Ok>>;
+    public getUniverseAncestries(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseAncestries200Ok>>>;
+    public getUniverseAncestries(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseAncestries200Ok>>>;
+    public getUniverseAncestries(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -132,13 +132,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetUniverseAncestries200Ok>>(`${this.basePath}/universe/ancestries/`,
@@ -162,10 +162,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseAsteroidBeltsAsteroidBeltIdOk>;
-    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseAsteroidBeltsAsteroidBeltIdOk>>;
-    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseAsteroidBeltsAsteroidBeltIdOk>>;
-    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseAsteroidBeltsAsteroidBeltIdOk>;
+    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseAsteroidBeltsAsteroidBeltIdOk>>;
+    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseAsteroidBeltsAsteroidBeltIdOk>>;
+    public getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (asteroidBeltId === null || asteroidBeltId === undefined) {
             throw new Error('Required parameter asteroidBeltId was null or undefined when calling getUniverseAsteroidBeltsAsteroidBeltId.');
         }
@@ -187,13 +187,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseAsteroidBeltsAsteroidBeltIdOk>(`${this.basePath}/universe/asteroid_belts/${encodeURIComponent(String(asteroidBeltId))}/`,
@@ -217,10 +217,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseBloodlines(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseBloodlines200Ok>>;
-    public getUniverseBloodlines(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseBloodlines200Ok>>>;
-    public getUniverseBloodlines(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseBloodlines200Ok>>>;
-    public getUniverseBloodlines(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseBloodlines(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseBloodlines200Ok>>;
+    public getUniverseBloodlines(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseBloodlines200Ok>>>;
+    public getUniverseBloodlines(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseBloodlines200Ok>>>;
+    public getUniverseBloodlines(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -242,13 +242,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetUniverseBloodlines200Ok>>(`${this.basePath}/universe/bloodlines/`,
@@ -271,10 +271,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseCategories(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseCategories(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseCategories(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseCategories(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseCategories(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseCategories(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseCategories(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseCategories(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -293,13 +293,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/categories/`,
@@ -324,10 +324,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseCategoriesCategoryIdOk>;
-    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseCategoriesCategoryIdOk>>;
-    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseCategoriesCategoryIdOk>>;
-    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseCategoriesCategoryIdOk>;
+    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseCategoriesCategoryIdOk>>;
+    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseCategoriesCategoryIdOk>>;
+    public getUniverseCategoriesCategoryId(categoryId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (categoryId === null || categoryId === undefined) {
             throw new Error('Required parameter categoryId was null or undefined when calling getUniverseCategoriesCategoryId.');
         }
@@ -352,13 +352,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseCategoriesCategoryIdOk>(`${this.basePath}/universe/categories/${encodeURIComponent(String(categoryId))}/`,
@@ -381,10 +381,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseConstellations(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseConstellations(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseConstellations(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseConstellations(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseConstellations(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseConstellations(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseConstellations(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseConstellations(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -403,13 +403,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/constellations/`,
@@ -434,10 +434,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseConstellationsConstellationIdOk>;
-    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseConstellationsConstellationIdOk>>;
-    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseConstellationsConstellationIdOk>>;
-    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseConstellationsConstellationIdOk>;
+    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseConstellationsConstellationIdOk>>;
+    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseConstellationsConstellationIdOk>>;
+    public getUniverseConstellationsConstellationId(constellationId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (constellationId === null || constellationId === undefined) {
             throw new Error('Required parameter constellationId was null or undefined when calling getUniverseConstellationsConstellationId.');
         }
@@ -462,13 +462,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseConstellationsConstellationIdOk>(`${this.basePath}/universe/constellations/${encodeURIComponent(String(constellationId))}/`,
@@ -492,10 +492,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseFactions(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseFactions200Ok>>;
-    public getUniverseFactions(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseFactions200Ok>>>;
-    public getUniverseFactions(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseFactions200Ok>>>;
-    public getUniverseFactions(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseFactions(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseFactions200Ok>>;
+    public getUniverseFactions(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseFactions200Ok>>>;
+    public getUniverseFactions(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseFactions200Ok>>>;
+    public getUniverseFactions(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -517,13 +517,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetUniverseFactions200Ok>>(`${this.basePath}/universe/factions/`,
@@ -546,10 +546,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseGraphics(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseGraphics(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseGraphics(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseGraphics(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseGraphics(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseGraphics(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseGraphics(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseGraphics(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -568,13 +568,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/graphics/`,
@@ -598,10 +598,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseGraphicsGraphicIdOk>;
-    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseGraphicsGraphicIdOk>>;
-    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseGraphicsGraphicIdOk>>;
-    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseGraphicsGraphicIdOk>;
+    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseGraphicsGraphicIdOk>>;
+    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseGraphicsGraphicIdOk>>;
+    public getUniverseGraphicsGraphicId(graphicId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (graphicId === null || graphicId === undefined) {
             throw new Error('Required parameter graphicId was null or undefined when calling getUniverseGraphicsGraphicId.');
         }
@@ -623,13 +623,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseGraphicsGraphicIdOk>(`${this.basePath}/universe/graphics/${encodeURIComponent(String(graphicId))}/`,
@@ -653,10 +653,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseGroups(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseGroups(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseGroups(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseGroups(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseGroups(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseGroups(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseGroups(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseGroups(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -678,13 +678,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/groups/`,
@@ -709,10 +709,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseGroupsGroupId(groupId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseGroupsGroupIdOk>;
-    public getUniverseGroupsGroupId(groupId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseGroupsGroupIdOk>>;
-    public getUniverseGroupsGroupId(groupId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseGroupsGroupIdOk>>;
-    public getUniverseGroupsGroupId(groupId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseGroupsGroupId(groupId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseGroupsGroupIdOk>;
+    public getUniverseGroupsGroupId(groupId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseGroupsGroupIdOk>>;
+    public getUniverseGroupsGroupId(groupId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseGroupsGroupIdOk>>;
+    public getUniverseGroupsGroupId(groupId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (groupId === null || groupId === undefined) {
             throw new Error('Required parameter groupId was null or undefined when calling getUniverseGroupsGroupId.');
         }
@@ -737,13 +737,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseGroupsGroupIdOk>(`${this.basePath}/universe/groups/${encodeURIComponent(String(groupId))}/`,
@@ -767,10 +767,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseMoonsMoonId(moonId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseMoonsMoonIdOk>;
-    public getUniverseMoonsMoonId(moonId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseMoonsMoonIdOk>>;
-    public getUniverseMoonsMoonId(moonId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseMoonsMoonIdOk>>;
-    public getUniverseMoonsMoonId(moonId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseMoonsMoonId(moonId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseMoonsMoonIdOk>;
+    public getUniverseMoonsMoonId(moonId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseMoonsMoonIdOk>>;
+    public getUniverseMoonsMoonId(moonId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseMoonsMoonIdOk>>;
+    public getUniverseMoonsMoonId(moonId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (moonId === null || moonId === undefined) {
             throw new Error('Required parameter moonId was null or undefined when calling getUniverseMoonsMoonId.');
         }
@@ -792,13 +792,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseMoonsMoonIdOk>(`${this.basePath}/universe/moons/${encodeURIComponent(String(moonId))}/`,
@@ -822,10 +822,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniversePlanetsPlanetId(planetId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniversePlanetsPlanetIdOk>;
-    public getUniversePlanetsPlanetId(planetId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniversePlanetsPlanetIdOk>>;
-    public getUniversePlanetsPlanetId(planetId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniversePlanetsPlanetIdOk>>;
-    public getUniversePlanetsPlanetId(planetId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniversePlanetsPlanetId(planetId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniversePlanetsPlanetIdOk>;
+    public getUniversePlanetsPlanetId(planetId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniversePlanetsPlanetIdOk>>;
+    public getUniversePlanetsPlanetId(planetId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniversePlanetsPlanetIdOk>>;
+    public getUniversePlanetsPlanetId(planetId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (planetId === null || planetId === undefined) {
             throw new Error('Required parameter planetId was null or undefined when calling getUniversePlanetsPlanetId.');
         }
@@ -847,13 +847,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniversePlanetsPlanetIdOk>(`${this.basePath}/universe/planets/${encodeURIComponent(String(planetId))}/`,
@@ -877,10 +877,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseRaces(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseRaces200Ok>>;
-    public getUniverseRaces(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseRaces200Ok>>>;
-    public getUniverseRaces(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseRaces200Ok>>>;
-    public getUniverseRaces(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseRaces(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseRaces200Ok>>;
+    public getUniverseRaces(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseRaces200Ok>>>;
+    public getUniverseRaces(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseRaces200Ok>>>;
+    public getUniverseRaces(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -902,13 +902,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetUniverseRaces200Ok>>(`${this.basePath}/universe/races/`,
@@ -931,10 +931,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseRegions(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseRegions(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseRegions(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseRegions(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseRegions(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseRegions(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseRegions(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseRegions(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -953,13 +953,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/regions/`,
@@ -984,10 +984,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseRegionsRegionId(regionId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseRegionsRegionIdOk>;
-    public getUniverseRegionsRegionId(regionId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseRegionsRegionIdOk>>;
-    public getUniverseRegionsRegionId(regionId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseRegionsRegionIdOk>>;
-    public getUniverseRegionsRegionId(regionId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseRegionsRegionId(regionId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseRegionsRegionIdOk>;
+    public getUniverseRegionsRegionId(regionId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseRegionsRegionIdOk>>;
+    public getUniverseRegionsRegionId(regionId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseRegionsRegionIdOk>>;
+    public getUniverseRegionsRegionId(regionId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (regionId === null || regionId === undefined) {
             throw new Error('Required parameter regionId was null or undefined when calling getUniverseRegionsRegionId.');
         }
@@ -1012,13 +1012,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseRegionsRegionIdOk>(`${this.basePath}/universe/regions/${encodeURIComponent(String(regionId))}/`,
@@ -1042,10 +1042,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseStargatesStargateId(stargateId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStargatesStargateIdOk>;
-    public getUniverseStargatesStargateId(stargateId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStargatesStargateIdOk>>;
-    public getUniverseStargatesStargateId(stargateId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStargatesStargateIdOk>>;
-    public getUniverseStargatesStargateId(stargateId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseStargatesStargateId(stargateId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStargatesStargateIdOk>;
+    public getUniverseStargatesStargateId(stargateId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStargatesStargateIdOk>>;
+    public getUniverseStargatesStargateId(stargateId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStargatesStargateIdOk>>;
+    public getUniverseStargatesStargateId(stargateId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (stargateId === null || stargateId === undefined) {
             throw new Error('Required parameter stargateId was null or undefined when calling getUniverseStargatesStargateId.');
         }
@@ -1067,13 +1067,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseStargatesStargateIdOk>(`${this.basePath}/universe/stargates/${encodeURIComponent(String(stargateId))}/`,
@@ -1097,10 +1097,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseStarsStarId(starId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStarsStarIdOk>;
-    public getUniverseStarsStarId(starId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStarsStarIdOk>>;
-    public getUniverseStarsStarId(starId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStarsStarIdOk>>;
-    public getUniverseStarsStarId(starId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseStarsStarId(starId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStarsStarIdOk>;
+    public getUniverseStarsStarId(starId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStarsStarIdOk>>;
+    public getUniverseStarsStarId(starId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStarsStarIdOk>>;
+    public getUniverseStarsStarId(starId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (starId === null || starId === undefined) {
             throw new Error('Required parameter starId was null or undefined when calling getUniverseStarsStarId.');
         }
@@ -1122,13 +1122,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseStarsStarIdOk>(`${this.basePath}/universe/stars/${encodeURIComponent(String(starId))}/`,
@@ -1152,10 +1152,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseStationsStationId(stationId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStationsStationIdOk>;
-    public getUniverseStationsStationId(stationId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStationsStationIdOk>>;
-    public getUniverseStationsStationId(stationId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStationsStationIdOk>>;
-    public getUniverseStationsStationId(stationId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseStationsStationId(stationId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStationsStationIdOk>;
+    public getUniverseStationsStationId(stationId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStationsStationIdOk>>;
+    public getUniverseStationsStationId(stationId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStationsStationIdOk>>;
+    public getUniverseStationsStationId(stationId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (stationId === null || stationId === undefined) {
             throw new Error('Required parameter stationId was null or undefined when calling getUniverseStationsStationId.');
         }
@@ -1177,13 +1177,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseStationsStationIdOk>(`${this.basePath}/universe/stations/${encodeURIComponent(String(stationId))}/`,
@@ -1206,10 +1206,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseStructures(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseStructures(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseStructures(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseStructures(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseStructures(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseStructures(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseStructures(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseStructures(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -1228,13 +1228,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/structures/`,
@@ -1259,10 +1259,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseStructuresStructureId(structureId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStructuresStructureIdOk>;
-    public getUniverseStructuresStructureId(structureId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStructuresStructureIdOk>>;
-    public getUniverseStructuresStructureId(structureId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStructuresStructureIdOk>>;
-    public getUniverseStructuresStructureId(structureId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseStructuresStructureId(structureId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseStructuresStructureIdOk>;
+    public getUniverseStructuresStructureId(structureId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseStructuresStructureIdOk>>;
+    public getUniverseStructuresStructureId(structureId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseStructuresStructureIdOk>>;
+    public getUniverseStructuresStructureId(structureId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (structureId === null || structureId === undefined) {
             throw new Error('Required parameter structureId was null or undefined when calling getUniverseStructuresStructureId.');
         }
@@ -1285,7 +1285,7 @@ export class UniverseService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -1295,13 +1295,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseStructuresStructureIdOk>(`${this.basePath}/universe/structures/${encodeURIComponent(String(structureId))}/`,
@@ -1324,10 +1324,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseSystemJumps(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseSystemJumps200Ok>>;
-    public getUniverseSystemJumps(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseSystemJumps200Ok>>>;
-    public getUniverseSystemJumps(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseSystemJumps200Ok>>>;
-    public getUniverseSystemJumps(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseSystemJumps(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseSystemJumps200Ok>>;
+    public getUniverseSystemJumps(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseSystemJumps200Ok>>>;
+    public getUniverseSystemJumps(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseSystemJumps200Ok>>>;
+    public getUniverseSystemJumps(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -1346,13 +1346,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetUniverseSystemJumps200Ok>>(`${this.basePath}/universe/system_jumps/`,
@@ -1375,10 +1375,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseSystemKills(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseSystemKills200Ok>>;
-    public getUniverseSystemKills(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseSystemKills200Ok>>>;
-    public getUniverseSystemKills(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseSystemKills200Ok>>>;
-    public getUniverseSystemKills(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseSystemKills(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetUniverseSystemKills200Ok>>;
+    public getUniverseSystemKills(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetUniverseSystemKills200Ok>>>;
+    public getUniverseSystemKills(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetUniverseSystemKills200Ok>>>;
+    public getUniverseSystemKills(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -1397,13 +1397,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetUniverseSystemKills200Ok>>(`${this.basePath}/universe/system_kills/`,
@@ -1426,10 +1426,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseSystems(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseSystems(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseSystems(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseSystems(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseSystems(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseSystems(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseSystems(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseSystems(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -1448,13 +1448,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/systems/`,
@@ -1479,10 +1479,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseSystemsSystemId(systemId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseSystemsSystemIdOk>;
-    public getUniverseSystemsSystemId(systemId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseSystemsSystemIdOk>>;
-    public getUniverseSystemsSystemId(systemId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseSystemsSystemIdOk>>;
-    public getUniverseSystemsSystemId(systemId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseSystemsSystemId(systemId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseSystemsSystemIdOk>;
+    public getUniverseSystemsSystemId(systemId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseSystemsSystemIdOk>>;
+    public getUniverseSystemsSystemId(systemId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseSystemsSystemIdOk>>;
+    public getUniverseSystemsSystemId(systemId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (systemId === null || systemId === undefined) {
             throw new Error('Required parameter systemId was null or undefined when calling getUniverseSystemsSystemId.');
         }
@@ -1507,13 +1507,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseSystemsSystemIdOk>(`${this.basePath}/universe/systems/${encodeURIComponent(String(systemId))}/`,
@@ -1537,10 +1537,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseTypes(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getUniverseTypes(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getUniverseTypes(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getUniverseTypes(datasource?: 'tranquility' | 'singularity', page?: number, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseTypes(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getUniverseTypes(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getUniverseTypes(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getUniverseTypes(datasource?: string, page?: number, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -1562,13 +1562,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/universe/types/`,
@@ -1593,10 +1593,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUniverseTypesTypeId(typeId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseTypesTypeIdOk>;
-    public getUniverseTypesTypeId(typeId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseTypesTypeIdOk>>;
-    public getUniverseTypesTypeId(typeId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseTypesTypeIdOk>>;
-    public getUniverseTypesTypeId(typeId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUniverseTypesTypeId(typeId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetUniverseTypesTypeIdOk>;
+    public getUniverseTypesTypeId(typeId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetUniverseTypesTypeIdOk>>;
+    public getUniverseTypesTypeId(typeId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetUniverseTypesTypeIdOk>>;
+    public getUniverseTypesTypeId(typeId: number, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (typeId === null || typeId === undefined) {
             throw new Error('Required parameter typeId was null or undefined when calling getUniverseTypesTypeId.');
         }
@@ -1621,13 +1621,13 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetUniverseTypesTypeIdOk>(`${this.basePath}/universe/types/${encodeURIComponent(String(typeId))}/`,
@@ -1652,10 +1652,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postUniverseIds(names: Array<string>, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<PostUniverseIdsOk>;
-    public postUniverseIds(names: Array<string>, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostUniverseIdsOk>>;
-    public postUniverseIds(names: Array<string>, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostUniverseIdsOk>>;
-    public postUniverseIds(names: Array<string>, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postUniverseIds(names: Array<string>, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<PostUniverseIdsOk>;
+    public postUniverseIds(names: Array<string>, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostUniverseIdsOk>>;
+    public postUniverseIds(names: Array<string>, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostUniverseIdsOk>>;
+    public postUniverseIds(names: Array<string>, datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (names === null || names === undefined) {
             throw new Error('Required parameter names was null or undefined when calling postUniverseIds.');
         }
@@ -1680,17 +1680,17 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.post<PostUniverseIdsOk>(`${this.basePath}/universe/ids/`,
@@ -1715,10 +1715,10 @@ export class UniverseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postUniverseNames(ids: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<PostUniverseNames200Ok>>;
-    public postUniverseNames(ids: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PostUniverseNames200Ok>>>;
-    public postUniverseNames(ids: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PostUniverseNames200Ok>>>;
-    public postUniverseNames(ids: Array<number>, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postUniverseNames(ids: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<PostUniverseNames200Ok>>;
+    public postUniverseNames(ids: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PostUniverseNames200Ok>>>;
+    public postUniverseNames(ids: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PostUniverseNames200Ok>>>;
+    public postUniverseNames(ids: Array<number>, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (ids === null || ids === undefined) {
             throw new Error('Required parameter ids was null or undefined when calling postUniverseNames.');
         }
@@ -1740,17 +1740,17 @@ export class UniverseService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.post<Array<PostUniverseNames200Ok>>(`${this.basePath}/universe/names/`,

@@ -56,7 +56,7 @@ export class KillmailsService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -78,10 +78,10 @@ export class KillmailsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: 'tranquility' | 'singularity', maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>;
-    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: 'tranquility' | 'singularity', maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>>;
-    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: 'tranquility' | 'singularity', maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>>;
-    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: 'tranquility' | 'singularity', maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: string, maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>;
+    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: string, maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>>;
+    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: string, maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>>;
+    public getCharactersCharacterIdKillmailsRecent(characterId: number, datasource?: string, maxCount?: number, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdKillmailsRecent.');
         }
@@ -110,7 +110,7 @@ export class KillmailsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -120,13 +120,13 @@ export class KillmailsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdKillmailsRecent200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/killmails/recent/`,
@@ -152,10 +152,10 @@ export class KillmailsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: 'tranquility' | 'singularity', maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>;
-    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: 'tranquility' | 'singularity', maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>>;
-    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: 'tranquility' | 'singularity', maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>>;
-    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: 'tranquility' | 'singularity', maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: string, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>;
+    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: string, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>>;
+    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: string, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>>;
+    public getCorporationsCorporationIdKillmailsRecent(corporationId: number, datasource?: string, maxKillId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (corporationId === null || corporationId === undefined) {
             throw new Error('Required parameter corporationId was null or undefined when calling getCorporationsCorporationIdKillmailsRecent.');
         }
@@ -181,7 +181,7 @@ export class KillmailsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -191,13 +191,13 @@ export class KillmailsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdKillmailsRecent200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/killmails/recent/`,
@@ -222,10 +222,10 @@ export class KillmailsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetKillmailsKillmailIdKillmailHashOk>;
-    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetKillmailsKillmailIdKillmailHashOk>>;
-    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetKillmailsKillmailIdKillmailHashOk>>;
-    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetKillmailsKillmailIdKillmailHashOk>;
+    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetKillmailsKillmailIdKillmailHashOk>>;
+    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetKillmailsKillmailIdKillmailHashOk>>;
+    public getKillmailsKillmailIdKillmailHash(killmailHash: string, killmailId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (killmailHash === null || killmailHash === undefined) {
             throw new Error('Required parameter killmailHash was null or undefined when calling getKillmailsKillmailIdKillmailHash.');
         }
@@ -250,13 +250,13 @@ export class KillmailsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetKillmailsKillmailIdKillmailHashOk>(`${this.basePath}/killmails/${encodeURIComponent(String(killmailId))}/${encodeURIComponent(String(killmailHash))}/`,

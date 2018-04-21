@@ -14,7 +14,7 @@
 /**
  * new_mail object
  */
-export interface PostUiOpenwindowNewmailNewMail { 
+export interface PostUiOpenwindowNewmailNewMail {
     /**
      * subject string
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdBookmarksFolders200Ok { 
+export interface GetCorporationsCorporationIdBookmarksFolders200Ok {
     /**
      * folder_id integer
      */

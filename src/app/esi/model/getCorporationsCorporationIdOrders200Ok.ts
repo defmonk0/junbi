@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdOrders200Ok { 
+export interface GetCorporationsCorporationIdOrders200Ok {
     /**
      * Unique order ID
      */
@@ -87,5 +87,5 @@ export namespace GetCorporationsCorporationIdOrders200Ok {
         Region: 'region' as RangeEnum,
         Solarsystem: 'solarsystem' as RangeEnum,
         Station: 'station' as RangeEnum
-    };
+    }
 }

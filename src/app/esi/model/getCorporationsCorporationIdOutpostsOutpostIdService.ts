@@ -14,7 +14,7 @@
 /**
  * service object
  */
-export interface GetCorporationsCorporationIdOutpostsOutpostIdService { 
+export interface GetCorporationsCorporationIdOutpostsOutpostIdService {
     /**
      * service_name string
      */
@@ -62,5 +62,5 @@ export namespace GetCorporationsCorporationIdOutpostsOutpostIdService {
         LoyaltyPointStore: 'Loyalty Point Store' as ServiceNameEnum,
         NavyOffices: 'Navy Offices' as ServiceNameEnum,
         SecurityOffice: 'Security Office' as ServiceNameEnum
-    };
+    }
 }

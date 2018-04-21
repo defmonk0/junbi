@@ -26,7 +26,7 @@ import { GetCharactersCharacterIdStatsTravel } from './getCharactersCharacterIdS
 /**
  * Aggregate stats for a year
  */
-export interface GetCharactersCharacterIdStats200Ok { 
+export interface GetCharactersCharacterIdStats200Ok {
     /**
      * Gregorian year for this set of aggregates
      */

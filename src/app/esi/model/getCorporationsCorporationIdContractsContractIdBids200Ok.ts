@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdContractsContractIdBids200Ok { 
+export interface GetCorporationsCorporationIdContractsContractIdBids200Ok {
     /**
      * Unique ID for the bid
      */

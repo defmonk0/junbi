@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseBloodlines200Ok { 
+export interface GetUniverseBloodlines200Ok {
     /**
      * bloodline_id integer
      */

@@ -14,7 +14,7 @@
 /**
  * Unprocessable entity
  */
-export interface GetMarketsRegionIdHistoryUnprocessableEntity { 
+export interface GetMarketsRegionIdHistoryUnprocessableEntity {
     /**
      * Unprocessable entity message
      */

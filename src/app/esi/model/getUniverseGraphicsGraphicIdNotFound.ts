@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseGraphicsGraphicIdNotFound { 
+export interface GetUniverseGraphicsGraphicIdNotFound {
     /**
      * Not found message
      */

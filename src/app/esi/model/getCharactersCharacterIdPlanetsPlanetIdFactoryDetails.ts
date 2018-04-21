@@ -14,7 +14,7 @@
 /**
  * factory_details object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails {
     /**
      * schematic_id integer
      */

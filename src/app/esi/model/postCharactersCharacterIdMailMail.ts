@@ -15,7 +15,7 @@ import { PostCharactersCharacterIdMailRecipient } from './postCharactersCharacte
 /**
  * mail object
  */
-export interface PostCharactersCharacterIdMailMail { 
+export interface PostCharactersCharacterIdMailMail {
     /**
      * recipients array
      */

@@ -14,7 +14,7 @@
 /**
  * Schematic not found
  */
-export interface GetUniverseSchematicsSchematicIdNotFound { 
+export interface GetUniverseSchematicsSchematicIdNotFound {
     /**
      * error message
      */

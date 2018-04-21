@@ -14,7 +14,7 @@
 /**
  * active_total object
  */
-export interface GetFwLeaderboardsCorporationsActiveTotal { 
+export interface GetFwLeaderboardsCorporationsActiveTotal {
     /**
      * corporation_id integer
      */

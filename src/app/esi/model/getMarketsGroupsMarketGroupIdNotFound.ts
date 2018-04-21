@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetMarketsGroupsMarketGroupIdNotFound { 
+export interface GetMarketsGroupsMarketGroupIdNotFound {
     /**
      * Not found message
      */

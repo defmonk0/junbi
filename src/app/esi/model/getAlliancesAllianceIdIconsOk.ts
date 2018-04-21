@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetAlliancesAllianceIdIconsOk { 
+export interface GetAlliancesAllianceIdIconsOk {
     /**
      * px64x64 string
      */

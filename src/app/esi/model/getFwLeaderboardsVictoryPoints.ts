@@ -17,7 +17,7 @@ import { GetFwLeaderboardsYesterday1 } from './getFwLeaderboardsYesterday1';
 /**
  * Top 4 rankings of factions by victory points from yesterday, last week and in total
  */
-export interface GetFwLeaderboardsVictoryPoints { 
+export interface GetFwLeaderboardsVictoryPoints {
     /**
      * Top 4 ranking of factions by victory points in the past day
      */

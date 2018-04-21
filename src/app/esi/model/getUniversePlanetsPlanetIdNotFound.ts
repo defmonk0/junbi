@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniversePlanetsPlanetIdNotFound { 
+export interface GetUniversePlanetsPlanetIdNotFound {
     /**
      * Not found message
      */

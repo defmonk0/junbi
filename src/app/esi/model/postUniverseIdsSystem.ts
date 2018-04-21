@@ -14,7 +14,7 @@
 /**
  * system object
  */
-export interface PostUniverseIdsSystem { 
+export interface PostUniverseIdsSystem {
     /**
      * id integer
      */

@@ -14,7 +14,7 @@
 /**
  * No image server for this datasource
  */
-export interface GetCharactersCharacterIdPortraitNotFound { 
+export interface GetCharactersCharacterIdPortraitNotFound {
     /**
      * error message
      */

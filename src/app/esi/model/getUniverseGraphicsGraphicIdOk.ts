@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseGraphicsGraphicIdOk { 
+export interface GetUniverseGraphicsGraphicIdOk {
     /**
      * graphic_id integer
      */

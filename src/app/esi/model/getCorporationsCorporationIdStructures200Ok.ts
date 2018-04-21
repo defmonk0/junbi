@@ -15,7 +15,7 @@ import { GetCorporationsCorporationIdStructuresService } from './getCorporations
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdStructures200Ok { 
+export interface GetCorporationsCorporationIdStructures200Ok {
     /**
      * The Item ID of the structure
      */
@@ -96,5 +96,5 @@ export namespace GetCorporationsCorporationIdStructures200Ok {
         ShieldVulnerable: 'shield_vulnerable' as StateEnum,
         Unanchored: 'unanchored' as StateEnum,
         Unknown: 'unknown' as StateEnum
-    };
+    }
 }

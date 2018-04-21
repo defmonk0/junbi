@@ -14,7 +14,7 @@
 /**
  * Bad request model
  */
-export interface BadRequest { 
+export interface BadRequest {
     /**
      * Bad request message
      */

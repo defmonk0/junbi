@@ -54,7 +54,7 @@ export class DogmaService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -72,10 +72,10 @@ export class DogmaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDogmaAttributes(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getDogmaAttributes(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getDogmaAttributes(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getDogmaAttributes(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getDogmaAttributes(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getDogmaAttributes(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getDogmaAttributes(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getDogmaAttributes(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -94,13 +94,13 @@ export class DogmaService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/dogma/attributes/`,
@@ -124,10 +124,10 @@ export class DogmaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDogmaAttributesAttributeId(attributeId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetDogmaAttributesAttributeIdOk>;
-    public getDogmaAttributesAttributeId(attributeId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetDogmaAttributesAttributeIdOk>>;
-    public getDogmaAttributesAttributeId(attributeId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetDogmaAttributesAttributeIdOk>>;
-    public getDogmaAttributesAttributeId(attributeId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getDogmaAttributesAttributeId(attributeId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetDogmaAttributesAttributeIdOk>;
+    public getDogmaAttributesAttributeId(attributeId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetDogmaAttributesAttributeIdOk>>;
+    public getDogmaAttributesAttributeId(attributeId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetDogmaAttributesAttributeIdOk>>;
+    public getDogmaAttributesAttributeId(attributeId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (attributeId === null || attributeId === undefined) {
             throw new Error('Required parameter attributeId was null or undefined when calling getDogmaAttributesAttributeId.');
         }
@@ -149,13 +149,13 @@ export class DogmaService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetDogmaAttributesAttributeIdOk>(`${this.basePath}/dogma/attributes/${encodeURIComponent(String(attributeId))}/`,
@@ -178,10 +178,10 @@ export class DogmaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDogmaEffects(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getDogmaEffects(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getDogmaEffects(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getDogmaEffects(datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getDogmaEffects(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getDogmaEffects(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getDogmaEffects(datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getDogmaEffects(datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -200,13 +200,13 @@ export class DogmaService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/dogma/effects/`,
@@ -230,10 +230,10 @@ export class DogmaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDogmaEffectsEffectId(effectId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetDogmaEffectsEffectIdOk>;
-    public getDogmaEffectsEffectId(effectId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetDogmaEffectsEffectIdOk>>;
-    public getDogmaEffectsEffectId(effectId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetDogmaEffectsEffectIdOk>>;
-    public getDogmaEffectsEffectId(effectId: number, datasource?: 'tranquility' | 'singularity', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getDogmaEffectsEffectId(effectId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetDogmaEffectsEffectIdOk>;
+    public getDogmaEffectsEffectId(effectId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetDogmaEffectsEffectIdOk>>;
+    public getDogmaEffectsEffectId(effectId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetDogmaEffectsEffectIdOk>>;
+    public getDogmaEffectsEffectId(effectId: number, datasource?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (effectId === null || effectId === undefined) {
             throw new Error('Required parameter effectId was null or undefined when calling getDogmaEffectsEffectId.');
         }
@@ -255,13 +255,13 @@ export class DogmaService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetDogmaEffectsEffectIdOk>(`${this.basePath}/dogma/effects/${encodeURIComponent(String(effectId))}/`,

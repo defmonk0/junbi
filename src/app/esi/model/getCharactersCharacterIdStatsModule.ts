@@ -14,7 +14,7 @@
 /**
  * module object
  */
-export interface GetCharactersCharacterIdStatsModule { 
+export interface GetCharactersCharacterIdStatsModule {
     /**
      * activations_armor_hardener integer
      */

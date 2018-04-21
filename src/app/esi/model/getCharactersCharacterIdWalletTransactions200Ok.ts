@@ -14,7 +14,7 @@
 /**
  * wallet transaction
  */
-export interface GetCharactersCharacterIdWalletTransactions200Ok { 
+export interface GetCharactersCharacterIdWalletTransactions200Ok {
     /**
      * Unique transaction ID
      */

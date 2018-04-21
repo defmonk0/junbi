@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdStarbases200Ok { 
+export interface GetCorporationsCorporationIdStarbases200Ok {
     /**
      * Unique ID for this starbase (POS)
      */
@@ -56,5 +56,5 @@ export namespace GetCorporationsCorporationIdStarbases200Ok {
         Onlining: 'onlining' as StateEnum,
         Reinforced: 'reinforced' as StateEnum,
         Unanchoring: 'unanchoring' as StateEnum
-    };
+    }
 }

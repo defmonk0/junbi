@@ -16,7 +16,7 @@ import { GetCharactersCharacterIdClonesJumpClone } from './getCharactersCharacte
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdClonesOk { 
+export interface GetCharactersCharacterIdClonesOk {
     /**
      * last_clone_jump_date string
      */

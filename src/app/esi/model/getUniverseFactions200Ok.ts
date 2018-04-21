@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseFactions200Ok { 
+export interface GetUniverseFactions200Ok {
     /**
      * faction_id integer
      */

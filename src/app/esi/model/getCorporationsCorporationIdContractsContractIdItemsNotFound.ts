@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetCorporationsCorporationIdContractsContractIdItemsNotFound { 
+export interface GetCorporationsCorporationIdContractsContractIdItemsNotFound {
     /**
      * Not found message
      */

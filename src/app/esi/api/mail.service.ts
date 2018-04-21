@@ -62,7 +62,7 @@ export class MailService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -83,10 +83,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteCharactersCharacterIdMailLabelsLabelId(characterId: number, labelId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling deleteCharactersCharacterIdMailLabelsLabelId.');
         }
@@ -112,7 +112,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -122,13 +122,13 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/labels/${encodeURIComponent(String(labelId))}/`,
@@ -154,10 +154,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling deleteCharactersCharacterIdMailMailId.');
         }
@@ -183,7 +183,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -193,13 +193,13 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/${encodeURIComponent(String(mailId))}/`,
@@ -226,10 +226,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdMail(characterId: number, datasource?: 'tranquility' | 'singularity', labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdMail200Ok>>;
-    public getCharactersCharacterIdMail(characterId: number, datasource?: 'tranquility' | 'singularity', labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdMail200Ok>>>;
-    public getCharactersCharacterIdMail(characterId: number, datasource?: 'tranquility' | 'singularity', labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdMail200Ok>>>;
-    public getCharactersCharacterIdMail(characterId: number, datasource?: 'tranquility' | 'singularity', labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdMail(characterId: number, datasource?: string, labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdMail200Ok>>;
+    public getCharactersCharacterIdMail(characterId: number, datasource?: string, labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdMail200Ok>>>;
+    public getCharactersCharacterIdMail(characterId: number, datasource?: string, labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdMail200Ok>>>;
+    public getCharactersCharacterIdMail(characterId: number, datasource?: string, labels?: Array<number>, lastMailId?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdMail.');
         }
@@ -258,7 +258,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -268,13 +268,13 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdMail200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/`,
@@ -299,10 +299,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdMailLabelsOk>;
-    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdMailLabelsOk>>;
-    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdMailLabelsOk>>;
-    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdMailLabelsOk>;
+    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdMailLabelsOk>>;
+    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdMailLabelsOk>>;
+    public getCharactersCharacterIdMailLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdMailLabels.');
         }
@@ -325,7 +325,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -335,13 +335,13 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetCharactersCharacterIdMailLabelsOk>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/labels/`,
@@ -366,10 +366,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdMailLists(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdMailLists200Ok>>;
-    public getCharactersCharacterIdMailLists(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdMailLists200Ok>>>;
-    public getCharactersCharacterIdMailLists(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdMailLists200Ok>>>;
-    public getCharactersCharacterIdMailLists(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdMailLists(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdMailLists200Ok>>;
+    public getCharactersCharacterIdMailLists(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdMailLists200Ok>>>;
+    public getCharactersCharacterIdMailLists(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdMailLists200Ok>>>;
+    public getCharactersCharacterIdMailLists(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdMailLists.');
         }
@@ -392,7 +392,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -402,13 +402,13 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdMailLists200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/lists/`,
@@ -434,10 +434,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdMailMailIdOk>;
-    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdMailMailIdOk>>;
-    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdMailMailIdOk>>;
-    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdMailMailIdOk>;
+    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdMailMailIdOk>>;
+    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdMailMailIdOk>>;
+    public getCharactersCharacterIdMailMailId(characterId: number, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdMailMailId.');
         }
@@ -463,7 +463,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -473,13 +473,13 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetCharactersCharacterIdMailMailIdOk>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/${encodeURIComponent(String(mailId))}/`,
@@ -505,10 +505,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<number>;
-    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
-    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
-    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<number>;
+    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
+    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
+    public postCharactersCharacterIdMail(characterId: number, mail: PostCharactersCharacterIdMailMail, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling postCharactersCharacterIdMail.');
         }
@@ -534,7 +534,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -544,17 +544,17 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.post<number>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/`,
@@ -581,10 +581,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<number>;
-    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
-    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
-    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<number>;
+    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
+    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
+    public postCharactersCharacterIdMailLabels(characterId: number, label: PostCharactersCharacterIdMailLabelsLabel, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling postCharactersCharacterIdMailLabels.');
         }
@@ -610,7 +610,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -620,17 +620,17 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.post<number>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/labels/`,
@@ -658,10 +658,10 @@ export class MailService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putCharactersCharacterIdMailMailId(characterId: number, contents: PutCharactersCharacterIdMailMailIdContents, mailId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling putCharactersCharacterIdMailMailId.');
         }
@@ -690,7 +690,7 @@ export class MailService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -700,17 +700,17 @@ export class MailService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/mail/${encodeURIComponent(String(mailId))}/`,

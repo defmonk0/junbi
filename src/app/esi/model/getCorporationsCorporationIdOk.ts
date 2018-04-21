@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdOk { 
+export interface GetCorporationsCorporationIdOk {
     /**
      * the full name of the corporation
      */

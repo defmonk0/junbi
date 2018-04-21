@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetDogmaEffectsEffectIdNotFound { 
+export interface GetDogmaEffectsEffectIdNotFound {
     /**
      * Not found message
      */

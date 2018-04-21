@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseCategoriesCategoryIdNotFound { 
+export interface GetUniverseCategoriesCategoryIdNotFound {
     /**
      * Not found message
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseRegionsRegionIdOk { 
+export interface GetUniverseRegionsRegionIdOk {
     /**
      * region_id integer
      */

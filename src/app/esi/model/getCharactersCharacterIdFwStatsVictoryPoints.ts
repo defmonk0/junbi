@@ -14,7 +14,7 @@
 /**
  * Summary of victory points gained by the given character for the enlisted faction
  */
-export interface GetCharactersCharacterIdFwStatsVictoryPoints { 
+export interface GetCharactersCharacterIdFwStatsVictoryPoints {
     /**
      * Yesterday's victory points gained by the given character
      */

@@ -14,7 +14,7 @@
 /**
  * active_total object
  */
-export interface GetFwLeaderboardsActiveTotal1 { 
+export interface GetFwLeaderboardsActiveTotal1 {
     /**
      * faction_id integer
      */

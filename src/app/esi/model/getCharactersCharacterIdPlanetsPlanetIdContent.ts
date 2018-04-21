@@ -14,7 +14,7 @@
 /**
  * content object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdContent { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdContent {
     /**
      * type_id integer
      */

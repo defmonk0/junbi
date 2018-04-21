@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdKillmailsRecent200Ok { 
+export interface GetCorporationsCorporationIdKillmailsRecent200Ok {
     /**
      * ID of this killmail
      */

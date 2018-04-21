@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface PostUniverseNames200Ok { 
+export interface PostUniverseNames200Ok {
     /**
      * id integer
      */
@@ -39,5 +39,5 @@ export namespace PostUniverseNames200Ok {
         Region: 'region' as CategoryEnum,
         SolarSystem: 'solar_system' as CategoryEnum,
         Station: 'station' as CategoryEnum
-    };
+    }
 }

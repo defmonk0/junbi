@@ -15,7 +15,7 @@ import { GetKillmailsKillmailIdKillmailHashItem } from './getKillmailsKillmailId
 /**
  * item object
  */
-export interface GetKillmailsKillmailIdKillmailHashItem1 { 
+export interface GetKillmailsKillmailIdKillmailHashItem1 {
     /**
      * item_type_id integer
      */

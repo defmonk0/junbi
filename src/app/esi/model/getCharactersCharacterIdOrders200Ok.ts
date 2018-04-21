@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdOrders200Ok { 
+export interface GetCharactersCharacterIdOrders200Ok {
     /**
      * Unique order ID
      */
@@ -87,5 +87,5 @@ export namespace GetCharactersCharacterIdOrders200Ok {
         Region: 'region' as RangeEnum,
         Solarsystem: 'solarsystem' as RangeEnum,
         Station: 'station' as RangeEnum
-    };
+    }
 }

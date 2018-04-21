@@ -14,7 +14,7 @@
 /**
  * ally object
  */
-export interface GetWarsWarIdAlly { 
+export interface GetWarsWarIdAlly {
     /**
      * Corporation ID if and only if this ally is a corporation
      */

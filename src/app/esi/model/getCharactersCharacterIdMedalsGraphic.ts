@@ -14,7 +14,7 @@
 /**
  * graphic object
  */
-export interface GetCharactersCharacterIdMedalsGraphic { 
+export interface GetCharactersCharacterIdMedalsGraphic {
     /**
      * part integer
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdMailLists200Ok { 
+export interface GetCharactersCharacterIdMailLists200Ok {
     /**
      * Mailing list ID
      */

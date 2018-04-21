@@ -15,7 +15,7 @@ import { GetLoyaltyStoresCorporationIdOffersRequiredItem } from './getLoyaltySto
 /**
  * 200 ok object
  */
-export interface GetLoyaltyStoresCorporationIdOffers200Ok { 
+export interface GetLoyaltyStoresCorporationIdOffers200Ok {
     /**
      * offer_id integer
      */

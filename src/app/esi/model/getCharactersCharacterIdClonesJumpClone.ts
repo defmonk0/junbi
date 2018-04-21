@@ -14,7 +14,7 @@
 /**
  * jump_clone object
  */
-export interface GetCharactersCharacterIdClonesJumpClone { 
+export interface GetCharactersCharacterIdClonesJumpClone {
     /**
      * jump_clone_id integer
      */
@@ -41,5 +41,5 @@ export namespace GetCharactersCharacterIdClonesJumpClone {
     export const LocationTypeEnum = {
         Station: 'station' as LocationTypeEnum,
         Structure: 'structure' as LocationTypeEnum
-    };
+    }
 }

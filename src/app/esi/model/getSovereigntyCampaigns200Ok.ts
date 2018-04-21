@@ -15,7 +15,7 @@ import { GetSovereigntyCampaignsParticipant } from './getSovereigntyCampaignsPar
 /**
  * 200 ok object
  */
-export interface GetSovereigntyCampaigns200Ok { 
+export interface GetSovereigntyCampaigns200Ok {
     /**
      * Unique ID for this campaign.
      */
@@ -64,5 +64,5 @@ export namespace GetSovereigntyCampaigns200Ok {
         IhubDefense: 'ihub_defense' as EventTypeEnum,
         StationDefense: 'station_defense' as EventTypeEnum,
         StationFreeport: 'station_freeport' as EventTypeEnum
-    };
+    }
 }

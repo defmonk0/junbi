@@ -14,7 +14,7 @@
 /**
  * allowed object
  */
-export interface GetCharactersCharacterIdChatChannelsAllowed { 
+export interface GetCharactersCharacterIdChatChannelsAllowed {
     /**
      * ID of an allowed channel member
      */
@@ -30,5 +30,5 @@ export namespace GetCharactersCharacterIdChatChannelsAllowed {
         Character: 'character' as AccessorTypeEnum,
         Corporation: 'corporation' as AccessorTypeEnum,
         Alliance: 'alliance' as AccessorTypeEnum
-    };
+    }
 }

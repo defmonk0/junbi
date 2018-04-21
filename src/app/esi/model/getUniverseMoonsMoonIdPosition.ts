@@ -14,7 +14,7 @@
 /**
  * position object
  */
-export interface GetUniverseMoonsMoonIdPosition { 
+export interface GetUniverseMoonsMoonIdPosition {
     /**
      * x number
      */

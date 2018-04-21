@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseCategoriesCategoryIdOk { 
+export interface GetUniverseCategoriesCategoryIdOk {
     /**
      * category_id integer
      */

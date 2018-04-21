@@ -14,7 +14,7 @@
 /**
  * level object
  */
-export interface GetInsurancePricesLevel { 
+export interface GetInsurancePricesLevel {
     /**
      * cost number
      */

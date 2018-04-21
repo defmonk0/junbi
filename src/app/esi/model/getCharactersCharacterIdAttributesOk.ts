@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdAttributesOk { 
+export interface GetCharactersCharacterIdAttributesOk {
     /**
      * charisma integer
      */

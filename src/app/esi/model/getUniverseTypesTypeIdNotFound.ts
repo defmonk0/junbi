@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseTypesTypeIdNotFound { 
+export interface GetUniverseTypesTypeIdNotFound {
     /**
      * Not found message
      */

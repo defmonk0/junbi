@@ -14,7 +14,7 @@
 /**
  * link object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdLink { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdLink {
     /**
      * source_pin_id integer
      */

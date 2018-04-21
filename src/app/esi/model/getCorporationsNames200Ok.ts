@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsNames200Ok { 
+export interface GetCorporationsNames200Ok {
     /**
      * corporation_id integer
      */

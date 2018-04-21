@@ -15,7 +15,7 @@ import { GetUniverseConstellationsConstellationIdPosition } from './getUniverseC
 /**
  * 200 ok object
  */
-export interface GetUniverseConstellationsConstellationIdOk { 
+export interface GetUniverseConstellationsConstellationIdOk {
     /**
      * constellation_id integer
      */

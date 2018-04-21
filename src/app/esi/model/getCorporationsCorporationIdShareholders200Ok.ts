@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdShareholders200Ok { 
+export interface GetCorporationsCorporationIdShareholders200Ok {
     /**
      * shareholder_id integer
      */
@@ -33,5 +33,5 @@ export namespace GetCorporationsCorporationIdShareholders200Ok {
     export const ShareholderTypeEnum = {
         Character: 'character' as ShareholderTypeEnum,
         Corporation: 'corporation' as ShareholderTypeEnum
-    };
+    }
 }

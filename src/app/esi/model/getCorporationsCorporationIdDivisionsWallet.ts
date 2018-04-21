@@ -14,7 +14,7 @@
 /**
  * wallet object
  */
-export interface GetCorporationsCorporationIdDivisionsWallet { 
+export interface GetCorporationsCorporationIdDivisionsWallet {
     /**
      * division integer
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdMining200Ok { 
+export interface GetCharactersCharacterIdMining200Ok {
     /**
      * date string
      */

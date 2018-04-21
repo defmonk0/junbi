@@ -14,7 +14,7 @@
 /**
  * character object
  */
-export interface PostUniverseIdsCharacter { 
+export interface PostUniverseIdsCharacter {
     /**
      * id integer
      */

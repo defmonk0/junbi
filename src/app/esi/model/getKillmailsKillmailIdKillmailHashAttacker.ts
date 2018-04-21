@@ -14,7 +14,7 @@
 /**
  * attacker object
  */
-export interface GetKillmailsKillmailIdKillmailHashAttacker { 
+export interface GetKillmailsKillmailIdKillmailHashAttacker {
     /**
      * character_id integer
      */

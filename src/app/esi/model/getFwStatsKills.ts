@@ -14,7 +14,7 @@
 /**
  * Summary of kills against an enemy faction for the given faction
  */
-export interface GetFwStatsKills { 
+export interface GetFwStatsKills {
     /**
      * Yesterday's total number of kills against enemy factions
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetIndustryFacilities200Ok { 
+export interface GetIndustryFacilities200Ok {
     /**
      * ID of the facility
      */

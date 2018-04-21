@@ -14,7 +14,7 @@
 /**
  * Summary of kills done by the given corporation against enemy factions
  */
-export interface GetCorporationsCorporationIdFwStatsKills { 
+export interface GetCorporationsCorporationIdFwStatsKills {
     /**
      * Yesterday's total number of kills by members of the given corporation against enemy factions
      */

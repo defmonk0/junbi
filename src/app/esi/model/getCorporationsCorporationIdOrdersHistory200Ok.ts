@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdOrdersHistory200Ok { 
+export interface GetCorporationsCorporationIdOrdersHistory200Ok {
     /**
      * Unique order ID
      */
@@ -91,10 +91,10 @@ export namespace GetCorporationsCorporationIdOrdersHistory200Ok {
         Region: 'region' as RangeEnum,
         Solarsystem: 'solarsystem' as RangeEnum,
         Station: 'station' as RangeEnum
-    };
+    }
     export type StateEnum = 'cancelled' | 'expired';
     export const StateEnum = {
         Cancelled: 'cancelled' as StateEnum,
         Expired: 'expired' as StateEnum
-    };
+    }
 }

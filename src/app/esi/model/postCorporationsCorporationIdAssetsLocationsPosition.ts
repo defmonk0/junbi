@@ -14,7 +14,7 @@
 /**
  * position object
  */
-export interface PostCorporationsCorporationIdAssetsLocationsPosition { 
+export interface PostCorporationsCorporationIdAssetsLocationsPosition {
     /**
      * x number
      */

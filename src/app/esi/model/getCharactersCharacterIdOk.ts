@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdOk { 
+export interface GetCharactersCharacterIdOk {
     /**
      * name string
      */
@@ -65,5 +65,5 @@ export namespace GetCharactersCharacterIdOk {
     export const GenderEnum = {
         Female: 'female' as GenderEnum,
         Male: 'male' as GenderEnum
-    };
+    }
 }

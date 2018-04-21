@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdOnlineOk { 
+export interface GetCharactersCharacterIdOnlineOk {
     /**
      * If the character is online
      */

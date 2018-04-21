@@ -14,7 +14,7 @@
 /**
  * squad object
  */
-export interface GetFleetsFleetIdWingsSquad { 
+export interface GetFleetsFleetIdWingsSquad {
     /**
      * name string
      */

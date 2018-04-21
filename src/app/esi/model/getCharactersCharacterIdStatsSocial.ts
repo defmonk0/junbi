@@ -14,7 +14,7 @@
 /**
  * social object
  */
-export interface GetCharactersCharacterIdStatsSocial { 
+export interface GetCharactersCharacterIdStatsSocial {
     /**
      * add_contact_bad integer
      */

@@ -17,7 +17,7 @@ import { GetWarsWarIdDefender } from './getWarsWarIdDefender';
 /**
  * 200 ok object
  */
-export interface GetWarsWarIdOk { 
+export interface GetWarsWarIdOk {
     /**
      * ID of the specified war
      */

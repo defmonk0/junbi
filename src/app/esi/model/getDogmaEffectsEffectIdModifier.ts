@@ -14,7 +14,7 @@
 /**
  * modifier object
  */
-export interface GetDogmaEffectsEffectIdModifier { 
+export interface GetDogmaEffectsEffectIdModifier {
     /**
      * func string
      */

@@ -14,7 +14,7 @@
 /**
  * last_week object
  */
-export interface GetFwLeaderboardsLastWeek { 
+export interface GetFwLeaderboardsLastWeek {
     /**
      * faction_id integer
      */

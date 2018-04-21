@@ -14,7 +14,7 @@
 /**
  * Unprocessable entity
  */
-export interface GetWarsWarIdUnprocessableEntity { 
+export interface GetWarsWarIdUnprocessableEntity {
     /**
      * Unprocessable entity message
      */

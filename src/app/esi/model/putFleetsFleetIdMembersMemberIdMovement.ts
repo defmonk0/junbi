@@ -14,7 +14,7 @@
 /**
  * movement object
  */
-export interface PutFleetsFleetIdMembersMemberIdMovement { 
+export interface PutFleetsFleetIdMembersMemberIdMovement {
     /**
      * If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is moved to the `wing_commander` role, only `wing_id` should be specified. If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified.
      */
@@ -35,5 +35,5 @@ export namespace PutFleetsFleetIdMembersMemberIdMovement {
         WingCommander: 'wing_commander' as RoleEnum,
         SquadCommander: 'squad_commander' as RoleEnum,
         SquadMember: 'squad_member' as RoleEnum
-    };
+    }
 }

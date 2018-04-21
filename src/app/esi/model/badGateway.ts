@@ -14,7 +14,7 @@
 /**
  * Bad gateway model
  */
-export interface BadGateway { 
+export interface BadGateway {
     /**
      * Bad gateway message
      */

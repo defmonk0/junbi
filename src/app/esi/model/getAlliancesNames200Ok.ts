@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetAlliancesNames200Ok { 
+export interface GetAlliancesNames200Ok {
     /**
      * alliance_id integer
      */

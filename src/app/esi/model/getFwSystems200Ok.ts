@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetFwSystems200Ok { 
+export interface GetFwSystems200Ok {
     /**
      * solar_system_id integer
      */

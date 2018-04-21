@@ -14,7 +14,7 @@
 /**
  * mining object
  */
-export interface GetCharactersCharacterIdStatsMining { 
+export interface GetCharactersCharacterIdStatsMining {
     /**
      * drone_mine integer
      */

@@ -14,7 +14,7 @@
 /**
  * invitation object
  */
-export interface PostFleetsFleetIdMembersInvitation { 
+export interface PostFleetsFleetIdMembersInvitation {
     /**
      * The character you want to invite
      */
@@ -39,5 +39,5 @@ export namespace PostFleetsFleetIdMembersInvitation {
         WingCommander: 'wing_commander' as RoleEnum,
         SquadCommander: 'squad_commander' as RoleEnum,
         SquadMember: 'squad_member' as RoleEnum
-    };
+    }
 }

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdBlueprints200Ok { 
+export interface GetCharactersCharacterIdBlueprints200Ok {
     /**
      * Unique ID for this item.
      */
@@ -127,5 +127,5 @@ export namespace GetCharactersCharacterIdBlueprints200Ok {
         FighterTube3: 'FighterTube3' as LocationFlagEnum,
         FighterTube4: 'FighterTube4' as LocationFlagEnum,
         Module: 'Module' as LocationFlagEnum
-    };
+    }
 }

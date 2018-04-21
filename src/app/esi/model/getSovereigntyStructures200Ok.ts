@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetSovereigntyStructures200Ok { 
+export interface GetSovereigntyStructures200Ok {
     /**
      * The alliance that owns the structure. 
      */

@@ -14,7 +14,7 @@
 /**
  * Optional object that is returned if a bookmark was made on a particular item.
  */
-export interface GetCharactersCharacterIdBookmarksItem { 
+export interface GetCharactersCharacterIdBookmarksItem {
     /**
      * item_id integer
      */

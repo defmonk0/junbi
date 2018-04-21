@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationCorporationIdMiningExtractions200Ok { 
+export interface GetCorporationCorporationIdMiningExtractions200Ok {
     /**
      * structure_id integer
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdOpportunities200Ok { 
+export interface GetCharactersCharacterIdOpportunities200Ok {
     /**
      * task_id integer
      */

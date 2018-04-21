@@ -51,7 +51,7 @@ export class InsuranceService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -70,10 +70,10 @@ export class InsuranceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getInsurancePrices(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetInsurancePrices200Ok>>;
-    public getInsurancePrices(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetInsurancePrices200Ok>>>;
-    public getInsurancePrices(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetInsurancePrices200Ok>>>;
-    public getInsurancePrices(datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getInsurancePrices(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetInsurancePrices200Ok>>;
+    public getInsurancePrices(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetInsurancePrices200Ok>>>;
+    public getInsurancePrices(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetInsurancePrices200Ok>>>;
+    public getInsurancePrices(datasource?: string, language?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (datasource !== undefined) {
@@ -95,13 +95,13 @@ export class InsuranceService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetInsurancePrices200Ok>>(`${this.basePath}/insurance/prices/`,

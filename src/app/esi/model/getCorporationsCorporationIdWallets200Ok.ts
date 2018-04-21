@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdWallets200Ok { 
+export interface GetCorporationsCorporationIdWallets200Ok {
     /**
      * division integer
      */

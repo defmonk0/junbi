@@ -14,7 +14,7 @@
 /**
  * inventory object
  */
-export interface GetCharactersCharacterIdStatsInventory { 
+export interface GetCharactersCharacterIdStatsInventory {
     /**
      * abandon_loot_quantity integer
      */

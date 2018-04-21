@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdSkillqueue200Ok { 
+export interface GetCharactersCharacterIdSkillqueue200Ok {
     /**
      * skill_id integer
      */

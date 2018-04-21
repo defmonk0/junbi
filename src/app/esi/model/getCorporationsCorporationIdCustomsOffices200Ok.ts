@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdCustomsOffices200Ok { 
+export interface GetCorporationsCorporationIdCustomsOffices200Ok {
     /**
      * unique ID of this customs office
      */
@@ -80,5 +80,5 @@ export namespace GetCorporationsCorporationIdCustomsOffices200Ok {
         Good: 'good' as StandingLevelEnum,
         Neutral: 'neutral' as StandingLevelEnum,
         Terrible: 'terrible' as StandingLevelEnum
-    };
+    }
 }

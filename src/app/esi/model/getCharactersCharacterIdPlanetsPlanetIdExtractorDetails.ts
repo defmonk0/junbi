@@ -15,7 +15,7 @@ import { GetCharactersCharacterIdPlanetsPlanetIdHead } from './getCharactersChar
 /**
  * extractor_details object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails {
     /**
      * heads array
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetSovereigntyMap200Ok { 
+export interface GetSovereigntyMap200Ok {
     /**
      * system_id integer
      */

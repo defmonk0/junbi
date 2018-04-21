@@ -79,7 +79,7 @@ export class FleetsService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -100,10 +100,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling deleteFleetsFleetIdMembersMemberId.');
         }
@@ -129,7 +129,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -139,13 +139,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/members/${encodeURIComponent(String(memberId))}/`,
@@ -171,10 +171,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteFleetsFleetIdSquadsSquadId(fleetId: number, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling deleteFleetsFleetIdSquadsSquadId.');
         }
@@ -200,7 +200,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -210,13 +210,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/squads/${encodeURIComponent(String(squadId))}/`,
@@ -242,10 +242,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteFleetsFleetIdWingsWingId(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling deleteFleetsFleetIdWingsWingId.');
         }
@@ -271,7 +271,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -281,13 +281,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/wings/${encodeURIComponent(String(wingId))}/`,
@@ -312,10 +312,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdFleet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdFleetOk>;
-    public getCharactersCharacterIdFleet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdFleetOk>>;
-    public getCharactersCharacterIdFleet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdFleetOk>>;
-    public getCharactersCharacterIdFleet(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdFleet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetCharactersCharacterIdFleetOk>;
+    public getCharactersCharacterIdFleet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetCharactersCharacterIdFleetOk>>;
+    public getCharactersCharacterIdFleet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetCharactersCharacterIdFleetOk>>;
+    public getCharactersCharacterIdFleet(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdFleet.');
         }
@@ -338,7 +338,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -348,13 +348,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetCharactersCharacterIdFleetOk>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/fleet/`,
@@ -379,10 +379,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFleetsFleetId(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetFleetsFleetIdOk>;
-    public getFleetsFleetId(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetFleetsFleetIdOk>>;
-    public getFleetsFleetId(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetFleetsFleetIdOk>>;
-    public getFleetsFleetId(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFleetsFleetId(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<GetFleetsFleetIdOk>;
+    public getFleetsFleetId(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetFleetsFleetIdOk>>;
+    public getFleetsFleetId(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetFleetsFleetIdOk>>;
+    public getFleetsFleetId(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling getFleetsFleetId.');
         }
@@ -405,7 +405,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -415,13 +415,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<GetFleetsFleetIdOk>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/`,
@@ -447,10 +447,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFleetsFleetIdMembers(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetFleetsFleetIdMembers200Ok>>;
-    public getFleetsFleetIdMembers(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetFleetsFleetIdMembers200Ok>>>;
-    public getFleetsFleetIdMembers(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetFleetsFleetIdMembers200Ok>>>;
-    public getFleetsFleetIdMembers(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFleetsFleetIdMembers(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetFleetsFleetIdMembers200Ok>>;
+    public getFleetsFleetIdMembers(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetFleetsFleetIdMembers200Ok>>>;
+    public getFleetsFleetIdMembers(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetFleetsFleetIdMembers200Ok>>>;
+    public getFleetsFleetIdMembers(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling getFleetsFleetIdMembers.');
         }
@@ -476,7 +476,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -486,13 +486,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetFleetsFleetIdMembers200Ok>>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/members/`,
@@ -518,10 +518,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetFleetsFleetIdWings200Ok>>;
-    public getFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetFleetsFleetIdWings200Ok>>>;
-    public getFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetFleetsFleetIdWings200Ok>>>;
-    public getFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', language?: 'de' | 'en-us' | 'fr' | 'ja' | 'ru' | 'zh', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFleetsFleetIdWings(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetFleetsFleetIdWings200Ok>>;
+    public getFleetsFleetIdWings(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetFleetsFleetIdWings200Ok>>>;
+    public getFleetsFleetIdWings(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetFleetsFleetIdWings200Ok>>>;
+    public getFleetsFleetIdWings(fleetId: number, datasource?: string, language?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling getFleetsFleetIdWings.');
         }
@@ -547,7 +547,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -557,13 +557,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetFleetsFleetIdWings200Ok>>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/wings/`,
@@ -589,10 +589,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public postFleetsFleetIdMembers(fleetId: number, invitation: PostFleetsFleetIdMembersInvitation, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling postFleetsFleetIdMembers.');
         }
@@ -618,7 +618,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -628,17 +628,17 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.post<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/members/`,
@@ -664,10 +664,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<PostFleetsFleetIdWingsCreated>;
-    public postFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostFleetsFleetIdWingsCreated>>;
-    public postFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostFleetsFleetIdWingsCreated>>;
-    public postFleetsFleetIdWings(fleetId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postFleetsFleetIdWings(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<PostFleetsFleetIdWingsCreated>;
+    public postFleetsFleetIdWings(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostFleetsFleetIdWingsCreated>>;
+    public postFleetsFleetIdWings(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostFleetsFleetIdWingsCreated>>;
+    public postFleetsFleetIdWings(fleetId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling postFleetsFleetIdWings.');
         }
@@ -690,7 +690,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -700,13 +700,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.post<PostFleetsFleetIdWingsCreated>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/wings/`,
@@ -733,10 +733,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<PostFleetsFleetIdWingsWingIdSquadsCreated>;
-    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostFleetsFleetIdWingsWingIdSquadsCreated>>;
-    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostFleetsFleetIdWingsWingIdSquadsCreated>>;
-    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<PostFleetsFleetIdWingsWingIdSquadsCreated>;
+    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostFleetsFleetIdWingsWingIdSquadsCreated>>;
+    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostFleetsFleetIdWingsWingIdSquadsCreated>>;
+    public postFleetsFleetIdWingsWingIdSquads(fleetId: number, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling postFleetsFleetIdWingsWingIdSquads.');
         }
@@ -762,7 +762,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -772,13 +772,13 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.post<PostFleetsFleetIdWingsWingIdSquadsCreated>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/wings/${encodeURIComponent(String(wingId))}/squads/`,
@@ -805,10 +805,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putFleetsFleetId(fleetId: number, newSettings: PutFleetsFleetIdNewSettings, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling putFleetsFleetId.');
         }
@@ -834,7 +834,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -844,17 +844,17 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/`,
@@ -882,10 +882,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putFleetsFleetIdMembersMemberId(fleetId: number, memberId: number, movement: PutFleetsFleetIdMembersMemberIdMovement, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling putFleetsFleetIdMembersMemberId.');
         }
@@ -914,7 +914,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -924,17 +924,17 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/members/${encodeURIComponent(String(memberId))}/`,
@@ -962,10 +962,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putFleetsFleetIdSquadsSquadId(fleetId: number, naming: PutFleetsFleetIdSquadsSquadIdNaming, squadId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling putFleetsFleetIdSquadsSquadId.');
         }
@@ -994,7 +994,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -1004,17 +1004,17 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/squads/${encodeURIComponent(String(squadId))}/`,
@@ -1042,10 +1042,10 @@ export class FleetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putFleetsFleetIdWingsWingId(fleetId: number, naming: PutFleetsFleetIdWingsWingIdNaming, wingId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (fleetId === null || fleetId === undefined) {
             throw new Error('Required parameter fleetId was null or undefined when calling putFleetsFleetIdWingsWingId.');
         }
@@ -1074,7 +1074,7 @@ export class FleetsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -1084,17 +1084,17 @@ export class FleetsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/fleets/${encodeURIComponent(String(fleetId))}/wings/${encodeURIComponent(String(wingId))}/`,

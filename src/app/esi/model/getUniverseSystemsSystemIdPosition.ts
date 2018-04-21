@@ -14,7 +14,7 @@
 /**
  * position object
  */
-export interface GetUniverseSystemsSystemIdPosition { 
+export interface GetUniverseSystemsSystemIdPosition {
     /**
      * x number
      */

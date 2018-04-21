@@ -14,7 +14,7 @@
 /**
  * Colony not found
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdNotFound { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdNotFound {
     /**
      * error message
      */

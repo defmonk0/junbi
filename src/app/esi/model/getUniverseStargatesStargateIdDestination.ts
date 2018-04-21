@@ -14,7 +14,7 @@
 /**
  * destination object
  */
-export interface GetUniverseStargatesStargateIdDestination { 
+export interface GetUniverseStargatesStargateIdDestination {
     /**
      * The solar system this stargate connects to
      */

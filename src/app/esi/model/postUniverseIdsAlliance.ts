@@ -14,7 +14,7 @@
 /**
  * alliance object
  */
-export interface PostUniverseIdsAlliance { 
+export interface PostUniverseIdsAlliance {
     /**
      * id integer
      */

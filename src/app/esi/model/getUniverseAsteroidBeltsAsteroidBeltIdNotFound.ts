@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseAsteroidBeltsAsteroidBeltIdNotFound { 
+export interface GetUniverseAsteroidBeltsAsteroidBeltIdNotFound {
     /**
      * Not found message
      */

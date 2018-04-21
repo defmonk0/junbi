@@ -51,7 +51,7 @@ export class RoutesService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -74,10 +74,10 @@ export class RoutesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: 'tranquility' | 'singularity', flag?: 'shortest' | 'secure' | 'insecure', userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: 'tranquility' | 'singularity', flag?: 'shortest' | 'secure' | 'insecure', userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: 'tranquility' | 'singularity', flag?: 'shortest' | 'secure' | 'insecure', userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: 'tranquility' | 'singularity', flag?: 'shortest' | 'secure' | 'insecure', userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: string, flag?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: string, flag?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: string, flag?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public getRouteOriginDestination(destination: number, origin: number, avoid?: Array<number>, connections?: Array<Array<number>>, datasource?: string, flag?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (destination === null || destination === undefined) {
             throw new Error('Required parameter destination was null or undefined when calling getRouteOriginDestination.');
         }
@@ -111,13 +111,13 @@ export class RoutesService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<number>>(`${this.basePath}/route/${encodeURIComponent(String(origin))}/${encodeURIComponent(String(destination))}/`,

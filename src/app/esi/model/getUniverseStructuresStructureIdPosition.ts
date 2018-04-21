@@ -14,7 +14,7 @@
 /**
  * Coordinates of the structure in Cartesian space relative to the Sun, in metres. 
  */
-export interface GetUniverseStructuresStructureIdPosition { 
+export interface GetUniverseStructuresStructureIdPosition {
     /**
      * x number
      */

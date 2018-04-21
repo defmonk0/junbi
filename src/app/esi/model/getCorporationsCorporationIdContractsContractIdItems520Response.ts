@@ -14,7 +14,7 @@
 /**
  * 520 response
  */
-export interface GetCorporationsCorporationIdContractsContractIdItems520Response { 
+export interface GetCorporationsCorporationIdContractsContractIdItems520Response {
     /**
      * 520 response message
      */

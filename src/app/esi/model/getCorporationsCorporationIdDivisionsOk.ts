@@ -16,7 +16,7 @@ import { GetCorporationsCorporationIdDivisionsWallet } from './getCorporationsCo
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdDivisionsOk { 
+export interface GetCorporationsCorporationIdDivisionsOk {
     /**
      * hangar array
      */

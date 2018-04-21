@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetMarketsStructuresStructureId200Ok { 
+export interface GetMarketsStructuresStructureId200Ok {
     /**
      * order_id integer
      */
@@ -75,5 +75,5 @@ export namespace GetMarketsStructuresStructureId200Ok {
         _20: '20' as RangeEnum,
         _30: '30' as RangeEnum,
         _40: '40' as RangeEnum
-    };
+    }
 }

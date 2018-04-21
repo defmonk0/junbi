@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdPlanets200Ok { 
+export interface GetCharactersCharacterIdPlanets200Ok {
     /**
      * solar_system_id integer
      */
@@ -55,5 +55,5 @@ export namespace GetCharactersCharacterIdPlanets200Ok {
         Lava: 'lava' as PlanetTypeEnum,
         Storm: 'storm' as PlanetTypeEnum,
         Plasma: 'plasma' as PlanetTypeEnum
-    };
+    }
 }

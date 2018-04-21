@@ -14,7 +14,7 @@
 /**
  * recipient object
  */
-export interface GetCharactersCharacterIdMailMailIdRecipient { 
+export interface GetCharactersCharacterIdMailMailIdRecipient {
     /**
      * recipient_type string
      */
@@ -31,5 +31,5 @@ export namespace GetCharactersCharacterIdMailMailIdRecipient {
         Character: 'character' as RecipientTypeEnum,
         Corporation: 'corporation' as RecipientTypeEnum,
         MailingList: 'mailing_list' as RecipientTypeEnum
-    };
+    }
 }

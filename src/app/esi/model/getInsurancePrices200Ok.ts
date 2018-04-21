@@ -15,7 +15,7 @@ import { GetInsurancePricesLevel } from './getInsurancePricesLevel';
 /**
  * 200 ok object
  */
-export interface GetInsurancePrices200Ok { 
+export interface GetInsurancePrices200Ok {
     /**
      * type_id integer
      */

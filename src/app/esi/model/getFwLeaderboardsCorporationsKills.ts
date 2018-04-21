@@ -17,7 +17,7 @@ import { GetFwLeaderboardsCorporationsYesterday } from './getFwLeaderboardsCorpo
 /**
  * Top 10 rankings of corporations by number of kills from yesterday, last week and in total.
  */
-export interface GetFwLeaderboardsCorporationsKills { 
+export interface GetFwLeaderboardsCorporationsKills {
     /**
      * Top 10 ranking of corporations by kills in the past day
      */

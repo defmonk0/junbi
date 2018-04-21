@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseRegionsRegionIdNotFound { 
+export interface GetUniverseRegionsRegionIdNotFound {
     /**
      * Not found message
      */

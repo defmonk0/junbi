@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseConstellationsConstellationIdNotFound { 
+export interface GetUniverseConstellationsConstellationIdNotFound {
     /**
      * Not found message
      */

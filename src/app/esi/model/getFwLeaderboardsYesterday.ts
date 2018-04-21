@@ -14,7 +14,7 @@
 /**
  * yesterday object
  */
-export interface GetFwLeaderboardsYesterday { 
+export interface GetFwLeaderboardsYesterday {
     /**
      * faction_id integer
      */

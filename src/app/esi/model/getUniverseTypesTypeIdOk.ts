@@ -16,7 +16,7 @@ import { GetUniverseTypesTypeIdDogmaEffect } from './getUniverseTypesTypeIdDogma
 /**
  * 200 ok object
  */
-export interface GetUniverseTypesTypeIdOk { 
+export interface GetUniverseTypesTypeIdOk {
     /**
      * type_id integer
      */

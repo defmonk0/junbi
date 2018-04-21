@@ -14,7 +14,7 @@
 /**
  * Unprocessable entity
  */
-export interface PostUiOpenwindowNewmailUnprocessableEntity { 
+export interface PostUiOpenwindowNewmailUnprocessableEntity {
     /**
      * Unprocessable entity message
      */

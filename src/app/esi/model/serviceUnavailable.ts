@@ -14,7 +14,7 @@
 /**
  * Service unavailable model
  */
-export interface ServiceUnavailable { 
+export interface ServiceUnavailable {
     /**
      * Service unavailable message
      */

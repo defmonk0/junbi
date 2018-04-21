@@ -14,7 +14,7 @@
 /**
  * event
  */
-export interface GetCharactersCharacterIdCalendar200Ok { 
+export interface GetCharactersCharacterIdCalendar200Ok {
     /**
      * event_id integer
      */
@@ -43,5 +43,5 @@ export namespace GetCharactersCharacterIdCalendar200Ok {
         NotResponded: 'not_responded' as EventResponseEnum,
         Accepted: 'accepted' as EventResponseEnum,
         Tentative: 'tentative' as EventResponseEnum
-    };
+    }
 }

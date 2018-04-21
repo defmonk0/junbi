@@ -14,7 +14,7 @@
 /**
  * Coordinates of the victim in Cartesian space relative to the Sun 
  */
-export interface GetKillmailsKillmailIdKillmailHashPosition { 
+export interface GetKillmailsKillmailIdKillmailHashPosition {
     /**
      * x number
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetFleetsFleetIdMembers200Ok { 
+export interface GetFleetsFleetIdMembers200Ok {
     /**
      * character_id integer
      */
@@ -63,5 +63,5 @@ export namespace GetFleetsFleetIdMembers200Ok {
         WingCommander: 'wing_commander' as RoleEnum,
         SquadCommander: 'squad_commander' as RoleEnum,
         SquadMember: 'squad_member' as RoleEnum
-    };
+    }
 }

@@ -14,7 +14,7 @@
 /**
  * combat object
  */
-export interface GetCharactersCharacterIdStatsCombat { 
+export interface GetCharactersCharacterIdStatsCombat {
     /**
      * cap_drainedby_npc integer
      */

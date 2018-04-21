@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetMarketsPrices200Ok { 
+export interface GetMarketsPrices200Ok {
     /**
      * type_id integer
      */

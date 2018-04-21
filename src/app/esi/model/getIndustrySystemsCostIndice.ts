@@ -14,7 +14,7 @@
 /**
  * cost_indice object
  */
-export interface GetIndustrySystemsCostIndice { 
+export interface GetIndustrySystemsCostIndice {
     /**
      * activity string
      */
@@ -37,5 +37,5 @@ export namespace GetIndustrySystemsCostIndice {
         ResearchingTechnology: 'researching_technology' as ActivityEnum,
         ResearchingTimeEfficiency: 'researching_time_efficiency' as ActivityEnum,
         ReverseEngineering: 'reverse_engineering' as ActivityEnum
-    };
+    }
 }

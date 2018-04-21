@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface PostCharactersCharacterIdAssetsNames200Ok { 
+export interface PostCharactersCharacterIdAssetsNames200Ok {
     /**
      * item_id integer
      */

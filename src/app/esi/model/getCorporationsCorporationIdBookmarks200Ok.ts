@@ -16,7 +16,7 @@ import { GetCorporationsCorporationIdBookmarksItem } from './getCorporationsCorp
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdBookmarks200Ok { 
+export interface GetCorporationsCorporationIdBookmarks200Ok {
     /**
      * bookmark_id integer
      */

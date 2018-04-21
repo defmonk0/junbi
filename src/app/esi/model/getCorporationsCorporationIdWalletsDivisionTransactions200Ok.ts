@@ -14,7 +14,7 @@
 /**
  * wallet transaction
  */
-export interface GetCorporationsCorporationIdWalletsDivisionTransactions200Ok { 
+export interface GetCorporationsCorporationIdWalletsDivisionTransactions200Ok {
     /**
      * Unique transaction ID
      */

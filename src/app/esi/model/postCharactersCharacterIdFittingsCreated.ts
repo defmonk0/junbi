@@ -14,7 +14,7 @@
 /**
  * 201 created object
  */
-export interface PostCharactersCharacterIdFittingsCreated { 
+export interface PostCharactersCharacterIdFittingsCreated {
     /**
      * fitting_id integer
      */

@@ -14,7 +14,7 @@
 /**
  * Unprocessable entity
  */
-export interface DeleteCharactersCharacterIdMailLabelsLabelIdUnprocessableEntity { 
+export interface DeleteCharactersCharacterIdMailLabelsLabelIdUnprocessableEntity {
     /**
      * Unprocessable entity message
      */

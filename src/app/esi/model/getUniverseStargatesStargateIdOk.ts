@@ -16,7 +16,7 @@ import { GetUniverseStargatesStargateIdPosition } from './getUniverseStargatesSt
 /**
  * 200 ok object
  */
-export interface GetUniverseStargatesStargateIdOk { 
+export interface GetUniverseStargatesStargateIdOk {
     /**
      * stargate_id integer
      */

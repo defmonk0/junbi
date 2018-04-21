@@ -14,7 +14,7 @@
 /**
  * active_total object
  */
-export interface GetFwLeaderboardsCharactersActiveTotal { 
+export interface GetFwLeaderboardsCharactersActiveTotal {
     /**
      * character_id integer
      */

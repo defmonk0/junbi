@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetCharactersCharacterIdMailMailIdNotFound { 
+export interface GetCharactersCharacterIdMailMailIdNotFound {
     /**
      * Not found message
      */

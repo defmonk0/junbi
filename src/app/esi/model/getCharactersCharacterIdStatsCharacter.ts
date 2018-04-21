@@ -14,7 +14,7 @@
 /**
  * character object
  */
-export interface GetCharactersCharacterIdStatsCharacter { 
+export interface GetCharactersCharacterIdStatsCharacter {
     /**
      * days_of_activity integer
      */

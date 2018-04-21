@@ -15,7 +15,7 @@ import { GetIndustrySystemsCostIndice } from './getIndustrySystemsCostIndice';
 /**
  * 200 ok object
  */
-export interface GetIndustrySystems200Ok { 
+export interface GetIndustrySystems200Ok {
     /**
      * solar_system_id integer
      */

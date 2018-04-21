@@ -14,7 +14,7 @@
 /**
  * pve object
  */
-export interface GetCharactersCharacterIdStatsPve { 
+export interface GetCharactersCharacterIdStatsPve {
     /**
      * dungeons_completed_agent integer
      */

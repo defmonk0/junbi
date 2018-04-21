@@ -14,7 +14,7 @@
 /**
  * industry object
  */
-export interface GetCharactersCharacterIdStatsIndustry { 
+export interface GetCharactersCharacterIdStatsIndustry {
     /**
      * hacking_successes integer
      */

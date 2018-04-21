@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdPortraitOk { 
+export interface GetCharactersCharacterIdPortraitOk {
     /**
      * px64x64 string
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdNotificationsContacts200Ok { 
+export interface GetCharactersCharacterIdNotificationsContacts200Ok {
     /**
      * notification_id integer
      */

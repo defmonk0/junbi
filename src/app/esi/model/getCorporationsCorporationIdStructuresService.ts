@@ -14,7 +14,7 @@
 /**
  * service object
  */
-export interface GetCorporationsCorporationIdStructuresService { 
+export interface GetCorporationsCorporationIdStructuresService {
     /**
      * name string
      */
@@ -30,5 +30,5 @@ export namespace GetCorporationsCorporationIdStructuresService {
         Online: 'online' as StateEnum,
         Offline: 'offline' as StateEnum,
         Cleanup: 'cleanup' as StateEnum
-    };
+    }
 }

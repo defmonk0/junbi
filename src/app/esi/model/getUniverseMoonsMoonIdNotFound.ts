@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseMoonsMoonIdNotFound { 
+export interface GetUniverseMoonsMoonIdNotFound {
     /**
      * Not found message
      */

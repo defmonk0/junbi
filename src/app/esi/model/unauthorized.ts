@@ -14,7 +14,7 @@
 /**
  * Unauthorized model
  */
-export interface Unauthorized { 
+export interface Unauthorized {
     /**
      * Unauthorized message
      */

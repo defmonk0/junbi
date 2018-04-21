@@ -14,7 +14,7 @@
 /**
  * market object
  */
-export interface GetCharactersCharacterIdStatsMarket { 
+export interface GetCharactersCharacterIdStatsMarket {
     /**
      * accept_contracts_courier integer
      */

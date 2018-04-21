@@ -14,7 +14,7 @@
 /**
  * 422 unprocessable entity object
  */
-export interface PutFleetsFleetIdMembersMemberIdUnprocessableEntity { 
+export interface PutFleetsFleetIdMembersMemberIdUnprocessableEntity {
     /**
      * error message
      */

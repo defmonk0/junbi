@@ -14,7 +14,7 @@
 /**
  * planet object
  */
-export interface GetUniverseSystemsSystemIdPlanet { 
+export interface GetUniverseSystemsSystemIdPlanet {
     /**
      * planet_id integer
      */

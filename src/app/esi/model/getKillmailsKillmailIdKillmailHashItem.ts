@@ -14,7 +14,7 @@
 /**
  * item object
  */
-export interface GetKillmailsKillmailIdKillmailHashItem { 
+export interface GetKillmailsKillmailIdKillmailHashItem {
     /**
      * item_type_id integer
      */

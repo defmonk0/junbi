@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface PostUniverseNamesNotFound { 
+export interface PostUniverseNamesNotFound {
     /**
      * Not found message
      */

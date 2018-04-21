@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseSystemKills200Ok { 
+export interface GetUniverseSystemKills200Ok {
     /**
      * system_id integer
      */

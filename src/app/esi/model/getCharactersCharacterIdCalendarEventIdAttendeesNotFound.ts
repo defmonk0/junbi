@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetCharactersCharacterIdCalendarEventIdAttendeesNotFound { 
+export interface GetCharactersCharacterIdCalendarEventIdAttendeesNotFound {
     /**
      * Not found message
      */

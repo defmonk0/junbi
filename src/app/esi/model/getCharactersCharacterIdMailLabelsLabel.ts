@@ -14,7 +14,7 @@
 /**
  * label object
  */
-export interface GetCharactersCharacterIdMailLabelsLabel { 
+export interface GetCharactersCharacterIdMailLabelsLabel {
     /**
      * unread_count integer
      */
@@ -53,5 +53,5 @@ export namespace GetCharactersCharacterIdMailLabelsLabel {
         Ffff01: '#ffff01' as ColorEnum,
         Ffffcd: '#ffffcd' as ColorEnum,
         Ffffff: '#ffffff' as ColorEnum
-    };
+    }
 }

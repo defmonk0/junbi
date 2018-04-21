@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdFleetOk { 
+export interface GetCharactersCharacterIdFleetOk {
     /**
      * The character's current fleet ID
      */
@@ -39,5 +39,5 @@ export namespace GetCharactersCharacterIdFleetOk {
         SquadCommander: 'squad_commander' as RoleEnum,
         SquadMember: 'squad_member' as RoleEnum,
         WingCommander: 'wing_commander' as RoleEnum
-    };
+    }
 }

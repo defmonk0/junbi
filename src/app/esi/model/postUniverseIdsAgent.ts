@@ -14,7 +14,7 @@
 /**
  * agent object
  */
-export interface PostUniverseIdsAgent { 
+export interface PostUniverseIdsAgent {
     /**
      * id integer
      */

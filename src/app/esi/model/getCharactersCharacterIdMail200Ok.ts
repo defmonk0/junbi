@@ -15,7 +15,7 @@ import { GetCharactersCharacterIdMailRecipient } from './getCharactersCharacterI
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdMail200Ok { 
+export interface GetCharactersCharacterIdMail200Ok {
     /**
      * mail_id integer
      */

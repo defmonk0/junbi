@@ -15,7 +15,7 @@ import { GetUniverseStationsStationIdPosition } from './getUniverseStationsStati
 /**
  * 200 ok object
  */
-export interface GetUniverseStationsStationIdOk { 
+export interface GetUniverseStationsStationIdOk {
     /**
      * station_id integer
      */
@@ -92,5 +92,5 @@ export namespace GetUniverseStationsStationIdOk {
         LoyaltyPointStore: 'loyalty-point-store' as ServicesEnum,
         NavyOffices: 'navy-offices' as ServicesEnum,
         SecurityOffices: 'security-offices' as ServicesEnum
-    };
+    }
 }

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdIconsOk { 
+export interface GetCorporationsCorporationIdIconsOk {
     /**
      * px64x64 string
      */

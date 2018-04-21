@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdAlliancehistory200Ok { 
+export interface GetCorporationsCorporationIdAlliancehistory200Ok {
     /**
      * start_date string
      */

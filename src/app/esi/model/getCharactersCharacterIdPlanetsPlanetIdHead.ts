@@ -14,7 +14,7 @@
 /**
  * head object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdHead { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdHead {
     /**
      * head_id integer
      */

@@ -14,7 +14,7 @@
 /**
  * No image server for this datasource
  */
-export interface GetCorporationsCorporationIdIconsNotFound { 
+export interface GetCorporationsCorporationIdIconsNotFound {
     /**
      * error message
      */

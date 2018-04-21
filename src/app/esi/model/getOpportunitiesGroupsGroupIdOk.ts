@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetOpportunitiesGroupsGroupIdOk { 
+export interface GetOpportunitiesGroupsGroupIdOk {
     /**
      * group_id integer
      */

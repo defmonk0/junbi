@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetDogmaAttributesAttributeIdOk { 
+export interface GetDogmaAttributesAttributeIdOk {
     /**
      * attribute_id integer
      */

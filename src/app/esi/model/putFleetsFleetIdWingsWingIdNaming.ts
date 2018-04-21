@@ -14,7 +14,7 @@
 /**
  * naming object
  */
-export interface PutFleetsFleetIdWingsWingIdNaming { 
+export interface PutFleetsFleetIdWingsWingIdNaming {
     /**
      * name string
      */

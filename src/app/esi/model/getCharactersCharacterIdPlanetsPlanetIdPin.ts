@@ -17,7 +17,7 @@ import { GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails } from './getChar
 /**
  * pin object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdPin { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdPin {
     /**
      * latitude number
      */

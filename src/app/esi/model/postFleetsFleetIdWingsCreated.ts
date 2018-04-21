@@ -14,7 +14,7 @@
 /**
  * 201 created object
  */
-export interface PostFleetsFleetIdWingsCreated { 
+export interface PostFleetsFleetIdWingsCreated {
     /**
      * The wing_id of the newly created wing
      */

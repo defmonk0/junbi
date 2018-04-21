@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdLocationOk { 
+export interface GetCharactersCharacterIdLocationOk {
     /**
      * solar_system_id integer
      */

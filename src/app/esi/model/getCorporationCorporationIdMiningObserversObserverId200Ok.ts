@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationCorporationIdMiningObserversObserverId200Ok { 
+export interface GetCorporationCorporationIdMiningObserversObserverId200Ok {
     /**
      * last_updated string
      */

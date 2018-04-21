@@ -57,7 +57,7 @@ export class ContactsService {
      */
     private canConsumeForm(consumes: string[]): boolean {
         const form = 'multipart/form-data';
-        for (const consume of consumes) {
+        for (let consume of consumes) {
             if (form === consume) {
                 return true;
             }
@@ -78,10 +78,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling deleteCharactersCharacterIdContacts.');
         }
@@ -110,7 +110,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -120,13 +120,13 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contacts/`,
@@ -152,10 +152,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetAlliancesAllianceIdContacts200Ok>>;
-    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetAlliancesAllianceIdContacts200Ok>>>;
-    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetAlliancesAllianceIdContacts200Ok>>>;
-    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetAlliancesAllianceIdContacts200Ok>>;
+    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetAlliancesAllianceIdContacts200Ok>>>;
+    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetAlliancesAllianceIdContacts200Ok>>>;
+    public getAlliancesAllianceIdContacts(allianceId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (allianceId === null || allianceId === undefined) {
             throw new Error('Required parameter allianceId was null or undefined when calling getAlliancesAllianceIdContacts.');
         }
@@ -181,7 +181,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -191,13 +191,13 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetAlliancesAllianceIdContacts200Ok>>(`${this.basePath}/alliances/${encodeURIComponent(String(allianceId))}/contacts/`,
@@ -223,10 +223,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdContacts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContacts200Ok>>;
-    public getCharactersCharacterIdContacts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContacts200Ok>>>;
-    public getCharactersCharacterIdContacts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContacts200Ok>>>;
-    public getCharactersCharacterIdContacts(characterId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdContacts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContacts200Ok>>;
+    public getCharactersCharacterIdContacts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContacts200Ok>>>;
+    public getCharactersCharacterIdContacts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContacts200Ok>>>;
+    public getCharactersCharacterIdContacts(characterId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdContacts.');
         }
@@ -252,7 +252,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -262,13 +262,13 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdContacts200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contacts/`,
@@ -293,10 +293,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContactsLabels200Ok>>;
-    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContactsLabels200Ok>>>;
-    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContactsLabels200Ok>>>;
-    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: 'tranquility' | 'singularity', token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCharactersCharacterIdContactsLabels200Ok>>;
+    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCharactersCharacterIdContactsLabels200Ok>>>;
+    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCharactersCharacterIdContactsLabels200Ok>>>;
+    public getCharactersCharacterIdContactsLabels(characterId: number, datasource?: string, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling getCharactersCharacterIdContactsLabels.');
         }
@@ -319,7 +319,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -329,13 +329,13 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCharactersCharacterIdContactsLabels200Ok>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contacts/labels/`,
@@ -361,10 +361,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContacts200Ok>>;
-    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContacts200Ok>>>;
-    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContacts200Ok>>>;
-    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: 'tranquility' | 'singularity', page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<GetCorporationsCorporationIdContacts200Ok>>;
+    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<GetCorporationsCorporationIdContacts200Ok>>>;
+    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<GetCorporationsCorporationIdContacts200Ok>>>;
+    public getCorporationsCorporationIdContacts(corporationId: number, datasource?: string, page?: number, token?: string, userAgent?: string, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (corporationId === null || corporationId === undefined) {
             throw new Error('Required parameter corporationId was null or undefined when calling getCorporationsCorporationIdContacts.');
         }
@@ -390,7 +390,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -400,13 +400,13 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
 
         return this.httpClient.get<Array<GetCorporationsCorporationIdContacts200Ok>>(`${this.basePath}/corporations/${encodeURIComponent(String(corporationId))}/contacts/`,
@@ -435,10 +435,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
-    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
-    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
-    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<number>>;
+    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<number>>>;
+    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<number>>>;
+    public postCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling postCharactersCharacterIdContacts.');
         }
@@ -476,7 +476,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -486,17 +486,17 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.post<Array<number>>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contacts/`,
@@ -526,10 +526,10 @@ export class ContactsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: 'tranquility' | 'singularity', labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public putCharactersCharacterIdContacts(characterId: number, contactIds: Array<number>, standing: number, datasource?: string, labelId?: number, token?: string, userAgent?: string, watched?: boolean, xUserAgent?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (characterId === null || characterId === undefined) {
             throw new Error('Required parameter characterId was null or undefined when calling putCharactersCharacterIdContacts.');
         }
@@ -567,7 +567,7 @@ export class ContactsService {
 
         // authentication (evesso) required
         if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
+            let accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
                 : this.configuration.accessToken;
             headers = headers.set('Authorization', 'Bearer ' + accessToken);
@@ -577,17 +577,17 @@ export class ContactsService {
         let httpHeaderAccepts: string[] = [
             'application/json'
         ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
-        const consumes: string[] = [
+        let consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        let httpContentTypeSelected:string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+            headers = headers.set("Content-Type", httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/characters/${encodeURIComponent(String(characterId))}/contacts/`,

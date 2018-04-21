@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetSearchOk { 
+export interface GetSearchOk {
     /**
      * agent array
      */

@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetDogmaAttributesAttributeIdNotFound { 
+export interface GetDogmaAttributesAttributeIdNotFound {
     /**
      * Not found message
      */

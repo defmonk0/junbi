@@ -14,7 +14,7 @@
 /**
  * Forbidden model
  */
-export interface Forbidden { 
+export interface Forbidden {
     /**
      * Forbidden message
      */

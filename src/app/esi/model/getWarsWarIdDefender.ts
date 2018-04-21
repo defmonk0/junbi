@@ -14,7 +14,7 @@
 /**
  * The defending corporation or alliance that declared this war, only contains either corporation_id or alliance_id
  */
-export interface GetWarsWarIdDefender { 
+export interface GetWarsWarIdDefender {
     /**
      * Corporation ID if and only if the defender is a corporation
      */

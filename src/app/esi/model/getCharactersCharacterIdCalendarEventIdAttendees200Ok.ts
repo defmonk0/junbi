@@ -14,7 +14,7 @@
 /**
  * character_id and response of an attendee
  */
-export interface GetCharactersCharacterIdCalendarEventIdAttendees200Ok { 
+export interface GetCharactersCharacterIdCalendarEventIdAttendees200Ok {
     /**
      * character_id integer
      */
@@ -31,5 +31,5 @@ export namespace GetCharactersCharacterIdCalendarEventIdAttendees200Ok {
         NotResponded: 'not_responded' as EventResponseEnum,
         Accepted: 'accepted' as EventResponseEnum,
         Tentative: 'tentative' as EventResponseEnum
-    };
+    }
 }

@@ -16,7 +16,7 @@ import { GetCorporationsCorporationIdFwStatsVictoryPoints } from './getCorporati
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdFwStatsOk { 
+export interface GetCorporationsCorporationIdFwStatsOk {
     /**
      * The faction the given corporation is enlisted to fight for. Will not be included if corporation is not enlisted in faction warfare
      */

@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseStructuresStructureIdNotFound { 
+export interface GetUniverseStructuresStructureIdNotFound {
     /**
      * Not found message
      */

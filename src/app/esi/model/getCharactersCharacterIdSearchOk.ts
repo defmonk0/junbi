@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdSearchOk { 
+export interface GetCharactersCharacterIdSearchOk {
     /**
      * agent array
      */

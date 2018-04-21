@@ -229,6 +229,7 @@ export * from './getMarketsRegionIdHistory200Ok';
 export * from './getMarketsRegionIdHistoryNotFound';
 export * from './getMarketsRegionIdHistoryUnprocessableEntity';
 export * from './getMarketsRegionIdOrders200Ok';
+export * from './getMarketsRegionIdOrdersNotFound';
 export * from './getMarketsRegionIdOrdersUnprocessableEntity';
 export * from './getMarketsStructuresStructureId200Ok';
 export * from './getOpportunitiesGroupsGroupIdOk';

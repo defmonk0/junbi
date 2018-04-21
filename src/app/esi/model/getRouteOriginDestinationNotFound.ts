@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetRouteOriginDestinationNotFound { 
+export interface GetRouteOriginDestinationNotFound {
     /**
      * Not found message
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationCorporationIdMiningObservers200Ok { 
+export interface GetCorporationCorporationIdMiningObservers200Ok {
     /**
      * last_updated string
      */
@@ -32,5 +32,5 @@ export namespace GetCorporationCorporationIdMiningObservers200Ok {
     export type ObserverTypeEnum = 'structure';
     export const ObserverTypeEnum = {
         Structure: 'structure' as ObserverTypeEnum
-    };
+    }
 }

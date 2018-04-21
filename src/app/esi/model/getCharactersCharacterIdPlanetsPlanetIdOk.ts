@@ -17,7 +17,7 @@ import { GetCharactersCharacterIdPlanetsPlanetIdRoute } from './getCharactersCha
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdPlanetsPlanetIdOk { 
+export interface GetCharactersCharacterIdPlanetsPlanetIdOk {
     /**
      * links array
      */

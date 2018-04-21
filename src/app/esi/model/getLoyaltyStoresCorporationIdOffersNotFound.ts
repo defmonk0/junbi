@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetLoyaltyStoresCorporationIdOffersNotFound { 
+export interface GetLoyaltyStoresCorporationIdOffersNotFound {
     /**
      * Not found message
      */

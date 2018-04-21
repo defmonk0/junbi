@@ -14,7 +14,7 @@
 /**
  * dogma_attribute object
  */
-export interface GetUniverseTypesTypeIdDogmaAttribute { 
+export interface GetUniverseTypesTypeIdDogmaAttribute {
     /**
      * attribute_id integer
      */

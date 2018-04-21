@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseGroupsGroupIdNotFound { 
+export interface GetUniverseGroupsGroupIdNotFound {
     /**
      * Not found message
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetIncursions200Ok { 
+export interface GetIncursions200Ok {
     /**
      * The type of this incursion
      */
@@ -54,5 +54,5 @@ export namespace GetIncursions200Ok {
         Withdrawing: 'withdrawing' as StateEnum,
         Mobilizing: 'mobilizing' as StateEnum,
         Established: 'established' as StateEnum
-    };
+    }
 }

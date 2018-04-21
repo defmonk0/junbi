@@ -15,7 +15,7 @@ import { GetCharactersCharacterIdMedalsGraphic } from './getCharactersCharacterI
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdMedals200Ok { 
+export interface GetCharactersCharacterIdMedals200Ok {
     /**
      * medal_id integer
      */
@@ -58,5 +58,5 @@ export namespace GetCharactersCharacterIdMedals200Ok {
     export const StatusEnum = {
         Public: 'public' as StatusEnum,
         Private: 'private' as StatusEnum
-    };
+    }
 }

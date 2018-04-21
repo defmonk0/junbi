@@ -16,7 +16,7 @@ import { GetFwStatsVictoryPoints } from './getFwStatsVictoryPoints';
 /**
  * 200 ok object
  */
-export interface GetFwStats200Ok { 
+export interface GetFwStats200Ok {
     /**
      * faction_id integer
      */

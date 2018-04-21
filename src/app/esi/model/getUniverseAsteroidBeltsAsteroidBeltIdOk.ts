@@ -15,7 +15,7 @@ import { GetUniverseAsteroidBeltsAsteroidBeltIdPosition } from './getUniverseAst
 /**
  * 200 ok object
  */
-export interface GetUniverseAsteroidBeltsAsteroidBeltIdOk { 
+export interface GetUniverseAsteroidBeltsAsteroidBeltIdOk {
     /**
      * name string
      */

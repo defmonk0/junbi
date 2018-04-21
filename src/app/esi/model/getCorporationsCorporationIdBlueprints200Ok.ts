@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdBlueprints200Ok { 
+export interface GetCorporationsCorporationIdBlueprints200Ok {
     /**
      * Unique ID for this item.
      */
@@ -166,5 +166,5 @@ export namespace GetCorporationsCorporationIdBlueprints200Ok {
         Unlocked: 'Unlocked' as LocationFlagEnum,
         Wallet: 'Wallet' as LocationFlagEnum,
         Wardrobe: 'Wardrobe' as LocationFlagEnum
-    };
+    }
 }

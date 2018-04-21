@@ -15,7 +15,7 @@ import { PostCharactersCharacterIdFittingsItem } from './postCharactersCharacter
 /**
  * fitting object
  */
-export interface PostCharactersCharacterIdFittingsFitting { 
+export interface PostCharactersCharacterIdFittingsFitting {
     /**
      * name string
      */

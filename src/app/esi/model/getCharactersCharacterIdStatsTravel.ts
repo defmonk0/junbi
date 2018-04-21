@@ -14,7 +14,7 @@
 /**
  * travel object
  */
-export interface GetCharactersCharacterIdStatsTravel { 
+export interface GetCharactersCharacterIdStatsTravel {
     /**
      * acceleration_gate_activations integer
      */

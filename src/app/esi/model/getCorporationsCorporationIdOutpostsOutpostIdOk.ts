@@ -16,7 +16,7 @@ import { GetCorporationsCorporationIdOutpostsOutpostIdService } from './getCorpo
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdOutpostsOutpostIdOk { 
+export interface GetCorporationsCorporationIdOutpostsOutpostIdOk {
     /**
      * The entity that owns the station (e.g. the entity whose logo is on the station services bar)
      */

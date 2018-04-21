@@ -15,7 +15,7 @@ import { GetFleetsFleetIdWingsSquad } from './getFleetsFleetIdWingsSquad';
 /**
  * 200 ok object
  */
-export interface GetFleetsFleetIdWings200Ok { 
+export interface GetFleetsFleetIdWings200Ok {
     /**
      * name string
      */

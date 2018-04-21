@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseStargatesStargateIdNotFound { 
+export interface GetUniverseStargatesStargateIdNotFound {
     /**
      * Not found message
      */

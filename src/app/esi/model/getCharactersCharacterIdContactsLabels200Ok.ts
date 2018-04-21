@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdContactsLabels200Ok { 
+export interface GetCharactersCharacterIdContactsLabels200Ok {
     /**
      * label_id integer
      */

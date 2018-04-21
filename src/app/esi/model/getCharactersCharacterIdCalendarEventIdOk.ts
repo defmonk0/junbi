@@ -14,7 +14,7 @@
 /**
  * Full details of a specific event
  */
-export interface GetCharactersCharacterIdCalendarEventIdOk { 
+export interface GetCharactersCharacterIdCalendarEventIdOk {
     /**
      * event_id integer
      */
@@ -64,5 +64,5 @@ export namespace GetCharactersCharacterIdCalendarEventIdOk {
         Faction: 'faction' as OwnerTypeEnum,
         Character: 'character' as OwnerTypeEnum,
         Alliance: 'alliance' as OwnerTypeEnum
-    };
+    }
 }

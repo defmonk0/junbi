@@ -14,7 +14,7 @@
 /**
  * dogma_effect object
  */
-export interface GetUniverseTypesTypeIdDogmaEffect { 
+export interface GetUniverseTypesTypeIdDogmaEffect {
     /**
      * effect_id integer
      */

@@ -14,7 +14,7 @@
 /**
  * constellation object
  */
-export interface PostUniverseIdsConstellation { 
+export interface PostUniverseIdsConstellation {
     /**
      * id integer
      */

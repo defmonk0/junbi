@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseSystemJumps200Ok { 
+export interface GetUniverseSystemJumps200Ok {
     /**
      * system_id integer
      */

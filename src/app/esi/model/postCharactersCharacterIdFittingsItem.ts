@@ -14,7 +14,7 @@
 /**
  * item object
  */
-export interface PostCharactersCharacterIdFittingsItem { 
+export interface PostCharactersCharacterIdFittingsItem {
     /**
      * type_id integer
      */

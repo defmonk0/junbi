@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface PostCharactersAffiliationNotFound { 
+export interface PostCharactersAffiliationNotFound {
     /**
      * Not found message
      */

@@ -18,7 +18,7 @@ import { GetCharactersCharacterIdChatChannelsOperator } from './getCharactersCha
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdChatChannels200Ok { 
+export interface GetCharactersCharacterIdChatChannels200Ok {
     /**
      * Unique channel ID. Always negative for player-created channels. Permanent (CCP created) channels have a positive ID, but don't appear in the API
      */

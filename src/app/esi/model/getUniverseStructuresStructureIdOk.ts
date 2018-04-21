@@ -15,7 +15,7 @@ import { GetUniverseStructuresStructureIdPosition } from './getUniverseStructure
 /**
  * 200 ok object
  */
-export interface GetUniverseStructuresStructureIdOk { 
+export interface GetUniverseStructuresStructureIdOk {
     /**
      * The full name of the structure
      */

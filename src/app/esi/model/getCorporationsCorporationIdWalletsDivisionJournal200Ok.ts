@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdWalletsDivisionJournal200Ok { 
+export interface GetCorporationsCorporationIdWalletsDivisionJournal200Ok {
     /**
      * Date and time of transaction
      */
@@ -188,7 +188,7 @@ export namespace GetCorporationsCorporationIdWalletsDivisionJournal200Ok {
         WarAllyContract: 'war_ally_contract' as RefTypeEnum,
         WarFee: 'war_fee' as RefTypeEnum,
         WarFeeSurrender: 'war_fee_surrender' as RefTypeEnum
-    };
+    }
     export type ContextIdTypeEnum = 'structure_id' | 'station_id' | 'market_transaction_id' | 'character_id' | 'corporation_id' | 'alliance_id' | 'eve_system' | 'industry_job_id' | 'contract_id' | 'planet_id' | 'system_id' | 'type_id';
     export const ContextIdTypeEnum = {
         StructureId: 'structure_id' as ContextIdTypeEnum,
@@ -203,5 +203,5 @@ export namespace GetCorporationsCorporationIdWalletsDivisionJournal200Ok {
         PlanetId: 'planet_id' as ContextIdTypeEnum,
         SystemId: 'system_id' as ContextIdTypeEnum,
         TypeId: 'type_id' as ContextIdTypeEnum
-    };
+    }
 }

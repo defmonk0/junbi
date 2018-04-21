@@ -14,7 +14,7 @@
 /**
  * skill object
  */
-export interface GetCharactersCharacterIdSkillsSkill { 
+export interface GetCharactersCharacterIdSkillsSkill {
     /**
      * skill_id integer
      */

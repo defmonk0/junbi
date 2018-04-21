@@ -14,7 +14,7 @@
 /**
  * label object
  */
-export interface PostCharactersCharacterIdMailLabelsLabel { 
+export interface PostCharactersCharacterIdMailLabelsLabel {
     /**
      * name string
      */
@@ -45,5 +45,5 @@ export namespace PostCharactersCharacterIdMailLabelsLabel {
         Ffff01: '#ffff01' as ColorEnum,
         Ffffcd: '#ffffcd' as ColorEnum,
         Ffffff: '#ffffff' as ColorEnum
-    };
+    }
 }

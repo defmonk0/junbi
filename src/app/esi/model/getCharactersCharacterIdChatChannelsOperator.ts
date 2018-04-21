@@ -14,7 +14,7 @@
 /**
  * operator object
  */
-export interface GetCharactersCharacterIdChatChannelsOperator { 
+export interface GetCharactersCharacterIdChatChannelsOperator {
     /**
      * ID of a channel operator
      */
@@ -30,5 +30,5 @@ export namespace GetCharactersCharacterIdChatChannelsOperator {
         Character: 'character' as AccessorTypeEnum,
         Corporation: 'corporation' as AccessorTypeEnum,
         Alliance: 'alliance' as AccessorTypeEnum
-    };
+    }
 }

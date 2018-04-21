@@ -14,7 +14,7 @@
 /**
  * participant object
  */
-export interface GetSovereigntyCampaignsParticipant { 
+export interface GetSovereigntyCampaignsParticipant {
     /**
      * alliance_id integer
      */

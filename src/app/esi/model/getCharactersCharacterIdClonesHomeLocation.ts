@@ -14,7 +14,7 @@
 /**
  * home_location object
  */
-export interface GetCharactersCharacterIdClonesHomeLocation { 
+export interface GetCharactersCharacterIdClonesHomeLocation {
     /**
      * location_id integer
      */
@@ -29,5 +29,5 @@ export namespace GetCharactersCharacterIdClonesHomeLocation {
     export const LocationTypeEnum = {
         Station: 'station' as LocationTypeEnum,
         Structure: 'structure' as LocationTypeEnum
-    };
+    }
 }

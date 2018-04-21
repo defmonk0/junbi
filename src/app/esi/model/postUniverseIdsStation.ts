@@ -14,7 +14,7 @@
 /**
  * station object
  */
-export interface PostUniverseIdsStation { 
+export interface PostUniverseIdsStation {
     /**
      * id integer
      */

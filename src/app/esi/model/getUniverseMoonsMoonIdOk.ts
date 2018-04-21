@@ -15,7 +15,7 @@ import { GetUniverseMoonsMoonIdPosition } from './getUniverseMoonsMoonIdPosition
 /**
  * 200 ok object
  */
-export interface GetUniverseMoonsMoonIdOk { 
+export interface GetUniverseMoonsMoonIdOk {
     /**
      * moon_id integer
      */

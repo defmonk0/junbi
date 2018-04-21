@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface PutFleetsFleetIdWingsWingIdNotFound { 
+export interface PutFleetsFleetIdWingsWingIdNotFound {
     /**
      * Not found message
      */

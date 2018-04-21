@@ -16,7 +16,7 @@ import { GetUniverseSystemsSystemIdPosition } from './getUniverseSystemsSystemId
 /**
  * 200 ok object
  */
-export interface GetUniverseSystemsSystemIdOk { 
+export interface GetUniverseSystemsSystemIdOk {
     /**
      * star_id integer
      */

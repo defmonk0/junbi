@@ -16,7 +16,7 @@ import { GetCharactersCharacterIdFwStatsVictoryPoints } from './getCharactersCha
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdFwStatsOk { 
+export interface GetCharactersCharacterIdFwStatsOk {
     /**
      * The faction the given character is enlisted to fight for. Will not be included if character is not enlisted in faction warfare
      */

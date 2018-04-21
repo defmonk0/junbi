@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseRaces200Ok { 
+export interface GetUniverseRaces200Ok {
     /**
      * race_id integer
      */

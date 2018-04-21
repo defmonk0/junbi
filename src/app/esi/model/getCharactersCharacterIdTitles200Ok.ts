@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdTitles200Ok { 
+export interface GetCharactersCharacterIdTitles200Ok {
     /**
      * title_id integer
      */

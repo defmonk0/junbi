@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetCorporationsCorporationIdStandings200Ok { 
+export interface GetCorporationsCorporationIdStandings200Ok {
     /**
      * from_id integer
      */
@@ -34,5 +34,5 @@ export namespace GetCorporationsCorporationIdStandings200Ok {
         Agent: 'agent' as FromTypeEnum,
         NpcCorp: 'npc_corp' as FromTypeEnum,
         Faction: 'faction' as FromTypeEnum
-    };
+    }
 }

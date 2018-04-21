@@ -15,7 +15,7 @@ import { GetUniversePlanetsPlanetIdPosition } from './getUniversePlanetsPlanetId
 /**
  * 200 ok object
  */
-export interface GetUniversePlanetsPlanetIdOk { 
+export interface GetUniversePlanetsPlanetIdOk {
     /**
      * planet_id integer
      */

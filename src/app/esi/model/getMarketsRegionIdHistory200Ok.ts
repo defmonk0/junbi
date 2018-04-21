@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetMarketsRegionIdHistory200Ok { 
+export interface GetMarketsRegionIdHistory200Ok {
     /**
      * The date of this historical statistic entry
      */

@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetUniverseStationsStationIdNotFound { 
+export interface GetUniverseStationsStationIdNotFound {
     /**
      * Not found message
      */

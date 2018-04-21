@@ -14,7 +14,7 @@
 /**
  * Internal server error model
  */
-export interface InternalServerError { 
+export interface InternalServerError {
     /**
      * Internal server error message
      */

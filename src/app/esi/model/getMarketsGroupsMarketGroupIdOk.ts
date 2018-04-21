@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetMarketsGroupsMarketGroupIdOk { 
+export interface GetMarketsGroupsMarketGroupIdOk {
     /**
      * market_group_id integer
      */

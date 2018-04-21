@@ -14,7 +14,7 @@
 /**
  * corporation object
  */
-export interface PostUniverseIdsCorporation { 
+export interface PostUniverseIdsCorporation {
     /**
      * id integer
      */

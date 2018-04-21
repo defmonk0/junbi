@@ -14,7 +14,7 @@
 /**
  * response object
  */
-export interface PutCharactersCharacterIdCalendarEventIdResponse { 
+export interface PutCharactersCharacterIdCalendarEventIdResponse {
     /**
      * response string
      */
@@ -26,5 +26,5 @@ export namespace PutCharactersCharacterIdCalendarEventIdResponse {
         Accepted: 'accepted' as ResponseEnum,
         Declined: 'declined' as ResponseEnum,
         Tentative: 'tentative' as ResponseEnum
-    };
+    }
 }

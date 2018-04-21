@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseSchematicsSchematicIdOk { 
+export interface GetUniverseSchematicsSchematicIdOk {
     /**
      * schematic_name string
      */

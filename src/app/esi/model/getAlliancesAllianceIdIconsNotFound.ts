@@ -14,7 +14,7 @@
 /**
  * No image server for this datasource
  */
-export interface GetAlliancesAllianceIdIconsNotFound { 
+export interface GetAlliancesAllianceIdIconsNotFound {
     /**
      * error message
      */

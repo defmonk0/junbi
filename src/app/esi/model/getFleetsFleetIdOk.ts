@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetFleetsFleetIdOk { 
+export interface GetFleetsFleetIdOk {
     /**
      * Fleet MOTD in CCP flavoured HTML
      */

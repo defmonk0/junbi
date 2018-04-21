@@ -14,7 +14,7 @@
 /**
  * isk object
  */
-export interface GetCharactersCharacterIdStatsIsk { 
+export interface GetCharactersCharacterIdStatsIsk {
     /**
      * in integer
      */

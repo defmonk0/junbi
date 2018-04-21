@@ -14,7 +14,7 @@
 /**
  * blocked object
  */
-export interface GetCharactersCharacterIdChatChannelsBlocked { 
+export interface GetCharactersCharacterIdChatChannelsBlocked {
     /**
      * ID of a blocked channel member
      */
@@ -38,5 +38,5 @@ export namespace GetCharactersCharacterIdChatChannelsBlocked {
         Character: 'character' as AccessorTypeEnum,
         Corporation: 'corporation' as AccessorTypeEnum,
         Alliance: 'alliance' as AccessorTypeEnum
-    };
+    }
 }

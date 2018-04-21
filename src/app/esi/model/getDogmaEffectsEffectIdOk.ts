@@ -15,7 +15,7 @@ import { GetDogmaEffectsEffectIdModifier } from './getDogmaEffectsEffectIdModifi
 /**
  * 200 ok object
  */
-export interface GetDogmaEffectsEffectIdOk { 
+export interface GetDogmaEffectsEffectIdOk {
     /**
      * effect_id integer
      */

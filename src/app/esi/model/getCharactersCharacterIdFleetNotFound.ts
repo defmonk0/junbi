@@ -14,7 +14,7 @@
 /**
  * Not found
  */
-export interface GetCharactersCharacterIdFleetNotFound { 
+export interface GetCharactersCharacterIdFleetNotFound {
     /**
      * Not found message
      */

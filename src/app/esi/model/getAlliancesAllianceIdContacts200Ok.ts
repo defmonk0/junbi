@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetAlliancesAllianceIdContacts200Ok { 
+export interface GetAlliancesAllianceIdContacts200Ok {
     /**
      * Standing of the contact
      */
@@ -39,5 +39,5 @@ export namespace GetAlliancesAllianceIdContacts200Ok {
         Corporation: 'corporation' as ContactTypeEnum,
         Alliance: 'alliance' as ContactTypeEnum,
         Faction: 'faction' as ContactTypeEnum
-    };
+    }
 }

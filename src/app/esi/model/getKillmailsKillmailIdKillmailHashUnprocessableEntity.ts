@@ -14,7 +14,7 @@
 /**
  * Unprocessable entity
  */
-export interface GetKillmailsKillmailIdKillmailHashUnprocessableEntity { 
+export interface GetKillmailsKillmailIdKillmailHashUnprocessableEntity {
     /**
      * Unprocessable entity message
      */

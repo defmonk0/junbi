@@ -15,7 +15,7 @@ import { GetCharactersCharacterIdMailLabelsLabel } from './getCharactersCharacte
 /**
  * 200 ok object
  */
-export interface GetCharactersCharacterIdMailLabelsOk { 
+export interface GetCharactersCharacterIdMailLabelsOk {
     /**
      * total_unread_count integer
      */

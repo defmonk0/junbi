@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface GetUniverseAncestries200Ok { 
+export interface GetUniverseAncestries200Ok {
     /**
      * id integer
      */

@@ -14,7 +14,7 @@
 /**
  * 200 ok object
  */
-export interface PostCharactersAffiliation200Ok { 
+export interface PostCharactersAffiliation200Ok {
     /**
      * The character's ID
      */
