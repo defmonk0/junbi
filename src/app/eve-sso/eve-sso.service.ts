@@ -6,22 +6,21 @@ import { interval } from "rxjs/observable/interval";
 import { mergeMap } from "rxjs/operators";
 import { Observable } from "rxjs/Observable";
 
-import {
-	LocationService,
-	SkillsService,
-	UniverseService,
-	WalletService,
-} from "../esi/api/api";
+import { LocationService, SkillsService, WalletService } from "../esi/api/api";
 
-const INTERVAL = 5 * 1000;
-const OFFSET = 30 * 1000;
+const MINIMUM_CACHE_OFFSET = 5 * 60 * 1000;
+const REFRESH_TIMER_INTERVAL = 5 * 1000;
+const TOKEN_FILTER_OFFSET = 30 * 1000;
+
 const SCOPES = {
-	character_wallet: "esi-wallet.read_character_wallet.v1",
 	location: "esi-location.read_location.v1",
 	online: "esi-location.read_online.v1",
 	ship_type: "esi-location.read_ship_type.v1",
-	skillqueue: "esi-skills.read_skillqueue.v1",
+	skillQueue: "esi-skills.read_skillqueue.v1",
 	skills: "esi-skills.read_skills.v1",
+	wallet: "esi-wallet.read_character_wallet.v1",
+	walletJournal: "esi-wallet.read_character_wallet.v1",
+	walletTransactions: "esi-wallet.read_character_wallet.v1",
 };
 
 @Injectable()
@@ -60,7 +59,7 @@ export class EveSsoService {
 		this.loadCharacterData();
 
 		// Set up a timer to run all our refreshes.
-		const timer = interval(INTERVAL);
+		const timer = interval(REFRESH_TIMER_INTERVAL);
 		timer.subscribe(n => {
 			this.refreshTokens().subscribe(results => {
 				// Save our new access tokens if there are any.
@@ -85,6 +84,12 @@ export class EveSsoService {
 				this.updateCharacterSkills(token);
 
 				// Wallet update.
+				this.updateCharacterWallet(token);
+
+				// Wallet journal update.
+				this.updateCharacterWallet(token);
+
+				// Wallet transactions update.
 				this.updateCharacterWallet(token);
 			}
 		});
@@ -160,7 +165,7 @@ export class EveSsoService {
 
 			// Filter our tokens and run a map on them.
 			const observables = this.tokens
-				.filter(token => token.expiration < ts + OFFSET)
+				.filter(token => token.expiration < ts + TOKEN_FILTER_OFFSET)
 				.map(token => {
 					// Set up our body data.
 					let data = {
@@ -297,26 +302,270 @@ export class EveSsoService {
 					// Get our cache expiration.
 					let date = new Date(res.headers.get("Expires"));
 
-					// Extend it, we don't need location this often.
-					let extend = 5 * 60 * 1000;
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
 
 					this.characters[hash][type] = {
-						expiration: date.getTime() + extend,
+						expiration: Math.min(date.getTime(), min),
 						data: res.body,
 					};
 				});
 		}
 	}
 
-	private updateCharacterOnlineStatus(token: any): void {}
+	private updateCharacterOnlineStatus(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "online";
 
-	private updateCharacterShip(token: any): void {}
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
 
-	private updateCharacterSkillQueue(token: any): void {}
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.locationService
+				.getCharactersCharacterIdOnline(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
 
-	private updateCharacterSkills(token: any): void {}
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
 
-	private updateCharacterWallet(token: any): void {}
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
+
+	private updateCharacterShip(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "ship_type";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.locationService
+				.getCharactersCharacterIdShip(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
+
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
+
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
+
+	private updateCharacterSkillQueue(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "skills";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.skillsService
+				.getCharactersCharacterIdSkillqueue(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
+
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
+
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
+
+	private updateCharacterSkills(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "skills";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.skillsService
+				.getCharactersCharacterIdSkills(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
+
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
+
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
+
+	private updateCharacterWallet(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "wallet";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.walletService
+				.getCharactersCharacterIdWallet(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
+
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
+
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
+
+	private updateCharacterWalletJournal(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "walletJournal";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.walletService
+				.getCharactersCharacterIdWalletJournal(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					0,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
+
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
+
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
+
+	private updateCharacterWalletTransactions(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "walletTransactions";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.walletService
+				.getCharactersCharacterIdWalletTransactions(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					null,
+					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Get our cache expiration.
+					let date = new Date(res.headers.get("Expires"));
+
+					// A minimum cache, we don't need data more often.
+					let min = ts + MINIMUM_CACHE_OFFSET;
+
+					this.characters[hash][type] = {
+						expiration: Math.min(date.getTime(), min),
+						data: res.body,
+					};
+				});
+		}
+	}
 
 	public deleteToken(token: any): void {
 		// Grab the existing tokens file.
