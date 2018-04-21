@@ -87,10 +87,10 @@ export class EveSsoService {
 				this.updateCharacterWallet(token);
 
 				// Wallet journal update.
-				this.updateCharacterWallet(token);
+				this.updateCharacterWalletJournal(token);
 
 				// Wallet transactions update.
-				this.updateCharacterWallet(token);
+				this.updateCharacterWalletTransactions(token);
 			}
 		});
 	}
