@@ -91,14 +91,17 @@
 
 			</dl>
 
+			<p>{{characters[i.verification.CharacterOwnerHash] || "{}" | json}}</p>
+
 			<!-- Actions for this character. -->
 			<div class="row">
 				<div class="col-md-12 text-right">
 					<!-- Force attempted character update. -->
 					<button type="button"
 						class="btn btn-primary"
-						*ngIf="!isExpired(i.expiration)">
-						Force Data Update
+						*ngIf="!isExpired(i.expiration)"
+						(click)="expireToken(i);">
+						Force Token Expiration
 					</button>
 
 					<!-- Remove this character/token from list. -->

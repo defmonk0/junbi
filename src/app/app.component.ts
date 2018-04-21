@@ -23,9 +23,16 @@ export class AppComponent {
 		});
 
 		electronService.ipcRenderer.on("character:added", (event, tokens) => {
-			// Go to route requested.
+			// Replace our tokens to catch new ones.
 			ngZone.run(() => {
-				this.eveSsoService.updateTokens(tokens);
+				this.eveSsoService.loadTokens(tokens);
+			});
+		});
+
+		electronService.ipcRenderer.on("application:added", (event, details) => {
+			// Replace our details to catch new ones.
+			ngZone.run(() => {
+				this.eveSsoService.loadApplicationDetails(details);
 			});
 		});
 	}

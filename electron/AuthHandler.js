@@ -83,7 +83,7 @@ class AuthHandler {
 		} else if (this.getParam("code")) {
 			// Headers needed for token retrieval.
 			var headers = {
-				"Content-Type": "application/x-www-form-urlencoded",
+				"Content-Type": CONSTANTS.SSO_TOKEN_CONTENT_TYPE,
 				"User-Agent": CONSTANTS.USER_AGENT,
 				Accept: "application/json",
 				Authorization:

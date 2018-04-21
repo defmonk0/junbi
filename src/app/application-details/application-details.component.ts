@@ -38,12 +38,8 @@ export class ApplicationDetailsComponent implements OnInit {
 
 	ngOnInit() {}
 
-	private close(): void {
-		this.electronService.remote.getCurrentWindow().close();
-	}
-
 	public cancel(): void {
-		this.close();
+		this.electronService.remote.getCurrentWindow().close();
 	}
 
 	public save(): void {
@@ -60,7 +56,11 @@ export class ApplicationDetailsComponent implements OnInit {
 					throw error;
 				}
 
-				this.close();
+				let win = this.electronService.remote.getCurrentWindow();
+				let parent = win.getParentWindow();
+				parent.webContents.send("application:added", data);
+
+				win.close();
 			}
 		);
 	}
