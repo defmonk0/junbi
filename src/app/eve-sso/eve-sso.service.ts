@@ -49,13 +49,13 @@ export class EveSsoService {
 		this.tokens = [];
 
 		// Get our application details, if they exist.
-		this.loadApplicationDetails();
+		this.loadApplicationDetails(null, null);
 
 		// Initially get our tokens.
-		this.loadTokens();
-
-		// Initially get our character data.
-		this.loadCharacterData();
+		this.loadTokens(null, data => {
+			// Initially get our character data.
+			this.loadCharacterData(null, null);
+		});
 
 		// Set up a timer to run all our refreshes.
 		const timer = interval(REFRESH_TIMER_INTERVAL);

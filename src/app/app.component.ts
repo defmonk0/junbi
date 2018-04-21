@@ -25,14 +25,14 @@ export class AppComponent {
 		electronService.ipcRenderer.on("character:added", (event, tokens) => {
 			// Replace our tokens to catch new ones.
 			ngZone.run(() => {
-				this.eveSsoService.loadTokens(tokens);
+				this.eveSsoService.loadTokens(tokens, null);
 			});
 		});
 
 		electronService.ipcRenderer.on("application:added", (event, details) => {
 			// Replace our details to catch new ones.
 			ngZone.run(() => {
-				this.eveSsoService.loadApplicationDetails(details);
+				this.eveSsoService.loadApplicationDetails(details, null);
 			});
 		});
 	}
