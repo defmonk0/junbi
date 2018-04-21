@@ -568,9 +568,12 @@ export class EveSsoService {
 
 	// ==================== STORAGE DATA INITIALIZATION
 
-	public loadApplicationDetails(details: any = null): void {
+	public loadApplicationDetails(
+		details: {} | null | undefined,
+		callback: (savedData: any) => void | null | undefined
+	): void {
 		// Check if we passed the details ahead of time.
-		if (details != null) {
+		if (details != null && details != undefined) {
 			// We have the details. Overwrite them.
 			if (details.clientId != undefined) {
 				this.clientId = details.clientId;
@@ -578,6 +581,11 @@ export class EveSsoService {
 
 			if (details.secretKey != undefined) {
 				this.secretKey = details.secretKey;
+			}
+
+			// Hit our callback.
+			if (callback) {
+				callback(details);
 			}
 		} else {
 			// We do not have details. We need to get them.
@@ -594,17 +602,30 @@ export class EveSsoService {
 				if (data.secretKey != undefined) {
 					this.secretKey = data.secretKey;
 				}
+
+				// Hit our callback.
+				if (callback) {
+					callback(data);
+				}
 			});
 		}
 	}
 
-	public loadCharacterData(chars: any = null): void {
+	public loadCharacterData(
+		chars: Array<any> | null | undefined,
+		callback: (savedData: any) => void | null | undefined
+	): void {
 		// Check if we passed the character data ahead of time.
-		if (chars != null) {
+		if (chars != null && chars != undefined) {
 			// We have the character data. Overwrite them.
 			this.characters = {};
 			for (let i in chars) {
 				this.characters[i] = chars[i];
+			}
+
+			// Hit our callback.
+			if (callback) {
+				callback(this.characters);
 			}
 		} else {
 			// Iterate through all possible data files.
@@ -621,6 +642,11 @@ export class EveSsoService {
 						this.ngZone.run(() => {
 							// We have the character data. Overwrite it.
 							this.characters[hash][type] = data;
+
+							// Hit our callback.
+							if (callback) {
+								callback(this.characters);
+							}
 						});
 					});
 				}
@@ -628,13 +654,21 @@ export class EveSsoService {
 		}
 	}
 
-	public loadTokens(tokens: any = null): void {
+	public loadTokens(
+		tokens: {} | null | undefined,
+		callback: (savedData: any) => void | null | undefined
+	): void {
 		// Check if we passed the tokens ahead of time.
-		if (tokens != null) {
+		if (tokens != null && tokens != undefined) {
 			// We have the tokens. Overwrite them.
 			this.tokens = [];
 			for (let i in tokens) {
 				this.tokens.push(tokens[i]);
+			}
+
+			// Hit our callback.
+			if (callback) {
+				callback(this.tokens);
 			}
 		} else {
 			// We do not have tokens. We need to get them.
@@ -648,6 +682,11 @@ export class EveSsoService {
 					this.tokens = [];
 					for (let i in data) {
 						this.tokens.push(data[i]);
+					}
+
+					// Hit our callback.
+					if (callback) {
+						callback(this.tokens);
 					}
 				});
 			});
