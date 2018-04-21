@@ -569,7 +569,7 @@ export class EveSsoService {
 	// ==================== STORAGE DATA INITIALIZATION
 
 	public loadApplicationDetails(
-		details: {} | null | undefined,
+		details: { clientId: string; secretKey: string } | null | undefined,
 		callback: (savedData: any) => void | null | undefined
 	): void {
 		// Check if we passed the details ahead of time.
@@ -640,6 +640,9 @@ export class EveSsoService {
 						}
 
 						this.ngZone.run(() => {
+							// Make sure this data is set up and available.
+							this.forceCharacterDataExistance(hash, type);
+
 							// We have the character data. Overwrite it.
 							this.characters[hash][type] = data;
 
@@ -655,7 +658,7 @@ export class EveSsoService {
 	}
 
 	public loadTokens(
-		tokens: {} | null | undefined,
+		tokens: { [key: string]: any } | null | undefined,
 		callback: (savedData: any) => void | null | undefined
 	): void {
 		// Check if we passed the tokens ahead of time.
