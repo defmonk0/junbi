@@ -607,20 +607,24 @@ export class EveSsoService {
 				this.characters[i] = chars[i];
 			}
 		} else {
-			// We do not have character data. We need to get them.
-			this.storage.get("character-data", (error, data) => {
-				if (error) {
-					throw error;
-				}
+			// Iterate through all possible data files.
+			for (let token of this.tokens) {
+				let hash = token.verification.CharacterOwnerHash;
 
-				this.ngZone.run(() => {
-					// We have the character data. Overwrite them.
-					this.characters = {};
-					for (let i in chars) {
-						this.characters[i] = chars[i];
-					}
-				});
-			});
+				for (let type in SCOPES) {
+					// Try to get the data.
+					this.storage.get(hash + "." + type, (error, data) => {
+						if (error) {
+							throw error;
+						}
+
+						this.ngZone.run(() => {
+							// We have the character data. Overwrite it.
+							this.characters[hash][type] = data;
+						});
+					});
+				}
+			}
 		}
 	}
 
