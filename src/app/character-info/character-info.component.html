@@ -2,8 +2,8 @@
 
 	<!-- Page title. -->
 	<h1 class="display-4">
-		{{characterData(hash, 'characterPublic')
-			? characterData(hash, 'characterPublic').name
+		{{characterData(hash, "characterPublic")
+			? characterData(hash, "characterPublic").name
 			: "Character Information"}}
 		<a [routerLink]="['/overview']"
 			class="btn btn-light float-right"
@@ -13,12 +13,238 @@
 	</h1>
 
 	<!-- Page description. -->
-	<p class="lead">
-		Information about your character, such as their status, skills, finances, etc.
+	<p class="lead"
+		*ngIf="characterData(hash, 'characterPublic')">
+		<span class="gender"
+			*ngIf="characterData(hash, 'characterPublic').gender">
+			{{characterData(hash, "characterPublic").gender}}
+			-
+		</span>
+		<span class="corporation"
+			*ngIf="characterData(hash, 'characterPublic').corporation_id">
+			{{characterData(hash, "characterPublic").corporation_id}}
+		</span>
+		<span class="alliance"
+			*ngIf="characterData(hash, 'characterPublic').alliance_id">
+			({{characterData(hash, "characterPublic").alliance_id}})
+		</span>
 	</p>
 
-</div>
+	<!-- Two views for different sizes. -->
+	<div class="row">
 
-<!-- <app-skill-queue></app-skill-queue> -->
-<!-- <app-skills></app-skills> -->
-<!-- <app-wallet></app-wallet> -->
+		<!-- Large info section. -->
+		<div class="col-3 larger-view d-none d-md-block">
+
+			<!-- Character image. -->
+			<img [src]="eveImage(
+					'Character',
+					hash,
+					512
+				)"
+				class="img-fluid rounded"
+				alt="Character Image">
+
+			<!-- List of character details. -->
+			<dl class="row mt-3">
+
+				<!-- Wallet balance. -->
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'wallet')">
+					Wallet Balance
+				</dt>
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'wallet')">
+					{{characterData(hash, "wallet")}}
+				</dd>
+
+				<!-- Security status. -->
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'characterPublic')">
+					Security Status
+				</dt>
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'characterPublic')">
+					{{characterData(hash, "characterPublic").security_status | number: "1.2-2"}}
+				</dd>
+
+				<!-- ============================== -->
+
+				<!-- Active ship. -->
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'shipType')">
+					Active Ship
+				</dt>
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'shipType')">
+					{{characterData(hash, "shipType").ship_type_id}}
+					({{characterData(hash, "shipType").ship_name}})
+				</dd>
+
+				<!-- Solar system. -->
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').solar_system_id">
+					Solar System
+				</dt>
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').solar_system_id">
+					{{characterData(hash, 'location').solar_system_id}}
+				</dd>
+
+				<!-- Station. -->
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').station_id">
+					Station
+				</dt>
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').station_id">
+					{{characterData(hash, 'location').station_id}}
+				</dd>
+
+				<!-- Structure. -->
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').structure_id">
+					Structure
+				</dt>
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').structure_id">
+					{{characterData(hash, 'location').structure_id}}
+				</dd>
+
+				<!-- ============================== -->
+
+				<!-- Charisma. -->
+				<dt class="col-12 col-xl-6">
+					Charisma
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"17"}}
+				</dd>
+
+				<!-- Intelligence. -->
+				<dt class="col-12 col-xl-6">
+					Intelligence
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"17"}}
+				</dd>
+
+				<!-- Memory. -->
+				<dt class="col-12 col-xl-6">
+					Memory
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"17"}}
+				</dd>
+
+				<!-- Perception. -->
+				<dt class="col-12 col-xl-6">
+					Perception
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"17"}}
+				</dd>
+
+				<!-- Willpower. -->
+				<dt class="col-12 col-xl-6">
+					Willpower
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"17"}}
+				</dd>
+
+				<!-- ============================== -->
+
+				<!-- Remap available. -->
+				<dt class="col-12 col-xl-6">
+					Remap Available
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"No"}}
+				</dd>
+
+				<!-- Next remap. -->
+				<dt class="col-12 col-xl-6">
+					Next Remap
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"219 days"}}
+				</dd>
+
+				<!-- Clone jump available. -->
+				<dt class="col-12 col-xl-6">
+					Clone Jump Available
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"No"}}
+				</dd>
+
+				<!-- Next clone jump. -->
+				<dt class="col-12 col-xl-6">
+					Next Clone Jump
+				</dt>
+				<dd class="col-12 col-xl-6">
+					{{"17 hours"}}
+				</dd>
+
+			</dl>
+
+		</div>
+
+		<!-- Small info section. -->
+		<div class="col-12 smaller-view d-block d-md-none">
+
+			<!-- List of character details. -->
+			<div class="data-list mb-4">
+
+				<!-- Character image. -->
+				<div class="data-item">
+					<img [src]="eveImage(
+							'Character',
+							hash,
+							128
+						)"
+						class="rounded"
+						alt="Character Image">
+				</div>
+
+				<!-- Test. -->
+				<div class="data-item" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+					<span class="title">Title Text</span>
+					<span class="data">Data Text</span>
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Tabs. -->
+		<div class="col-12 col-md-9">
+
+			<ngb-tabset class="mb-3">
+
+				<ngb-tab title="Skill Queue">
+					<ng-template ngbTabContent>
+						<app-skill-queue></app-skill-queue>
+					</ng-template>
+				</ngb-tab>
+
+				<ngb-tab title="All Skills">
+					<ng-template ngbTabContent>
+						<app-skills></app-skills>
+					</ng-template>
+				</ngb-tab>
+
+				<ngb-tab title="Wallet Details">
+					<ng-template ngbTabContent>
+						<app-wallet></app-wallet>
+					</ng-template>
+				</ngb-tab>
+
+			</ngb-tabset>
+
+		</div>
+
+	</div>
+
+</div>

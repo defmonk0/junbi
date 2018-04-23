@@ -49,7 +49,15 @@ export class CharacterInfoComponent implements OnInit {
 		return moment(date).fromNow();
 	}
 
-	public eveImage(type: string, id: number, width: number): string {
+	public eveImage(type: string, hash: string, width: number): string {
+		let id = 0;
+		let tokens = this.eveSsoService.tokens;
+		for (let token of tokens) {
+			if (token.verification.CharacterOwnerHash == hash) {
+				id = token.verification.CharacterID;
+			}
+		}
+
 		let extension = "png";
 		if (type == "Character") {
 			extension = "jpg";
