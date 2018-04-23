@@ -2,6 +2,8 @@ figure.card {
 	display: inline-block;
 	width: 16rem;
 	margin: 0.5rem;
+
+	cursor: pointer;
 }
 
 figure.card figcaption.card-body .card-text span {
