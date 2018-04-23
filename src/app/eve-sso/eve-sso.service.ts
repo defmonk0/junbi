@@ -15,7 +15,7 @@ const TOKEN_FILTER_OFFSET = 30 * 1000;
 const SCOPES = {
 	location: "esi-location.read_location.v1",
 	online: "esi-location.read_online.v1",
-	ship_type: "esi-location.read_ship_type.v1",
+	shipType: "esi-location.read_ship_type.v1",
 	skillQueue: "esi-skills.read_skillqueue.v1",
 	skills: "esi-skills.read_skills.v1",
 	wallet: "esi-wallet.read_character_wallet.v1",
@@ -400,7 +400,7 @@ export class EveSsoService {
 		// Variables for easy use.
 		let hash = token.verification.CharacterOwnerHash;
 		let ts = Date.now();
-		let type = "ship_type";
+		let type = "shipType";
 
 		// Make sure this data is set up and available.
 		this.forceCharacterDataExistance(hash, type);

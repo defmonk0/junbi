@@ -10,7 +10,8 @@
 
 	<!-- List of character tokens. -->
 	<figure class="card"
-		*ngFor="let i of tokens">
+		*ngFor="let i of tokens"
+		routerLink="['character-info', i.verification.CharacterOwnerHash]">
 
 		<img [src]="eveImage(
 				'Character',
