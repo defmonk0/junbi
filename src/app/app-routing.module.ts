@@ -17,7 +17,7 @@ const routes: Routes = [
 		component: ApplicationDetailsComponent,
 	},
 	{
-		path: "character-info/:id",
+		path: "character-info/:hash",
 		component: CharacterInfoComponent,
 	},
 	{

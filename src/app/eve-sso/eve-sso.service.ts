@@ -6,13 +6,19 @@ import { interval } from "rxjs/observable/interval";
 import { mergeMap } from "rxjs/operators";
 import { Observable } from "rxjs/Observable";
 
-import { LocationService, SkillsService, WalletService } from "../esi/api/api";
+import {
+	CharacterService,
+	LocationService,
+	SkillsService,
+	WalletService,
+} from "../esi/api/api";
 
 const MINIMUM_CACHE_OFFSET = 3 * 60 * 1000;
 const REFRESH_TIMER_INTERVAL = 10 * 1000;
 const TOKEN_FILTER_OFFSET = 30 * 1000;
 
 const SCOPES = {
+	characterPublic: "",
 	location: "esi-location.read_location.v1",
 	online: "esi-location.read_online.v1",
 	shipType: "esi-location.read_ship_type.v1",
@@ -33,6 +39,7 @@ export class EveSsoService {
 	public tokens;
 
 	constructor(
+		private characterService: CharacterService,
 		private electronService: ElectronService,
 		private httpClient: HttpClient,
 		private locationService: LocationService,
@@ -67,6 +74,9 @@ export class EveSsoService {
 
 			// Iterate through our tokens and update other info.
 			for (let token of this.tokens) {
+				// Character update.
+				this.updateCharacterPublic(token);
+
 				// Location update.
 				this.updateCharacterLocation(token);
 
@@ -340,6 +350,33 @@ export class EveSsoService {
 	}
 
 	// ===== RETRIEVAL
+
+	private updateCharacterPublic(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "characterPublic";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistance(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.characterService
+				.getCharactersCharacterId(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Save the new data.
+					this.updateCharacterData(res, hash, type);
+				});
+		}
+	}
 
 	private updateCharacterLocation(token: any): void {
 		// Variables for easy use.

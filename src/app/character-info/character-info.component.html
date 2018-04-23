@@ -1,7 +1,19 @@
-<p>
-	character-info works!
-</p>
+<div class="container-fluid">
 
-<app-skill-queue></app-skill-queue>
-<app-skills></app-skills>
-<app-wallet></app-wallet>
+	<!-- Page title. -->
+	<h1 class="display-4">
+		{{characterData(hash, 'characterPublic')
+			? characterData(hash, 'characterPublic').name
+			: "Character Information"}}
+	</h1>
+
+	<!-- Page description. -->
+	<p class="lead">
+		Information about your character, including their status, skills, finances, etc.
+	</p>
+
+</div>
+
+<!-- <app-skill-queue></app-skill-queue> -->
+<!-- <app-skills></app-skills> -->
+<!-- <app-wallet></app-wallet> -->

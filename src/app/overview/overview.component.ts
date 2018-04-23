@@ -64,12 +64,4 @@ export class OverviewComponent implements OnInit {
 
 		return url;
 	}
-
-	public isExpired(time: number): boolean {
-		if (time > Date.now()) {
-			return false;
-		}
-
-		return true;
-	}
 }
