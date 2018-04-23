@@ -50,7 +50,7 @@
 						*ngIf="characters[token.verification.CharacterOwnerHash].skillQueue.data[0]">
 						{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].skill_id}}:
 						<small class="text-muted">
-							{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].finish_date}}
+							{{countdown(characters[token.verification.CharacterOwnerHash].skillQueue.data[0].finish_date)}}
 						</small>
 					</span>
 
@@ -58,7 +58,7 @@
 						*ngIf="characters[token.verification.CharacterOwnerHash].skillQueue.data[0]">
 						Queue Ends:
 						<small class="text-muted">
-							{{characters[token.verification.CharacterOwnerHash].skillQueue.data.slice(-1)[0].finish_date}}
+							{{countdown(characters[token.verification.CharacterOwnerHash].skillQueue.data.slice(-1)[0].finish_date)}}
 						</small>
 					</span>
 

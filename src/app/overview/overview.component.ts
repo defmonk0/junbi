@@ -1,3 +1,4 @@
+import * as moment from "moment";
 import { Component, OnInit } from "@angular/core";
 import { EveSsoService } from "../eve-sso/eve-sso.service";
 
@@ -11,11 +12,15 @@ export class OverviewComponent implements OnInit {
 
 	ngOnInit() {}
 
-	public get characters(): any {
+	public get characters(): { [key: string]: any } {
 		return this.eveSsoService.characters;
 	}
 
-	public get tokens(): any {
+	public countdown(date: string): string {
+		return moment(date).fromNow();
+	}
+
+	public get tokens(): Array<any> {
 		return this.eveSsoService.tokens.sort((a, b) =>
 			a.verification.CharacterName.localeCompare(
 				b.verification.CharacterName
