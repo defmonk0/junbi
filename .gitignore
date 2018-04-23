@@ -1,15 +1,15 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# SEE HTTP://HELP.GITHUB.COM/IGNORE-FILES/ FOR MORE ABOUT IGNORING FILES.
 
-# compiled output
+# COMPILED OUTPUT
 /dist
 /dist-server
 /tmp
 /out-tsc
 
-# dependencies
+# DEPENDENCIES
 /node_modules
 
-# IDEs and editors
+# IDES AND EDITORS
 /.idea
 .project
 .classpath
@@ -19,14 +19,14 @@
 *.sublime-workspace
 *.sublime-project
 
-# IDE - VSCode
+# IDE - VSCODE
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# misc
+# MISC
 /.sass-cache
 /connect.lock
 /coverage
@@ -36,10 +36,13 @@ yarn-error.log
 testem.log
 /typings
 
-# e2e
+# E2E
 /e2e/*.js
 /e2e/*.map
 
-# System Files
+# SYSTEM FILES
 .DS_Store
 Thumbs.db
+
+# EXTERNALLY COMPILED SERVICES
+src/app/esi/
