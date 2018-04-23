@@ -1,19 +1,19 @@
-figure.card {
-	display: inline-block;
-	width: 16rem;
+.card {
+	max-width: 16rem;
+	min-width: 16rem;
 	margin: 0.5rem;
 
 	cursor: pointer;
 }
 
-figure.card figcaption.card-body .card-text span {
+.card .card-body .card-text .text-section {
 	display: block;
 	margin-bottom: 0.25rem;
 
 	font-weight: 500;
 }
 
-figure.card figcaption.card-body .card-text span small {
+.card .card-body .card-text .text-section .text-muted {
 	display: block;
 
 	font-weight: normal;

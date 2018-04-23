@@ -9,59 +9,65 @@
 	</p>
 
 	<!-- List of character tokens. -->
-	<figure class="card"
-		*ngFor="let token of tokens"
-		[routerLink]="['/character-info', token.verification.CharacterOwnerHash]">
+	<ul class="card-deck">
+		<li class="card"
+			*ngFor="let token of tokens"
+			[routerLink]="['/character-info', token.verification.CharacterOwnerHash]">
 
-		<img [src]="eveImage(
-				'Character',
-				token.verification.CharacterID,
-				256
-			)"
-			class="card-img-top"
-			alt="Character Image">
+			<img [src]="eveImage(
+					'Character',
+					token.verification.CharacterID,
+					256
+				)"
+				class="card-img-top"
+				alt="Character Image">
 
-		<figcaption class="card-body">
+			<div class="card-body">
 
-			<h5 class="card-title text-truncate">
-				{{token.verification.CharacterName}}
-			</h5>
+				<h5 class="card-title text-truncate">
+					{{token.verification.CharacterName}}
+				</h5>
 
-			<div class="card-text">
+				<div class="card-text">
 
-				<span *ngIf="characters[token.verification.CharacterOwnerHash].wallet.data">
-					Wallet:
-					<small class="text-muted">
-						{{characters[token.verification.CharacterOwnerHash].wallet.data | number: "1.2-2"}} ISK
-					</small>
-				</span>
+					<span class="text-section"
+						*ngIf="characters[token.verification.CharacterOwnerHash].wallet.data">
+						Wallet:
+						<small class="text-muted">
+							{{characters[token.verification.CharacterOwnerHash].wallet.data | number: "1.2-2"}} ISK
+						</small>
+					</span>
 
-				<span *ngIf="characters[token.verification.CharacterOwnerHash].skills.data.total_sp">
-					Skill Points:
-					<small class="text-muted">
-						{{characters[token.verification.CharacterOwnerHash].skills.data.total_sp | number: "1.0-0"}} SP
-					</small>
-				</span>
+					<span class="text-section"
+						*ngIf="characters[token.verification.CharacterOwnerHash].skills.data.total_sp">
+						Skill Points:
+						<small class="text-muted">
+							{{characters[token.verification.CharacterOwnerHash].skills.data.total_sp | number: "1.0-0"}} SP
+						</small>
+					</span>
 
-				<span>
-					{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].skill_id}}:
-					<small class="text-muted">
-						{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].finish_date}}
-					</small>
-				</span>
+					<span class="text-section"
+						*ngIf="characters[token.verification.CharacterOwnerHash].skillQueue.data[0]">
+						{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].skill_id}}:
+						<small class="text-muted">
+							{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].finish_date}}
+						</small>
+					</span>
 
-				<span>
-					Queue Ends:
-					<small class="text-muted">
-						{{characters[token.verification.CharacterOwnerHash].skillQueue.data.slice(-1)[0].finish_date}}
-					</small>
-				</span>
+					<span class="text-section"
+						*ngIf="characters[token.verification.CharacterOwnerHash].skillQueue.data[0]">
+						Queue Ends:
+						<small class="text-muted">
+							{{characters[token.verification.CharacterOwnerHash].skillQueue.data.slice(-1)[0].finish_date}}
+						</small>
+					</span>
+
+				</div>
 
 			</div>
 
-		</figcaption>
-
-	</figure>
+		</li>
+	</ul>
 
 	<!-- Message to use if there are no characters yet. -->
 	<p *ngIf="!tokens || tokens.length == 0"

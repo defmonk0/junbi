@@ -11,6 +11,10 @@ export class OverviewComponent implements OnInit {
 
 	ngOnInit() {}
 
+	public get characters(): any {
+		return this.eveSsoService.characters;
+	}
+
 	public get tokens(): any {
 		return this.eveSsoService.tokens.sort((a, b) =>
 			a.verification.CharacterName.localeCompare(
