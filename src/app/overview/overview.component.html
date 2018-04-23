@@ -10,8 +10,8 @@
 
 	<!-- List of character tokens. -->
 	<figure class="card"
-		*ngFor="let token of tokens; let hash = token.verification.CharacterOwnerHash;"
-		[routerLink]="['/character-info', hash]">
+		*ngFor="let token of tokens"
+		[routerLink]="['/character-info', token.verification.CharacterOwnerHash]">
 
 		<img [src]="eveImage(
 				'Character',
@@ -29,31 +29,31 @@
 
 			<div class="card-text">
 
-				<span *ngIf="character[hash].wallet.data">
+				<span *ngIf="characters[token.verification.CharacterOwnerHash].wallet.data">
 					Wallet:
 					<small class="text-muted">
-						{{character[hash].wallet.data | number: "1.2-2"}} ISK
+						{{characters[token.verification.CharacterOwnerHash].wallet.data | number: "1.2-2"}} ISK
 					</small>
 				</span>
 
-				<span *ngIf="character[hash].skills.data.total_sp">
+				<span *ngIf="characters[token.verification.CharacterOwnerHash].skills.data.total_sp">
 					Skill Points:
 					<small class="text-muted">
-						{{character[hash].skills.data.total_sp | number: "1.0-0"}} SP
+						{{characters[token.verification.CharacterOwnerHash].skills.data.total_sp | number: "1.0-0"}} SP
 					</small>
 				</span>
 
 				<span>
-					{{character[hash].skillQueue.data[0].skill_id}}:
+					{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].skill_id}}:
 					<small class="text-muted">
-						{{character[hash].skillQueue.data[0].finish_date}}
+						{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].finish_date}}
 					</small>
 				</span>
 
 				<span>
 					Queue Ends:
 					<small class="text-muted">
-						{{character[hash].skillQueue.data.slice(-1)[0].finish_date}}
+						{{characters[token.verification.CharacterOwnerHash].skillQueue.data.slice(-1)[0].finish_date}}
 					</small>
 				</span>
 
