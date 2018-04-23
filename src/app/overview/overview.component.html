@@ -31,34 +31,34 @@
 				<div class="card-text">
 
 					<span class="text-section"
-						*ngIf="characterData(token.verification.CharacterOwnerHash, wallet)">
+						*ngIf="characterData(token.verification.CharacterOwnerHash, 'wallet')">
 						Wallet:
 						<small class="text-muted">
-							{{characterData(token.verification.CharacterOwnerHash, wallet) | number: "1.2-2"}} ISK
+							{{characterData(token.verification.CharacterOwnerHash, 'wallet') | number: "1.2-2"}} ISK
 						</small>
 					</span>
 
 					<span class="text-section"
-						*ngIf="characterData(token.verification.CharacterOwnerHash, skills).total_sp">
+						*ngIf="characterData(token.verification.CharacterOwnerHash, 'skills')">
 						Skill Points:
 						<small class="text-muted">
-							{{characterData(token.verification.CharacterOwnerHash, skills).total_sp | number: "1.0-0"}} SP
+							{{characterData(token.verification.CharacterOwnerHash, 'skills').total_sp | number: "1.0-0"}} SP
 						</small>
 					</span>
 
 					<span class="text-section"
-						*ngIf="characterData(token.verification.CharacterOwnerHash, skillQueue)[0]">
-						{{characterData(token.verification.CharacterOwnerHash, skillQueue)[0].skill_id}}:
+						*ngIf="characterData(token.verification.CharacterOwnerHash, 'skillQueue').length > 0">
+						{{characterData(token.verification.CharacterOwnerHash, 'skillQueue')[0].skill_id}}:
 						<small class="text-muted">
-							{{countdown(characterData(token.verification.CharacterOwnerHash, skillQueue)[0].finish_date)}}
+							{{countdown(characterData(token.verification.CharacterOwnerHash, 'skillQueue')[0].finish_date)}}
 						</small>
 					</span>
 
 					<span class="text-section"
-						*ngIf="characterData(token.verification.CharacterOwnerHash, skillQueue)[0]">
+						*ngIf="characterData(token.verification.CharacterOwnerHash, 'skillQueue').length > 0">
 						Queue Ends:
 						<small class="text-muted">
-							{{countdown(characterData(token.verification.CharacterOwnerHash, skillQueue).slice(-1)[0].finish_date)}}
+							{{countdown(characterData(token.verification.CharacterOwnerHash, 'skillQueue').slice(-1)[0].finish_date)}}
 						</small>
 					</span>
 

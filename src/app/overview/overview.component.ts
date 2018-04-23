@@ -13,10 +13,21 @@ export class OverviewComponent implements OnInit {
 	ngOnInit() {}
 
 	public characterData(hash: string, type: string): any {
+		const TYPES = {
+			location: null,
+			online: null,
+			shipType: null,
+			skillQueue: [],
+			skills: null,
+			wallet: 0,
+			walletJournal: [],
+			walletTransactions: [],
+		};
+
 		try {
 			return this.eveSsoService.characters[hash][type].data;
 		} catch {
-			return null;
+			return TYPES[type];
 		}
 	}
 
