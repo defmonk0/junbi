@@ -15,12 +15,16 @@ export class ManageCharactersComponent implements OnInit {
 
 	ngOnInit() {}
 
-	public get tokens(): any {
-		return this.eveSsoService.tokens.sort((a, b) =>
-			a.verification.CharacterName.localeCompare(
-				b.verification.CharacterName
-			)
-		);
+	public get tokens(): Array<any> {
+		try {
+			return this.eveSsoService.tokens.sort((a, b) =>
+				a.verification.CharacterName.localeCompare(
+					b.verification.CharacterName
+				)
+			);
+		} catch {
+			return [];
+		}
 	}
 
 	public eveImage(type: string, id: number, width: number): string {

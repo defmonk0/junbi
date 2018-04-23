@@ -31,34 +31,34 @@
 				<div class="card-text">
 
 					<span class="text-section"
-						*ngIf="characters[token.verification.CharacterOwnerHash].wallet.data">
+						*ngIf="characterData(token.verification.CharacterOwnerHash, wallet)">
 						Wallet:
 						<small class="text-muted">
-							{{characters[token.verification.CharacterOwnerHash].wallet.data | number: "1.2-2"}} ISK
+							{{characterData(token.verification.CharacterOwnerHash, wallet) | number: "1.2-2"}} ISK
 						</small>
 					</span>
 
 					<span class="text-section"
-						*ngIf="characters[token.verification.CharacterOwnerHash].skills.data.total_sp">
+						*ngIf="characterData(token.verification.CharacterOwnerHash, skills).total_sp">
 						Skill Points:
 						<small class="text-muted">
-							{{characters[token.verification.CharacterOwnerHash].skills.data.total_sp | number: "1.0-0"}} SP
+							{{characterData(token.verification.CharacterOwnerHash, skills).total_sp | number: "1.0-0"}} SP
 						</small>
 					</span>
 
 					<span class="text-section"
-						*ngIf="characters[token.verification.CharacterOwnerHash].skillQueue.data[0]">
-						{{characters[token.verification.CharacterOwnerHash].skillQueue.data[0].skill_id}}:
+						*ngIf="characterData(token.verification.CharacterOwnerHash, skillQueue)[0]">
+						{{characterData(token.verification.CharacterOwnerHash, skillQueue)[0].skill_id}}:
 						<small class="text-muted">
-							{{countdown(characters[token.verification.CharacterOwnerHash].skillQueue.data[0].finish_date)}}
+							{{countdown(characterData(token.verification.CharacterOwnerHash, skillQueue)[0].finish_date)}}
 						</small>
 					</span>
 
 					<span class="text-section"
-						*ngIf="characters[token.verification.CharacterOwnerHash].skillQueue.data[0]">
+						*ngIf="characterData(token.verification.CharacterOwnerHash, skillQueue)[0]">
 						Queue Ends:
 						<small class="text-muted">
-							{{countdown(characters[token.verification.CharacterOwnerHash].skillQueue.data.slice(-1)[0].finish_date)}}
+							{{countdown(characterData(token.verification.CharacterOwnerHash, skillQueue).slice(-1)[0].finish_date)}}
 						</small>
 					</span>
 
@@ -70,7 +70,7 @@
 	</ul>
 
 	<!-- Message to use if there are no characters yet. -->
-	<p *ngIf="!tokens || tokens.length == 0"
+	<p *ngIf="tokens.length == 0"
 		class="text-center mt-5">
 		No characters available. Use 'Edit' -> 'Add Character' to log in via SSO.
 	</p>
