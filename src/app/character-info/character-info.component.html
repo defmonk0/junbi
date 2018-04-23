@@ -5,11 +5,16 @@
 		{{characterData(hash, 'characterPublic')
 			? characterData(hash, 'characterPublic').name
 			: "Character Information"}}
+		<a [routerLink]="['/overview']"
+			class="btn btn-light float-right"
+			role="button">
+			Return To Overview
+		</a>
 	</h1>
 
 	<!-- Page description. -->
 	<p class="lead">
-		Information about your character, including their status, skills, finances, etc.
+		Information about your character, such as their status, skills, finances, etc.
 	</p>
 
 </div>
