@@ -10,12 +10,12 @@
 
 	<!-- List of character tokens. -->
 	<figure class="card"
-		*ngFor="let i of tokens"
-		[routerLink]="['/character-info', i.verification.CharacterOwnerHash]">
+		*ngFor="let token of tokens; let hash = token.verification.CharacterOwnerHash;"
+		[routerLink]="['/character-info', hash]">
 
 		<img [src]="eveImage(
 				'Character',
-				i.verification.CharacterID,
+				token.verification.CharacterID,
 				256
 			)"
 			class="card-img-top"
@@ -24,36 +24,36 @@
 		<figcaption class="card-body">
 
 			<h5 class="card-title text-truncate">
-				{{i.verification.CharacterName}}
+				{{token.verification.CharacterName}}
 			</h5>
 
 			<div class="card-text">
 
-				<span>
+				<span *ngIf="character[hash].wallet.data">
 					Wallet:
 					<small class="text-muted">
-						{{1234567.89 | number: "1.2-2"}} ISK
+						{{character[hash].wallet.data | number: "1.2-2"}} ISK
 					</small>
 				</span>
 
-				<span>
+				<span *ngIf="character[hash].skills.data.total_sp">
 					Skill Points:
 					<small class="text-muted">
-						{{1234567.89 | number: "1.2-2"}} SP
+						{{character[hash].skills.data.total_sp | number: "1.0-0"}} SP
 					</small>
 				</span>
 
 				<span>
-					Torpedo Specialization V:
+					{{character[hash].skillQueue.data[0].skill_id}}:
 					<small class="text-muted">
-						18d, 23h, 21m, 5s
+						{{character[hash].skillQueue.data[0].finish_date}}
 					</small>
 				</span>
 
 				<span>
 					Queue Ends:
 					<small class="text-muted">
-						186d, 5h, 32m, 10s
+						{{character[hash].skillQueue.data.slice(-1)[0].finish_date}}
 					</small>
 				</span>
 
