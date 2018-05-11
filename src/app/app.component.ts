@@ -1,6 +1,6 @@
 import { Component, NgZone } from "@angular/core";
 import { ElectronService } from "ngx-electron";
-import { EveSsoService } from "./eve-sso/eve-sso.service";
+import { EveSsoService } from "./services/eve-sso/eve-sso.service";
 import { Router } from "@angular/router";
 
 @Component({

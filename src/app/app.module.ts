@@ -10,19 +10,19 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxElectronModule } from "ngx-electron";
 
 // Generated
-import { ApiModule } from "./esi/api.module";
-import { Configuration } from "./esi/configuration";
+import { ApiModule } from "./services/esi/api.module";
+import { Configuration } from "./services/esi/configuration";
 
 // Internal
 import { AppComponent } from "./app.component";
-import { ApplicationDetailsComponent } from "./application-details/application-details.component";
-import { CharacterInfoComponent } from "./character-info/character-info.component";
-import { EveSsoService } from "./eve-sso/eve-sso.service";
-import { ManageCharactersComponent } from "./manage-characters/manage-characters.component";
-import { OverviewComponent } from "./overview/overview.component";
-import { SkillQueueComponent } from "./character-info/skill-queue/skill-queue.component";
-import { SkillsComponent } from "./character-info/skills/skills.component";
-import { WalletComponent } from "./character-info/wallet/wallet.component";
+import { ApplicationDetailsComponent } from "./components/application-details/application-details.component";
+import { CharacterInfoComponent } from "./components/character-info/character-info.component";
+import { EveSsoService } from "./services/eve-sso/eve-sso.service";
+import { ManageCharactersComponent } from "./components/manage-characters/manage-characters.component";
+import { OverviewComponent } from "./components/overview/overview.component";
+import { SkillQueueComponent } from "./components/character-info/skill-queue/skill-queue.component";
+import { SkillsComponent } from "./components/character-info/skills/skills.component";
+import { WalletComponent } from "./components/character-info/wallet/wallet.component";
 
 // Routing
 import { AppRoutingModule } from "./app-routing.module";
