@@ -1,6 +1,6 @@
 import { Component, NgZone } from "@angular/core";
 import { ElectronService } from "ngx-electron";
-import { EveSsoService } from "./services/eve-sso/eve-sso.service";
+import { EveCharacterDataService } from "./services/eve-character-data/eve-character-data.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class AppComponent {
 	constructor(
 		private electronService: ElectronService,
-		private eveSsoService: EveSsoService,
+		private eveCharacterDataService: EveCharacterDataService,
 		private ngZone: NgZone,
 		private router: Router
 	) {
@@ -25,15 +25,21 @@ export class AppComponent {
 		electronService.ipcRenderer.on("character:added", (event, tokens) => {
 			// Replace our tokens to catch new ones.
 			ngZone.run(() => {
-				this.eveSsoService.loadTokens(tokens, null);
+				this.eveCharacterDataService.loadTokens(tokens, null);
 			});
 		});
 
-		electronService.ipcRenderer.on("application:added", (event, details) => {
-			// Replace our details to catch new ones.
-			ngZone.run(() => {
-				this.eveSsoService.loadApplicationDetails(details, null);
-			});
-		});
+		electronService.ipcRenderer.on(
+			"application:added",
+			(event, details) => {
+				// Replace our details to catch new ones.
+				ngZone.run(() => {
+					this.eveCharacterDataService.loadApplicationDetails(
+						details,
+						null
+					);
+				});
+			}
+		);
 	}
 }

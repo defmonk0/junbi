@@ -1,6 +1,6 @@
 import * as moment from "moment";
 import { Component, OnInit } from "@angular/core";
-import { EveSsoService } from "../../services/eve-sso/eve-sso.service";
+import { EveCharacterDataService } from "../../services/eve-character-data/eve-character-data.service";
 
 @Component({
 	selector: "app-overview",
@@ -8,7 +8,7 @@ import { EveSsoService } from "../../services/eve-sso/eve-sso.service";
 	styleUrls: ["./overview.component.css"],
 })
 export class OverviewComponent implements OnInit {
-	constructor(private eveSsoService: EveSsoService) {}
+	constructor(private eveCharacterDataService: EveCharacterDataService) {}
 
 	ngOnInit() {}
 
@@ -25,7 +25,7 @@ export class OverviewComponent implements OnInit {
 		};
 
 		try {
-			return this.eveSsoService.characters[hash][type].data;
+			return this.eveCharacterDataService.characters[hash][type].data;
 		} catch {
 			return TYPES[type];
 		}
@@ -37,7 +37,7 @@ export class OverviewComponent implements OnInit {
 
 	public get tokens(): Array<any> {
 		try {
-			return this.eveSsoService.tokens.sort((a, b) =>
+			return this.eveCharacterDataService.tokens.sort((a, b) =>
 				a.verification.CharacterName.localeCompare(
 					b.verification.CharacterName
 				)

@@ -17,7 +17,7 @@ import { Configuration } from "./services/esi/configuration";
 import { AppComponent } from "./app.component";
 import { ApplicationDetailsComponent } from "./components/application-details/application-details.component";
 import { CharacterInfoComponent } from "./components/character-info/character-info.component";
-import { EveSsoService } from "./services/eve-sso/eve-sso.service";
+import { EveCharacterDataService } from "./services/eve-character-data/eve-character-data.service";
 import { ManageCharactersComponent } from "./components/manage-characters/manage-characters.component";
 import { OverviewComponent } from "./components/overview/overview.component";
 import { SkillQueueComponent } from "./components/character-info/skill-queue/skill-queue.component";
@@ -55,6 +55,6 @@ export function getApiConfig() {
 		NgbModule.forRoot(),
 		NgxElectronModule,
 	],
-	providers: [EveSsoService],
+	providers: [EveCharacterDataService],
 })
 export class AppModule {}

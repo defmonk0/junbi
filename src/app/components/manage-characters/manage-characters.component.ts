@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ElectronService } from "ngx-electron";
-import { EveSsoService } from "../../services/eve-sso/eve-sso.service";
+import { EveCharacterDataService } from "../../services/eve-character-data/eve-character-data.service";
 
 @Component({
 	selector: "app-manage-characters",
@@ -10,14 +10,14 @@ import { EveSsoService } from "../../services/eve-sso/eve-sso.service";
 export class ManageCharactersComponent implements OnInit {
 	constructor(
 		private electronService: ElectronService,
-		private eveSsoService: EveSsoService
+		private eveCharacterDataService: EveCharacterDataService
 	) {}
 
 	ngOnInit() {}
 
 	public get tokens(): Array<any> {
 		try {
-			return this.eveSsoService.tokens.sort((a, b) =>
+			return this.eveCharacterDataService.tokens.sort((a, b) =>
 				a.verification.CharacterName.localeCompare(
 					b.verification.CharacterName
 				)
@@ -63,6 +63,6 @@ export class ManageCharactersComponent implements OnInit {
 	}
 
 	public removeToken(token: any): void {
-		this.eveSsoService.deleteToken(token);
+		this.eveCharacterDataService.deleteToken(token);
 	}
 }

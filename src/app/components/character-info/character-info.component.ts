@@ -1,7 +1,7 @@
 import * as moment from "moment";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
-import { EveSsoService } from "../../services/eve-sso/eve-sso.service";
+import { EveCharacterDataService } from "../../services/eve-character-data/eve-character-data.service";
 
 import { SkillQueueComponent } from "./skill-queue/skill-queue.component";
 import { SkillsComponent } from "./skills/skills.component";
@@ -17,7 +17,7 @@ export class CharacterInfoComponent implements OnInit {
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
-		private eveSsoService: EveSsoService
+		private eveCharacterDataService: EveCharacterDataService
 	) {}
 
 	ngOnInit() {
@@ -39,7 +39,7 @@ export class CharacterInfoComponent implements OnInit {
 		};
 
 		try {
-			return this.eveSsoService.characters[hash][type].data;
+			return this.eveCharacterDataService.characters[hash][type].data;
 		} catch {
 			return TYPES[type];
 		}
@@ -51,7 +51,7 @@ export class CharacterInfoComponent implements OnInit {
 
 	public eveImage(type: string, hash: string, width: number): string {
 		let id = 0;
-		let tokens = this.eveSsoService.tokens;
+		let tokens = this.eveCharacterDataService.tokens;
 		for (let token of tokens) {
 			if (token.verification.CharacterOwnerHash == hash) {
 				id = token.verification.CharacterID;

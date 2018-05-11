@@ -1,6 +1,5 @@
 import { Component, NgZone, OnInit } from "@angular/core";
 import { ElectronService } from "ngx-electron";
-import { EveSsoService } from "../../services/eve-sso/eve-sso.service";
 
 @Component({
 	selector: "app-application-details",
@@ -14,7 +13,6 @@ export class ApplicationDetailsComponent implements OnInit {
 
 	constructor(
 		private electronService: ElectronService,
-		private eveSsoService: EveSsoService,
 		private ngZone: NgZone
 	) {
 		this.storage = electronService.remote.require("electron-json-storage");
