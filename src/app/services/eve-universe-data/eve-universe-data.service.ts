@@ -2,12 +2,27 @@ import { ElectronService } from "ngx-electron";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, NgZone } from "@angular/core";
 
-import { UniverseService } from "../esi/api/api";
+import {
+	AllianceService,
+	CharacterService,
+	CorporationService,
+	UniverseService,
+} from "../esi/api/api";
 
 const MINIMUM_CACHE_OFFSET = 3 * 60 * 1000;
 const REFRESH_TIMER_INTERVAL = 10 * 1000;
 
-const SCOPES = ["category", "group", "station", "structure", "system", "type"];
+const SCOPES = [
+	"alliance",
+	"category",
+	"character",
+	"corporation",
+	"group",
+	"station",
+	"structure",
+	"system",
+	"type",
+];
 
 @Injectable()
 export class EveUniverseDataService {
@@ -17,6 +32,9 @@ export class EveUniverseDataService {
 	private storage;
 
 	constructor(
+		private allianceService: AllianceService,
+		private characterService: CharacterService,
+		private corporationService: CorporationService,
 		private electronService: ElectronService,
 		private ngZone: NgZone,
 		private universeService: UniverseService
@@ -134,7 +152,36 @@ export class EveUniverseDataService {
 	}
 
 	private getSpecific = {
-		category: (id, token): any => {
+		alliance: (id: number, token: string): any => {
+			// Force id existence.
+			this.forceUniverseTypeIdExistence("alliance", id);
+
+			// Call service if we're not already loading it.
+			if (!this.load["alliance"][id]) {
+				// Track the start of our load.
+				this.load["alliance"][id] = true;
+
+				// Call the service.
+				this.allianceService
+					.getAlliancesAllianceId(
+						id,
+						this.constants.ESI_DATASOURCE,
+						this.constants.USER_AGENT,
+						this.constants.USER_AGENT,
+						"response",
+						false
+					)
+					.subscribe(res => {
+						// Save the new data.
+						this.updateUniverseData(res, "alliance", id);
+
+						// Track the end of our load.
+						this.load["alliance"][id] = false;
+					});
+			}
+		},
+
+		category: (id: number, token: string): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("category", id);
 
@@ -164,7 +211,65 @@ export class EveUniverseDataService {
 			}
 		},
 
-		group: (id, token): any => {
+		character: (id: number, token: string): any => {
+			// Force id existence.
+			this.forceUniverseTypeIdExistence("character", id);
+
+			// Call service if we're not already loading it.
+			if (!this.load["character"][id]) {
+				// Track the start of our load.
+				this.load["character"][id] = true;
+
+				// Call the service.
+				this.characterService
+					.getCharactersCharacterId(
+						id,
+						this.constants.ESI_DATASOURCE,
+						this.constants.USER_AGENT,
+						this.constants.USER_AGENT,
+						"response",
+						false
+					)
+					.subscribe(res => {
+						// Save the new data.
+						this.updateUniverseData(res, "character", id);
+
+						// Track the end of our load.
+						this.load["character"][id] = false;
+					});
+			}
+		},
+
+		corporation: (id: number, token: string): any => {
+			// Force id existence.
+			this.forceUniverseTypeIdExistence("corporation", id);
+
+			// Call service if we're not already loading it.
+			if (!this.load["corporation"][id]) {
+				// Track the start of our load.
+				this.load["corporation"][id] = true;
+
+				// Call the service.
+				this.corporationService
+					.getCorporationsCorporationId(
+						id,
+						this.constants.ESI_DATASOURCE,
+						this.constants.USER_AGENT,
+						this.constants.USER_AGENT,
+						"response",
+						false
+					)
+					.subscribe(res => {
+						// Save the new data.
+						this.updateUniverseData(res, "corporation", id);
+
+						// Track the end of our load.
+						this.load["corporation"][id] = false;
+					});
+			}
+		},
+
+		group: (id: number, token: string): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("group", id);
 
@@ -194,7 +299,7 @@ export class EveUniverseDataService {
 			}
 		},
 
-		station: (id, token): any => {
+		station: (id: number, token: string): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("station", id);
 
@@ -223,7 +328,7 @@ export class EveUniverseDataService {
 			}
 		},
 
-		structure: (id, token): any => {
+		structure: (id: number, token: string): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("structure", id);
 
@@ -253,7 +358,7 @@ export class EveUniverseDataService {
 			}
 		},
 
-		system: (id, token): any => {
+		system: (id: number, token: string): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("system", id);
 
@@ -283,7 +388,7 @@ export class EveUniverseDataService {
 			}
 		},
 
-		type: (id, token): any => {
+		type: (id: number, token: string): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("type", id);
 

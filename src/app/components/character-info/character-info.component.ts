@@ -2,6 +2,7 @@ import * as moment from "moment";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { EveCharacterDataService } from "../../services/eve-character-data/eve-character-data.service";
+import { EveUniverseDataService } from "../../services/eve-universe-data/eve-universe-data.service";
 
 import { SkillQueueComponent } from "./skill-queue/skill-queue.component";
 import { SkillsComponent } from "./skills/skills.component";
@@ -17,7 +18,8 @@ export class CharacterInfoComponent implements OnInit {
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
-		private eveCharacterDataService: EveCharacterDataService
+		private eveCharacterDataService: EveCharacterDataService,
+		private eveUniverseDataService: EveUniverseDataService
 	) {}
 
 	ngOnInit() {
@@ -45,10 +47,6 @@ export class CharacterInfoComponent implements OnInit {
 		}
 	}
 
-	public countdown(date: string): string {
-		return moment(date).fromNow();
-	}
-
 	public eveImage(type: string, hash: string, width: number): string {
 		let id = 0;
 		let tokens = this.eveCharacterDataService.tokens;
@@ -73,5 +71,9 @@ export class CharacterInfoComponent implements OnInit {
 		url += extension;
 
 		return url;
+	}
+
+	public universeData(type: string, id: number, token: string = null): any {
+		return this.eveUniverseDataService.get(type, id, token);
 	}
 }
