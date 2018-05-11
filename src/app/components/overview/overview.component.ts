@@ -1,6 +1,7 @@
 import * as moment from "moment";
 import { Component, OnInit } from "@angular/core";
 import { EveCharacterDataService } from "../../services/eve-character-data/eve-character-data.service";
+import { EveUniverseDataService } from "../../services/eve-universe-data/eve-universe-data.service";
 
 @Component({
 	selector: "app-overview",
@@ -8,7 +9,10 @@ import { EveCharacterDataService } from "../../services/eve-character-data/eve-c
 	styleUrls: ["./overview.component.css"],
 })
 export class OverviewComponent implements OnInit {
-	constructor(private eveCharacterDataService: EveCharacterDataService) {}
+	constructor(
+		private eveCharacterDataService: EveCharacterDataService,
+		private eveUniverseDataService: EveUniverseDataService
+	) {}
 
 	ngOnInit() {}
 
@@ -31,8 +35,26 @@ export class OverviewComponent implements OnInit {
 		}
 	}
 
-	public countdown(date: string): string {
-		return moment(date).fromNow();
+	public skillCountdown(skills: Array<any>, which: string): string {
+		let end = null;
+
+		if (which == "first") {
+			let now = moment();
+
+			for (let i in skills) {
+				end = moment(skills[i].finish_date);
+
+				if (end.isAfter(now)) {
+					break;
+				}
+			}
+		}
+
+		if (which == "last") {
+			end = moment(skills.slice(-1)[0].finish_date);
+		}
+
+		return end.fromNow();
 	}
 
 	public get tokens(): Array<any> {
@@ -63,5 +85,9 @@ export class OverviewComponent implements OnInit {
 		url += extension;
 
 		return url;
+	}
+
+	public universeData(type: string, id: number, token: string = null): any {
+		return this.eveUniverseDataService.get(type, id, token);
 	}
 }

@@ -48,9 +48,13 @@
 
 					<span class="text-section"
 						*ngIf="characterData(token.verification.CharacterOwnerHash, 'skillQueue').length > 0">
-						{{characterData(token.verification.CharacterOwnerHash, 'skillQueue')[0].skill_id}}:
+						{{
+							universeData('type', characterData(token.verification.CharacterOwnerHash, 'skillQueue')[0].skill_id)
+								? universeData('type', characterData(token.verification.CharacterOwnerHash, 'skillQueue')[0].skill_id).name
+								: "NULL"
+						}}:
 						<small class="text-muted">
-							{{countdown(characterData(token.verification.CharacterOwnerHash, 'skillQueue')[0].finish_date)}}
+							{{skillCountdown(characterData(token.verification.CharacterOwnerHash, 'skillQueue'), 'first')}}
 						</small>
 					</span>
 
@@ -58,7 +62,7 @@
 						*ngIf="characterData(token.verification.CharacterOwnerHash, 'skillQueue').length > 0">
 						Queue Ends:
 						<small class="text-muted">
-							{{countdown(characterData(token.verification.CharacterOwnerHash, 'skillQueue').slice(-1)[0].finish_date)}}
+							{{skillCountdown(characterData(token.verification.CharacterOwnerHash, 'skillQueue'), 'last')}}
 						</small>
 					</span>
 

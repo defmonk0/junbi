@@ -9,6 +9,8 @@ class MainWindow {
 			width: 875 + 16,
 		});
 
+		// this.win.webContents.openDevTools();
+
 		// Load app in window.
 		this.win.loadURL("file://" + __dirname + "/../dist/index.html");
 

@@ -280,7 +280,7 @@ export class EveCharacterDataService {
 
 	// ===== HELPERS
 
-	private forceCharacterDataExistance(hash: string, type: string): void {
+	private forceCharacterDataExistence(hash: string, type: string): void {
 		if (this.characters == undefined || this.characters == null) {
 			this.characters = {};
 		}
@@ -358,7 +358,7 @@ export class EveCharacterDataService {
 		let type = "characterPublic";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -384,7 +384,7 @@ export class EveCharacterDataService {
 		let type = "location";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -412,7 +412,7 @@ export class EveCharacterDataService {
 		let type = "online";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -440,7 +440,7 @@ export class EveCharacterDataService {
 		let type = "shipType";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -468,7 +468,7 @@ export class EveCharacterDataService {
 		let type = "skillQueue";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -496,7 +496,7 @@ export class EveCharacterDataService {
 		let type = "skills";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -524,7 +524,7 @@ export class EveCharacterDataService {
 		let type = "wallet";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -552,7 +552,7 @@ export class EveCharacterDataService {
 		let type = "walletJournal";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -581,7 +581,7 @@ export class EveCharacterDataService {
 		let type = "walletTransactions";
 
 		// Make sure this data is set up and available.
-		this.forceCharacterDataExistance(hash, type);
+		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
@@ -678,14 +678,14 @@ export class EveCharacterDataService {
 
 						this.ngZone.run(() => {
 							// Make sure this data is set up and available.
-							this.forceCharacterDataExistance(hash, type);
+							this.forceCharacterDataExistence(hash, type);
 
 							// We have the character data. Overwrite it.
 							this.characters[hash][type] = data;
 
 							// Hit our callback.
 							if (callback) {
-								callback(this.characters);
+								callback(this.characters[hash][type]);
 							}
 						});
 					});
