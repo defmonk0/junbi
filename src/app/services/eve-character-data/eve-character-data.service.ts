@@ -18,6 +18,7 @@ const REFRESH_TIMER_INTERVAL = 10 * 1000;
 const TOKEN_FILTER_OFFSET = 30 * 1000;
 
 const SCOPES = {
+	attributes: "esi-skills.read_skills.v1",
 	characterPublic: "",
 	location: "esi-location.read_location.v1",
 	online: "esi-location.read_online.v1",
@@ -74,31 +75,15 @@ export class EveCharacterDataService {
 
 			// Iterate through our tokens and update other info.
 			for (let token of this.tokens) {
-				// Character update.
-				this.updateCharacterPublic(token);
-
-				// Location update.
+				this.updateCharacterAttributes(token);
 				this.updateCharacterLocation(token);
-
-				// Online status update.
 				this.updateCharacterOnlineStatus(token);
-
-				// Ship type update.
+				this.updateCharacterPublic(token);
 				this.updateCharacterShip(token);
-
-				// Skill queue update.
 				this.updateCharacterSkillQueue(token);
-
-				// Skills update.
 				this.updateCharacterSkills(token);
-
-				// Wallet update.
 				this.updateCharacterWallet(token);
-
-				// Wallet journal update.
 				this.updateCharacterWalletJournal(token);
-
-				// Wallet transactions update.
 				this.updateCharacterWalletTransactions(token);
 			}
 		});
@@ -339,7 +324,7 @@ export class EveCharacterDataService {
 
 		// Write the data to storage.
 		this.storage.set(
-			hash + "-" + type,
+			"character-" + hash + "-" + type,
 			this.characters[hash][type],
 			error => {
 				if (error) {
@@ -351,21 +336,22 @@ export class EveCharacterDataService {
 
 	// ===== RETRIEVAL
 
-	private updateCharacterPublic(token: any): void {
+	private updateCharacterAttributes(token: any): void {
 		// Variables for easy use.
 		let hash = token.verification.CharacterOwnerHash;
 		let ts = Date.now();
-		let type = "characterPublic";
+		let type = "attributes";
 
 		// Make sure this data is set up and available.
 		this.forceCharacterDataExistence(hash, type);
 
 		// Skip if we don't have the scope.
 		if (this.needsCharacterDataUpdate(token, type)) {
-			this.characterService
-				.getCharactersCharacterId(
+			this.skillsService
+				.getCharactersCharacterIdAttributes(
 					token.verification.CharacterID,
 					this.constants.ESI_DATASOURCE,
+					token.token,
 					this.constants.USER_AGENT,
 					this.constants.USER_AGENT,
 					"response",
@@ -421,6 +407,33 @@ export class EveCharacterDataService {
 					token.verification.CharacterID,
 					this.constants.ESI_DATASOURCE,
 					token.token,
+					this.constants.USER_AGENT,
+					this.constants.USER_AGENT,
+					"response",
+					false
+				)
+				.subscribe(res => {
+					// Save the new data.
+					this.updateCharacterData(res, hash, type);
+				});
+		}
+	}
+
+	private updateCharacterPublic(token: any): void {
+		// Variables for easy use.
+		let hash = token.verification.CharacterOwnerHash;
+		let ts = Date.now();
+		let type = "characterPublic";
+
+		// Make sure this data is set up and available.
+		this.forceCharacterDataExistence(hash, type);
+
+		// Skip if we don't have the scope.
+		if (this.needsCharacterDataUpdate(token, type)) {
+			this.characterService
+				.getCharactersCharacterId(
+					token.verification.CharacterID,
+					this.constants.ESI_DATASOURCE,
 					this.constants.USER_AGENT,
 					this.constants.USER_AGENT,
 					"response",
@@ -671,24 +684,27 @@ export class EveCharacterDataService {
 
 				for (let type in SCOPES) {
 					// Try to get the data.
-					this.storage.get(hash + "-" + type, (error, data) => {
-						if (error) {
-							throw error;
-						}
-
-						this.ngZone.run(() => {
-							// Make sure this data is set up and available.
-							this.forceCharacterDataExistence(hash, type);
-
-							// We have the character data. Overwrite it.
-							this.characters[hash][type] = data;
-
-							// Hit our callback.
-							if (callback) {
-								callback(this.characters[hash][type]);
+					this.storage.get(
+						"character-" + hash + "-" + type,
+						(error, data) => {
+							if (error) {
+								throw error;
 							}
-						});
-					});
+
+							this.ngZone.run(() => {
+								// Make sure this data is set up and available.
+								this.forceCharacterDataExistence(hash, type);
+
+								// We have the character data. Overwrite it.
+								this.characters[hash][type] = data;
+
+								// Hit our callback.
+								if (callback) {
+									callback(this.characters[hash][type]);
+								}
+							});
+						}
+					);
 				}
 			}
 		}

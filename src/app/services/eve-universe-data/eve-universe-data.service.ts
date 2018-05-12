@@ -136,7 +136,7 @@ export class EveUniverseDataService {
 
 	// ===== RETRIEVAL
 
-	public get(type: string, id: number, token: string = null): any {
+	public get(type: string, id: number, token: any = null): any {
 		switch (this.getUniverseDataStatus(type, id)) {
 			case "disk":
 				return null;
@@ -152,7 +152,7 @@ export class EveUniverseDataService {
 	}
 
 	private getSpecific = {
-		alliance: (id: number, token: string): any => {
+		alliance: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("alliance", id);
 
@@ -171,17 +171,21 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "alliance", id);
-
-						// Track the end of our load.
-						this.load["alliance"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "alliance", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["alliance"][id] = false;
+						}
+					);
 			}
 		},
 
-		category: (id: number, token: string): any => {
+		category: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("category", id);
 
@@ -201,17 +205,21 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "category", id);
-
-						// Track the end of our load.
-						this.load["category"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "category", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["category"][id] = false;
+						}
+					);
 			}
 		},
 
-		character: (id: number, token: string): any => {
+		character: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("character", id);
 
@@ -230,17 +238,21 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "character", id);
-
-						// Track the end of our load.
-						this.load["character"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "character", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["character"][id] = false;
+						}
+					);
 			}
 		},
 
-		corporation: (id: number, token: string): any => {
+		corporation: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("corporation", id);
 
@@ -259,17 +271,21 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "corporation", id);
-
-						// Track the end of our load.
-						this.load["corporation"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "corporation", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["corporation"][id] = false;
+						}
+					);
 			}
 		},
 
-		group: (id: number, token: string): any => {
+		group: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("group", id);
 
@@ -289,17 +305,21 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "group", id);
-
-						// Track the end of our load.
-						this.load["group"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "group", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["group"][id] = false;
+						}
+					);
 			}
 		},
 
-		station: (id: number, token: string): any => {
+		station: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("station", id);
 
@@ -318,47 +338,59 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "station", id);
-
-						// Track the end of our load.
-						this.load["station"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "station", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["station"][id] = false;
+						}
+					);
 			}
 		},
 
-		structure: (id: number, token: string): any => {
-			// Force id existence.
-			this.forceUniverseTypeIdExistence("structure", id);
+		structure: (id: number, token: any): any => {
+			// Check if we have the correct scope.
+			let scope = "esi-universe.read_structures.v1";
+			if (token.verification.Scopes.indexOf(scope) >= 0) {
+				// Force id existence.
+				this.forceUniverseTypeIdExistence("structure", id);
 
-			// Call service if we're not already loading it.
-			if (!this.load["structure"][id]) {
-				// Track the start of our load.
-				this.load["structure"][id] = true;
+				// Call service if we're not already loading it.
+				if (!this.load["structure"][id]) {
+					// Track the start of our load.
+					this.load["structure"][id] = true;
 
-				// Call the service.
-				this.universeService
-					.getUniverseStructuresStructureId(
-						id,
-						this.constants.ESI_DATASOURCE,
-						token,
-						this.constants.USER_AGENT,
-						this.constants.USER_AGENT,
-						"response",
-						false
-					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "structure", id);
-
-						// Track the end of our load.
-						this.load["structure"][id] = false;
-					});
+					// Call the service.
+					this.universeService
+						.getUniverseStructuresStructureId(
+							id,
+							this.constants.ESI_DATASOURCE,
+							token.token,
+							this.constants.USER_AGENT,
+							this.constants.USER_AGENT,
+							"response",
+							false
+						)
+						.subscribe(
+							res => {
+								// Save the new data.
+								this.updateUniverseData(res, "structure", id);
+							},
+							undefined,
+							() => {
+								// Track the end of our load.
+								this.load["structure"][id] = false;
+							}
+						);
+				}
 			}
 		},
 
-		system: (id: number, token: string): any => {
+		system: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("system", id);
 
@@ -378,17 +410,21 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "system", id);
-
-						// Track the end of our load.
-						this.load["system"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "system", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["system"][id] = false;
+						}
+					);
 			}
 		},
 
-		type: (id: number, token: string): any => {
+		type: (id: number, token: any): any => {
 			// Force id existence.
 			this.forceUniverseTypeIdExistence("type", id);
 
@@ -408,13 +444,17 @@ export class EveUniverseDataService {
 						"response",
 						false
 					)
-					.subscribe(res => {
-						// Save the new data.
-						this.updateUniverseData(res, "type", id);
-
-						// Track the end of our load.
-						this.load["type"][id] = false;
-					});
+					.subscribe(
+						res => {
+							// Save the new data.
+							this.updateUniverseData(res, "type", id);
+						},
+						undefined,
+						() => {
+							// Track the end of our load.
+							this.load["type"][id] = false;
+						}
+					);
 			}
 		},
 	};

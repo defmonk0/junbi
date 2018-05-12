@@ -11,11 +11,14 @@ const SSO_TOKEN_URL = "https://login.eveonline.com/oauth/token/";
 const USER_AGENT = "Junbi/1.0.0 <" + GITHUB_HOME_URL + ">";
 
 const SCOPES = [
+	"esi-clones.read_clones.v1",
+	"esi-clones.read_implants.v1",
 	"esi-location.read_location.v1",
 	"esi-location.read_online.v1",
 	"esi-location.read_ship_type.v1",
 	"esi-skills.read_skillqueue.v1",
 	"esi-skills.read_skills.v1",
+	"esi-universe.read_structures.v1",
 	"esi-wallet.read_character_wallet.v1",
 ].join(" ");
 

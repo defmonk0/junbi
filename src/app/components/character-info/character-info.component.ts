@@ -30,6 +30,8 @@ export class CharacterInfoComponent implements OnInit {
 
 	public characterData(hash: string, type: string): any {
 		const TYPES = {
+			attributes: 0,
+			characterPublic: null,
 			location: null,
 			online: null,
 			shipType: null,
@@ -73,7 +75,30 @@ export class CharacterInfoComponent implements OnInit {
 		return url;
 	}
 
-	public universeData(type: string, id: number, token: string = null): any {
+	public getTokenFromHash(hash: string) {
+		let tokens = this.eveCharacterDataService.tokens;
+		for (let token of tokens) {
+			if (token.verification.CharacterOwnerHash == hash) {
+				return token;
+			}
+		}
+	}
+
+	public remapAvailable(date: string): string {
+		let temp = moment(date);
+
+		if (temp.isSameOrBefore(moment())) {
+			return "Yes";
+		}
+
+		return "No";
+	}
+
+	public remapCountdown(date: string): string {
+		return moment(date).fromNow();
+	}
+
+	public universeData(type: string, id: number, token: any = null): any {
 		return this.eveUniverseDataService.get(type, id, token);
 	}
 }

@@ -2,7 +2,7 @@
 
 	<!-- Page title. -->
 	<h1 class="display-4">
-		{{characterData(hash, "characterPublic")
+		{{characterData(hash, "characterPublic") && characterData(hash, "characterPublic").name
 			? characterData(hash, "characterPublic").name
 			: "Character Information"}}
 		<a [routerLink]="['/overview']"
@@ -15,18 +15,20 @@
 	<!-- Page description. -->
 	<p class="lead"
 		*ngIf="characterData(hash, 'characterPublic')">
-		<span class="gender"
-			*ngIf="characterData(hash, 'characterPublic').gender">
-			{{characterData(hash, "characterPublic").gender}}
-			-
-		</span>
 		<span class="corporation"
-			*ngIf="characterData(hash, 'characterPublic').corporation_id">
-			{{characterData(hash, "characterPublic").corporation_id}}
+			*ngIf="characterData(hash, 'characterPublic') && characterData(hash, 'characterPublic').corporation_id">
+			{{universeData('corporation', characterData(hash, "characterPublic").corporation_id).name}}
+			<small>
+				[{{universeData('corporation', characterData(hash, "characterPublic").corporation_id).ticker}}]
+			</small>
 		</span>
+		-
 		<span class="alliance"
-			*ngIf="characterData(hash, 'characterPublic').alliance_id">
-			({{characterData(hash, "characterPublic").alliance_id}})
+			*ngIf="characterData(hash, 'characterPublic') && characterData(hash, 'characterPublic').alliance_id">
+			{{universeData('alliance', characterData(hash, "characterPublic").alliance_id).name}}
+			<small>
+				[{{universeData('alliance', characterData(hash, "characterPublic").alliance_id).ticker}}]
+			</small>
 		</span>
 	</p>
 
@@ -55,7 +57,7 @@
 				</dt>
 				<dd class="col-12 col-xl-6"
 					*ngIf="characterData(hash, 'wallet')">
-					{{characterData(hash, "wallet")}}
+					{{characterData(hash, 'wallet') | number: "1.2-2"}} ISK
 				</dd>
 
 				<!-- Security status. -->
@@ -77,7 +79,7 @@
 				</dt>
 				<dd class="col-12 col-xl-6"
 					*ngIf="characterData(hash, 'shipType')">
-					{{characterData(hash, "shipType").ship_type_id}}
+					{{universeData('type', characterData(hash, "shipType").ship_type_id).name}}
 					({{characterData(hash, "shipType").ship_name}})
 				</dd>
 
@@ -88,7 +90,7 @@
 				</dt>
 				<dd class="col-12 col-xl-6"
 					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').solar_system_id">
-					{{characterData(hash, 'location').solar_system_id}}
+					{{universeData('system', characterData(hash, 'location').solar_system_id).name}}
 				</dd>
 
 				<!-- Station. -->
@@ -98,7 +100,7 @@
 				</dt>
 				<dd class="col-12 col-xl-6"
 					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').station_id">
-					{{characterData(hash, 'location').station_id}}
+					{{universeData('station', characterData(hash, 'location').station_id).name}}
 				</dd>
 
 				<!-- Structure. -->
@@ -108,83 +110,81 @@
 				</dt>
 				<dd class="col-12 col-xl-6"
 					*ngIf="characterData(hash, 'location') && characterData(hash, 'location').structure_id">
-					{{characterData(hash, 'location').structure_id}}
+					{{universeData('structure', characterData(hash, 'location').structure_id, getTokenFromHash(hash)).name}}
 				</dd>
 
 				<!-- ============================== -->
 
 				<!-- Charisma. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').charisma">
 					Charisma
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"17"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').charisma">
+					{{characterData(hash, 'attributes').charisma}}
 				</dd>
 
 				<!-- Intelligence. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').intelligence">
 					Intelligence
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"17"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').intelligence">
+					{{characterData(hash, 'attributes').intelligence}}
 				</dd>
 
 				<!-- Memory. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').memory">
 					Memory
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"17"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').memory">
+					{{characterData(hash, 'attributes').memory}}
 				</dd>
 
 				<!-- Perception. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').perception">
 					Perception
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"17"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').perception">
+					{{characterData(hash, 'attributes').perception}}
 				</dd>
 
 				<!-- Willpower. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').willpower">
 					Willpower
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"17"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').willpower">
+					{{characterData(hash, 'attributes').willpower}}
 				</dd>
 
 				<!-- ============================== -->
 
 				<!-- Remap available. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').accrued_remap_cooldown_date">
 					Remap Available
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"No"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').accrued_remap_cooldown_date">
+					{{characterData(hash, 'attributes').accrued_remap_cooldown_date | date: 'medium'}}
 				</dd>
 
 				<!-- Next remap. -->
-				<dt class="col-12 col-xl-6">
+				<dt class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').accrued_remap_cooldown_date">
 					Next Remap
 				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"219 days"}}
-				</dd>
-
-				<!-- Clone jump available. -->
-				<dt class="col-12 col-xl-6">
-					Clone Jump Available
-				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"No"}}
-				</dd>
-
-				<!-- Next clone jump. -->
-				<dt class="col-12 col-xl-6">
-					Next Clone Jump
-				</dt>
-				<dd class="col-12 col-xl-6">
-					{{"17 hours"}}
+				<dd class="col-12 col-xl-6"
+					*ngIf="characterData(hash, 'attributes') && characterData(hash, 'attributes').accrued_remap_cooldown_date">
+					{{remapCountdown(characterData(hash, 'attributes').accrued_remap_cooldown_date)}}
 				</dd>
 
 			</dl>

@@ -1,3 +1,30 @@
-<p>
-	skills works!
-</p>
+<ngb-accordion>
+	<ngb-panel *ngFor="let group of sortedSkillGroups()"
+		[id]="group.group_id"
+		[title]="group.name">
+		<ng-template ngbPanelContent>
+			<div class="row skill-list-item"
+				*ngFor="let type of group.types">
+				<div class="col-12 col-sm-6">
+					Random Skill Name
+				</div>
+				<div class="col-12 col-sm-6">
+					<ngb-progressbar
+						[animated]="false"
+						[type]="info"
+						[value]="2">
+						2 / 5
+					</ngb-progressbar>
+				</div>
+				<div class="col-12 col-sm-12 description">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+			</div>
+		</ng-template>
+	</ngb-panel>
+</ngb-accordion>

@@ -1,0 +1,12 @@
+.skill-list-item {
+	margin-bottom: 0.75rem;
+}
+
+.skill-list-item > .description {
+	overflow: hidden;
+
+	font-size: 0.75rem;
+
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

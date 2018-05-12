@@ -18,6 +18,8 @@ export class OverviewComponent implements OnInit {
 
 	public characterData(hash: string, type: string): any {
 		const TYPES = {
+			attributes: 0,
+			characterPublic: null,
 			location: null,
 			online: null,
 			shipType: null,
